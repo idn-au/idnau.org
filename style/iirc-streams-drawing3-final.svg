@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) 
+
+     inkscape:window-height="1177"
+     inkscape:zoom="0.77771465"
+     The viewBox attribute defines the position and dimension, in user space, of an SVG viewport.
+                 min-x, min-y, width and height. 
+
+width + height control the viewPORT
+
+   width="160mm"
+   height="160mm"
+   width="auto"
+   height="auto"
+   viewBox="0 0 180 180"
+   viewBox="0 0 100 auto"
+
+   viewBox defines the aspect ratio
+   small  viewBox makes the image bigger????
+   bigger viewBox makes the image smaller????
+
+   An SVG without a viewBox attribute has a width of 300px and a height of 150px
+
+-->
+<svg
+   width="auto"
+   height="auto"
+   viewBox="22 22 140 140"
+   version="1.1"
+   id="svg24333"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="iirc-streams-drawing3-final.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title25226">IIRC-streams</title>
+  <sodipodi:namedview
+     id="namedview24335"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="0.77"
+     inkscape:cx="130.51059"
+     inkscape:cy="560.61693"
+     inkscape:window-width="1920"
+     inkscape:window-height="1177"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:object-paths="true"
+     inkscape:snap-smooth-nodes="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid82376" />
+  </sodipodi:namedview>
+  <defs
+     id="defs24330">
+    <rect
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       id="rect130908" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect95247"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect95243"
+       is_visible="true"
+       lpeversion="1"
+       steps="1"
+       threshold="0.01"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect93413"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect93409"
+       is_visible="true"
+       lpeversion="1"
+       steps="1"
+       threshold="0.01"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect91372"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect91370"
+       is_visible="true"
+       lpeversion="1"
+       steps="1"
+       threshold="0.01"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect91333"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect91331"
+       is_visible="true"
+       lpeversion="1"
+       steps="1"
+       threshold="0.0039726"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect91261"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect91259"
+       is_visible="true"
+       lpeversion="1"
+       steps="1"
+       threshold="0.0039726"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect91255"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect91253"
+       is_visible="true"
+       lpeversion="1"
+       steps="1"
+       threshold="0.0039726"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false" />
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect90701"
+       is_visible="true"
+       lpeversion="1"
+       steps="1"
+       threshold="0.002"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect90664"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect90662"
+       is_visible="true"
+       lpeversion="1"
+       steps="1"
+       threshold="0.002"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect90625"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect90623"
+       is_visible="true"
+       lpeversion="1"
+       steps="1"
+       threshold="0.002"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect90619"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect90617"
+       is_visible="true"
+       lpeversion="1"
+       steps="1"
+       threshold="0.002"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect90613"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect90611"
+       is_visible="true"
+       lpeversion="1"
+       steps="1"
+       threshold="0.002"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect90574"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect90572"
+       is_visible="true"
+       lpeversion="1"
+       steps="1"
+       threshold="0.002"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false" />
+    <linearGradient
+       id="linearGradient87293"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop87291" />
+    </linearGradient>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect86988"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect86918"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect86914"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect86552"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect86118"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="skeletal"
+       id="path-effect85262"
+       is_visible="true"
+       lpeversion="1"
+       pattern="M 0,4.9921382 C 0,2.2364779 2.2364779,0 4.9921382,0 c 2.7556604,0 4.9921383,2.2364779 4.9921383,4.9921382 0,2.7556604 -2.2364779,4.9921383 -4.9921383,4.9921383 C 2.2364779,9.9842765 0,7.7477986 0,4.9921382 Z"
+       copytype="single_stretched"
+       prop_scale="1"
+       scale_y_rel="false"
+       spacing="0"
+       normal_offset="0"
+       tang_offset="0"
+       prop_units="false"
+       vertical_pattern="false"
+       hide_knot="false"
+       fuse_tolerance="0" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect85260"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="skeletal"
+       id="path-effect85256"
+       is_visible="true"
+       lpeversion="1"
+       pattern="M 0,4.9921382 C 0,2.2364779 2.2364779,0 4.9921382,0 c 2.7556604,0 4.9921383,2.2364779 4.9921383,4.9921382 0,2.7556604 -2.2364779,4.9921383 -4.9921383,4.9921383 C 2.2364779,9.9842765 0,7.7477986 0,4.9921382 Z"
+       copytype="single_stretched"
+       prop_scale="1"
+       scale_y_rel="false"
+       spacing="0"
+       normal_offset="0"
+       tang_offset="0"
+       prop_units="false"
+       vertical_pattern="false"
+       hide_knot="false"
+       fuse_tolerance="0" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect85254"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect84924"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect84567"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect84530"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect84333"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect83650"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect82717"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect91370-3"
+       is_visible="true"
+       lpeversion="1"
+       steps="1"
+       threshold="0.01"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect91372-9"
+       is_visible="true"
+       lpeversion="1" />
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect93409-8"
+       is_visible="true"
+       lpeversion="1"
+       steps="1"
+       threshold="0.01"
+       smooth_angles="360"
+       helper_size="0"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect93413-2"
+       is_visible="true"
+       lpeversion="1" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text130906"
+       style="fill:#ffffff;-inkscape-font-specification:'Gill Sans MT, Bold';font-family:'Gill Sans MT';font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:15.99998665px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke:#d56a11;stroke-opacity:1;fill-opacity:1;white-space:pre;shape-inside:url(#rect130908)" />
+    <g
+       id="g214931"
+       transform="translate(5.29167,-121.70835)">
+      <g
+         id="g214657">
+        <path
+           style="fill:none;stroke:#b92d3a;stroke-width:1.46324;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m 65.534122,162.00829 c -0.774122,1.16383 -1.243981,2.52816 -1.35064,3.92185 -0.106659,1.39369 0.150122,2.81363 0.738131,4.0817 0.480432,1.03607 1.183685,1.97388 2.074062,2.68907 0.890376,0.71519 1.969544,1.20295 3.101747,1.35255 1.749612,0.23118 3.521716,-0.3462 5.058304,-1.21424 1.536588,-0.86804 2.890256,-2.01935 4.312635,-3.06406 1.422379,-1.04472 2.957733,-2.0031 4.677494,-2.39935 0.85988,-0.19812 1.758687,-0.25043 2.627707,-0.0973 0.869019,0.15315 1.707304,0.51661 2.378269,1.08972 0.842477,0.7196 1.394193,1.75211 1.602223,2.84037 0.208029,1.08827 0.08332,2.22742 -0.279697,3.27423 -0.52482,1.51339 -1.517956,2.81032 -2.318735,4.1976 -0.400389,0.69363 -0.75641,1.41871 -0.975035,2.1892 -0.218626,0.77048 -0.296056,1.59091 -0.138148,2.37609 0.154028,0.76589 0.533337,1.48464 1.07654,2.04611 0.543203,0.56147 1.248189,0.96403 2.0071,1.14942 0.758911,0.18538 1.56924,0.15338 2.312103,-0.0884 0.742863,-0.2418 1.416141,-0.69233 1.92531,-1.28483 0.869447,-1.01175 1.221633,-2.35738 1.520592,-3.65745 0.298958,-1.30008 0.58888,-2.64837 1.370531,-3.72939 0.617295,-0.85371 1.521166,-1.48986 2.522977,-1.81582 1.001808,-0.32597 2.096258,-0.34527 3.118018,-0.0886 1.02176,0.25668 1.96962,0.785 2.74949,1.49329 0.77987,0.70829 1.39298,1.59363 1.81459,2.55909 0.76468,1.75105 0.88865,3.76837 0.37412,5.60853 -0.37299,1.33398 -1.06033,2.5539 -1.65156,3.80653 -0.59122,1.25262 -1.09841,2.59129 -1.06948,3.97613 0.0188,0.89945 0.26922,1.79311 0.72056,2.57135"
+           id="path91368-8"
+           inkscape:path-effect="#path-effect93409;#path-effect93413"
+           inkscape:original-d="m 65.534122,162.00829 c -4.968851,1.78944 1.756914,13.7939 2.86957,12.68812 0.314889,-0.31294 4.712592,-1.51473 5.931097,-2.01067 33.153421,-13.49354 7.746652,8.64121 13.604934,11.9394 10.153642,5.71646 5.503722,-6.44137 9.681409,-7.03238 3.032098,-0.42895 13.247918,1.82181 11.497598,5.40313 -3.68031,7.53021 -5.40907,6.21182 -3.2854,12.79578"
+           inkscape:transform-center-x="-4.816004"
+           inkscape:transform-center-y="-6.5057648" />
+        <g
+           id="g214646">
+<a xlink:title="Stream 1 will bring together Aboriginal and Torres Strait Islander national Indigenous Data Governance leaders and stakeholders to collectively explore how to apply a set of core, and uniquely Australian, Aboriginal and Torres Strait Islander Data Governance principles that will inform and be applied to all other streams and activities of this project." xlink:show="new" xlink:href="https://ardc.edu.au/wp-content/uploads/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=21">
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:4.23333px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#af170c;fill-opacity:1;stroke:#d56a11;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             x="71.847313"
+             y="154.70833"
+             id="text144258"><tspan
+               sodipodi:role="line"
+               id="tspan144256"
+               style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:4.23333px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';text-align:start;text-anchor:start;fill:#af170c;fill-opacity:1;stroke-width:0"
+               x="71.847313"
+               y="154.70833">Social</tspan><tspan
+               sodipodi:role="line"
+               style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:4.23333px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';text-align:start;text-anchor:start;fill:#af170c;fill-opacity:1;stroke-width:0"
+               x="71.847313"
+               y="159.99998"
+               id="tspan144260">Architecture</tspan></text></a>
+<a xlink:title="Go to Stream 1 of the Project Plan" xlink:show="new" xlink:href="https://ardc.edu.au/wp-content/uploads/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=21">
+          <g
+             id="g214058">
+            <circle
+               style="fill:#b92d3a;stroke:#000000;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               id="path24729"
+               cx="60.060997"
+               cy="158.75"
+               r="7.1443295" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:7.05556px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:#d56a11;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               x="57.560604"
+               y="160.87285"
+               id="text193959"><tspan
+                 sodipodi:role="line"
+                 id="tspan193957"
+                 style="font-size:7.05556px;fill:#ffffff;stroke-width:0"
+                 x="57.560604"
+                 y="160.87285">1</tspan></text>
+          </g>
+</a>
+        </g>
+      </g>
+      <g
+         id="g214677">
+        <path
+           style="fill:none;stroke:#a8cbfe;stroke-width:1.58069;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           d="m 43.895683,207.84692 c 1.044966,2.36051 2.370382,4.59673 3.939469,6.64659 0.981709,1.28251 2.081591,2.51178 3.465339,3.34474 0.691873,0.41649 1.450758,0.72889 2.244778,0.87613 0.794019,0.14724 1.623866,0.12626 2.397942,-0.10386 0.838667,-0.24932 1.596333,-0.73958 2.212568,-1.36069 0.616235,-0.62111 1.094787,-1.37027 1.45719,-2.16663 0.724805,-1.59272 0.986343,-3.35018 1.258621,-5.07875 0.336867,-2.13862 0.72398,-4.33374 1.863278,-6.17471 0.569648,-0.92048 1.327377,-1.73687 2.256499,-2.29231 0.929121,-0.55545 2.035422,-0.83858 3.109483,-0.70374 1.411245,0.17717 2.667451,1.06123 3.5296,2.19247 0.862149,1.13124 1.369019,2.49413 1.72852,3.87027 0.466576,1.78602 0.705546,3.63022 1.265714,5.38912 0.560169,1.75891 1.496786,3.47949 3.025663,4.51394 0.605161,0.40946 1.292383,0.7012 2.011635,0.82986 0.719251,0.12865 1.470137,0.0923 2.167151,-0.12693 0.697015,-0.21919 1.338077,-0.62304 1.820204,-1.17206 0.482128,-0.54902 0.801464,-1.24337 0.882609,-1.96952 0.08785,-0.78611 -0.100976,-1.58393 -0.421083,-2.30727 -0.320107,-0.72334 -0.76774,-1.38203 -1.222174,-2.02948 -0.454435,-0.64744 -0.920073,-1.29118 -1.281693,-1.99469 -0.361619,-0.70351 -0.617998,-1.47631 -0.621999,-2.26731 -0.0049,-0.97777 0.386172,-1.94141 1.024944,-2.6817 0.638773,-0.74029 1.514185,-1.26108 2.45379,-1.53165 0.939606,-0.27056 1.9409,-0.29732 2.906247,-0.14185 0.965347,0.15546 1.896403,0.48964 2.772004,0.92483 2.126855,1.05708 3.951961,2.73832 5.108017,4.81304 0.821808,1.47486 1.297246,3.11179 1.838785,4.71095 0.541539,1.59916 1.172363,3.20449 2.244497,4.50876 0.705249,0.85794 1.591349,1.5665 2.583399,2.06578"
+           id="path91368"
+           inkscape:path-effect="#path-effect91370;#path-effect91372"
+           inkscape:original-d="m 43.895683,207.84692 c -2.474361,4.37531 12.211857,12.21416 12.211857,10.56185 0,-0.46761 2.490101,-3.97566 3.052002,-5.10309 15.288383,-30.67549 12.84054,4.08247 20.007565,4.08247 12.421976,0 -0.763577,-9.09993 2.034667,-11.90721 2.030919,-2.03748 11.777979,-5.37672 13.225339,-1.02062 3.043279,9.15932 0.657112,8.83012 7.489567,13.96993" />
+        <g
+           id="g214666">
+<a xlink:title="The technical stream aims to establish the foundations of an Aboriginal and Torres Strait Islander Research Data Commons,
+exploring repository services to ensure preservation of data assets, catalogue services to make
+them discoverable, metadata generation to improve asset description, encode and make actionable the Indigenous Data Governance principles agreed in Stream 1, and support data
+linkage and aggregation." xlink:show="new" xlink:href="https://ardc.edu.au/wp-content/uploads/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=24">
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:4.23333px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#a8cbfe;fill-opacity:1;stroke:#d56a11;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             x="42.403351"
+             y="189.93814"
+             id="text160374"><tspan
+               sodipodi:role="line"
+               id="tspan160372"
+               style="fill:#a8cbfe;fill-opacity:1;stroke-width:0"
+               x="42.403351"
+               y="189.93814">Technical</tspan><tspan
+               sodipodi:role="line"
+               style="fill:#a8cbfe;fill-opacity:1;stroke-width:0"
+               x="42.403351"
+               y="195.2298"
+               id="tspan160376">Architecture</tspan></text></a>
+<a xlink:title="Go to Stream 2 of the Project Plan" xlink:show="new" xlink:href="https://ardc.edu.au/wp-content/uploads/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=24">
+          <g
+             id="g214143"
+             inkscape:transform-center-x="-12.927835"
+             inkscape:transform-center-y="3.4020619">
+            <circle
+               style="fill:#a8cbfe;stroke-width:0.264583"
+               id="path24729-0"
+               cx="40.480671"
+               cy="206.375"
+               r="7.1443295" />
+            <text
+               xml:space="preserve"
+               style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:7.05556px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:#d56a11;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               x="38.099995"
+               y="208.49164"
+               id="text205873"><tspan
+                 sodipodi:role="line"
+                 id="tspan205871"
+                 style="stroke-width:0"
+                 x="38.099995"
+                 y="208.49164">2</tspan></text>
+          </g>
+</a>
+        </g>
+      </g>
+      <g
+         id="g214798">
+<a xlink:title="The focus here is to develop an Indigenous geospatial framework which both embodies an Indigenous sense of place whilst enabling interoperability with official geospatial heirarchies" xlink:show="new" xlink:href="https://ardc.edu.au/wp-content/uploads/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=28">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:4.23333px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#d56a11;fill-opacity:1;stroke:#d56a11;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           x="41.537823"
+           y="245.90297"
+           id="text184388"><tspan
+             sodipodi:role="line"
+             id="tspan184386"
+             style="fill:#d56a11;fill-opacity:1;stroke-width:0"
+             x="41.537823"
+             y="245.90297">National</tspan><tspan
+             sodipodi:role="line"
+             style="fill:#d56a11;fill-opacity:1;stroke-width:0"
+             x="41.537823"
+             y="251.19463"
+             id="tspan184390">Indigenous</tspan><tspan
+             sodipodi:role="line"
+             style="fill:#d56a11;fill-opacity:1;stroke-width:0"
+             x="41.537823"
+             y="256.4863"
+             id="tspan184394">Data Assets</tspan></text></a>
+<a xlink:title="Go to Stream 3 of the Project Plan" xlink:show="new" xlink:href="https://ardc.edu.au/wp-content/uploads/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=28">
+        <g
+           id="g214684"
+           transform="translate(-2.7920706,3.9132767)">
+          <g
+             id="g188632"
+             transform="translate(-0.38309,-3.0288067)">
+            <circle
+               style="fill:#d56a11;stroke-width:0.264583"
+               id="path24729-06"
+               cx="74.083336"
+               cy="268.02234"
+               r="7.1443295" />
+
+            <path
+               style="fill:none;stroke:#d56a11;stroke-width:1.51471;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               d="m 79.75809,267.61214 c -1.413992,-2.1771 -2.387477,-4.63901 -2.8448,-7.19439 -0.233922,-1.30709 -0.332864,-2.65811 -0.06559,-3.95879 0.267278,-1.30068 0.930812,-2.5537 1.998294,-3.34343 0.691746,-0.51176 1.52859,-0.81203 2.382659,-0.91681 0.85407,-0.10477 1.72526,-0.0189 2.559571,0.19166 1.668621,0.42113 3.169418,1.32336 4.637456,2.22142 1.976291,1.20898 4.014551,2.45875 6.305347,2.8046 1.145399,0.17292 2.340141,0.10682 3.424337,-0.30105 1.084196,-0.40787 2.050136,-1.1732 2.599996,-2.19276 0.35022,-0.64939 0.5263,-1.38681 0.54483,-2.12439 0.0185,-0.73758 -0.1178,-1.47523 -0.36319,-2.17104 -0.49077,-1.39162 -1.40285,-2.59694 -2.410306,-3.67513 C 97.42866,245.7769 96.1966,244.71689 95.25,243.41667 c -0.4733,-0.65011 -0.872821,-1.36012 -1.119308,-2.12556 -0.246488,-0.76544 -0.336103,-1.589 -0.194251,-2.38054 0.12474,-0.69606 0.428729,-1.35912 0.874075,-1.90841 0.445345,-0.5493 1.031047,-0.98371 1.685643,-1.25122 0.654595,-0.2675 1.376703,-0.36762 2.079475,-0.2891 0.702773,0.0785 1.384796,0.33544 1.965166,0.73945 0.58722,0.40878 1.06434,0.96027 1.45674,1.55856 0.3924,0.59828 0.70428,1.24511 1.00708,1.89337 0.60561,1.29651 1.21343,2.65334 2.30348,3.58044 0.84462,0.71836 1.94216,1.12478 3.0503,1.16284 1.10815,0.0381 2.22102,-0.28692 3.15308,-0.8875 0.93206,-0.60058 1.68269,-1.47102 2.17033,-2.46683 0.48765,-0.99581 0.71459,-2.11351 0.68804,-3.22199 -0.0557,-2.32408 -1.19074,-4.48507 -2.50308,-6.40398 -0.74925,-1.09556 -1.56547,-2.1457 -2.27253,-3.26894 -0.70706,-1.12325 -1.30827,-2.33299 -1.57692,-3.63278 -0.20106,-0.97277 -0.21116,-1.98464 -0.0296,-2.96123"
+               id="path91368-8-8"
+               inkscape:path-effect="#path-effect95243;#path-effect95247"
+               inkscape:original-d="m 79.75809,267.61214 c -5.09803,-0.79166 -2.11567,-15.39624 -0.78258,-14.45282 0.37727,0.26699 4.78556,0.5526 6.05126,0.8088 34.4374,6.97067 4.8434,-11.18687 9.385195,-16.12986 7.871885,-8.56722 6.857945,5.72242 10.896135,5.3954 2.93086,-0.23735 11.80175,-5.05313 9.20445,-8.53856 -5.46122,-7.3286 -6.70776,-5.49494 -6.52479,-13.14185"
+               inkscape:transform-center-x="-7.4590542"
+               inkscape:transform-center-y="6.0606369"
+               sodipodi:nodetypes="cscsssc" />
+          </g>
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:7.05556px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:#d56a11;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+             x="71.4375"
+             y="267.22922"
+             id="text213135"><tspan
+               sodipodi:role="line"
+               id="tspan213133"
+               style="stroke-width:0"
+               x="71.4375"
+               y="267.22922">3</tspan></text>
+        </g>
+</a>
+      </g>
+      <g
+         id="g180096">
+<a xlink:title="Collectively, the three activity streams will lay the foundation to build national Indigenous research capabilities, framed by a set of agreed Indigenous Data Governance principles that can leverage existing data assets, linking them with new and existing Aboriginal and Torres Strait Islander data assets. This project will generate a detailed account of research data ecosystems, including how research data is distributed and used for the benefit of Aboriginal and Torres Strait Islander people." xlink:show="new" xlink:href="https://ardc.edu.au/wp-content/uploads/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=2">
+        <circle
+           style="fill:#05285b;stroke-width:0.264583"
+           id="path25300"
+           cx="119.07217"
+           cy="209.22679"
+           r="19.731958"
+           inkscape:transform-center-x="3.4020619"
+           inkscape:transform-center-y="-7.4845361" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:Arial;-inkscape-font-specification:'Arial Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+           x="119.22037"
+           y="202.42267"
+           id="text27826"><tspan
+             sodipodi:role="line"
+             id="tspan27824"
+             style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:4.23333px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="119.22037"
+             y="202.42267">Improved</tspan><tspan
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:4.23333px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="119.22037"
+             y="207.71432"
+             id="tspan27828">Indigenous</tspan><tspan
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:4.23333px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="119.22037"
+             y="213.006"
+             id="tspan27830">Research</tspan><tspan
+             sodipodi:role="line"
+             style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:4.23333px;font-family:Arial;-inkscape-font-specification:'Arial Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
+             x="119.22037"
+             y="218.29765"
+             id="tspan27832">Capability</tspan></text></a>
+      </g>
+    </g>
+  </g>
+  <metadata
+     id="metadata25224">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>IIRC-streams</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
