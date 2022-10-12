@@ -1,9 +1,10 @@
+# NOTE: disabled temporarily
 name: Build & deploy Vue app to GitHub Pages
 
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
   workflow_dispatch:
 permissions:
   contents: write
