@@ -1,0 +1,32 @@
+name: Build & deploy Vue app to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  deploy_to_github_pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: latest
+          cache: npm
+      - name: Install npm packages
+        run: npm ci
+      - name: Build Vue app
+        run: CI=false npm run build
+      - name: Bypass Jekyll processing
+        run: |
+          cd dist
+          echo > .nojekyll
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
