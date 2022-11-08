@@ -1,61 +1,47 @@
 <script setup>
-import placeholderSquare from "@/assets/images/placeholder-square.png";
+import BubbleLink from "@/components/BubbleLink.vue";
+import CardLink from "@/components/CardLink.vue";
 
 const largeLinks = [
     {
         "label": "Finding Indigenous data",
         "description": "desc",
-        "links": [
-            {
-                "label": "Link",
-                "url": ""
-            }
-        ],
-
+        "link": "/resources/findingindigenousdata",
+        "external": false,
+        "icon": "",
+        "iconAlt": ""
     },
     {
         "label": "Characterising Indigenous Data",
         "description": "desc",
-        "links": [
-            {
-                "label": "Link",
-                "url": ""
-            }
-        ],
+        "link": "/resources/characterisingindigenousdata",
+        "external": false,
+        "icon": "",
+        "iconAlt": ""
     },
     {
         "label": "Send your Indigenous Data to us",
         "description": "desc",
-        "links": [
-            {
-                "label": "Link",
-                "url": ""
-            }
-        ],
+        "link": "/resources/senddatatous",
+        "external": false,
+        "icon": "",
+        "iconAlt": ""
     },
     {
         "label": "Indigenous Data Governance and Sovereignty",
         "description": "desc",
-        "links": [
-            {
-                "label": "Link 1",
-                "url": ""
-            },
-            {
-                "label": "Link 2",
-                "url": ""
-            }
-        ],
+        "link": "/resources/indigenousdatagovernance",
+        "external": false,
+        "icon": "",
+        "iconAlt": ""
     },
     {
         "label": "Improving Indigenous Research Capabilities (IIRC) Project Plan",
         "description": "desc",
-        "links": [
-            {
-                "label": "Link",
-                "url": ""
-            }
-        ],
+        "link": "/resources/iircproject",
+        "external": false,
+        "icon": "",
+        "iconAlt": ""
     }
 ];
 
@@ -63,74 +49,54 @@ const smallLinks = [
     {
         "label": "IDN Metadata Profile",
         "description": "desc",
-        "links": [
-            {
-                "label": "",
-                "url": "Link"
-            }
-        ],
+        "link": "",
+        "external": true,
+        "icon": "",
+        "iconAlt": ""
     },
     {
         "label": "Metadata Entry Tool",
         "description": "desc",
-        "links": [
-            {
-                "label": "Link 1",
-                "url": ""
-            },
-            {
-                "label": "Link 2",
-                "url": ""
-            },
-            {
-                "label": "Link 3",
-                "url": ""
-            }
-        ],
+        "link": "https://idn-au.github.io/idn-metadata-creator/",
+        "external": true,
+        "icon": "",
+        "iconAlt": ""
     },
     {
         "label": "IDN Catalogue",
         "description": "desc",
-        "links": [
-            {
-                "label": "Link",
-                "url": ""
-            }
-        ],
+        "link": "/catalogue",
+        "external": true,
+        "icon": "",
+        "iconAlt": ""
     },
     {
         "label": "IDN Vocabs",
         "description": "desc",
-        "links": [
-            {
-                "label": "Link",
-                "url": ""
-            }
-        ],
+        "link": "http://idn.kurrawong.net/vocab",
+        "external": true,
+        "icon": "",
+        "iconAlt": ""
     },
     {
         "label": "IDN Catalogue Profile",
         "description": "desc",
-        "links": [
-            {
-                "label": "Link",
-                "url": ""
-            }
-        ],
+        "link": "https://idn-au.github.io/idn-catalogue-profile/profile.html",
+        "external": true,
+        "icon": "",
+        "iconAlt": ""
     },
     {
         "label": "FAIR, CARE, TK and Indigenous Data",
         "description": "desc",
-        "links": [
-            {
-                "label": "Link",
-                "url": ""
-            }
-        ],
+        "link": "/resources/faircare",
+        "external": false,
+        "icon": "",
+        "iconAlt": ""
     }
 ];
 
-const useBubbles = true;
+const useBubbles = false;
 </script>
 
 <template>
@@ -147,42 +113,46 @@ const useBubbles = true;
     </div>
     <template v-if="useBubbles">
         <div class="bubbles">
-            <div class="bubble-wrapper" v-for="link in largeLinks">
-                <a class="bubble" :href="link.url" target="_blank">
-                    <div>{{ link.label }}</div>
-                </a>
-            </div>
+            <BubbleLink
+                v-for="link in largeLinks"
+                :title="link.label"
+                :link="link.link"
+                :external="link.external"
+            />
         </div>
         <div class="bubbles small">
-            <div class="bubble-wrapper" v-for="link in smallLinks">
-                <a class="bubble" :href="link.url" target="_blank">
-                    <div>{{ link.label }}</div>
-                </a>
-            </div>
+            <BubbleLink
+                v-for="link in smallLinks"
+                :title="link.label"
+                :link="link.link"
+                :external="link.external"
+            />
         </div>
     </template>
     <template v-else>
         <div class="card-container">
-            <div class="card" v-for="card in largeLinks">
-                <div class="card-icon"><img :src="placeholderSquare" alt="placeholder icon"></div>
-                <h4 class="card-title">{{ card.label }}</h4>
-                <div class="card-description">{{ card.description }}</div>
-                <div class="card-buttons">
-                    <a :href="link.url" class="button" v-for="link in card.links">{{ link.label }} <i
-                            class="fa-regular fa-arrow-up-right-from-square"></i></a>
-                </div>
-            </div>
+            <CardLink
+                v-for="card in largeLinks"
+                :title="card.label"
+                :link="card.link"
+                :icon="card.icon"
+                :iconAlt="card.iconAlt"
+                :external="card.external"
+            >
+                {{ card.description }}
+            </CardLink>
         </div>
         <div class="card-container">
-            <div class="card" v-for="card in smallLinks">
-                <div class="card-icon"><img :src="placeholderSquare" alt="placeholder icon"></div>
-                <h4 class="card-title">{{ card.label }}</h4>
-                <div class="card-description">{{ card.description }}</div>
-                <div class="card-buttons">
-                    <a :href="link.url" class="button" v-for="link in card.links">{{ link.label }} <i
-                            class="fa-regular fa-arrow-up-right-from-square"></i></a>
-                </div>
-            </div>
+            <CardLink
+                v-for="card in smallLinks"
+                :title="card.label"
+                :link="card.link"
+                :icon="card.icon"
+                :iconAlt="card.iconAlt"
+                :external="card.external"
+            >
+                {{ card.description }}
+            </CardLink>
         </div>
     </template>
     <div>
@@ -230,38 +200,6 @@ const useBubbles = true;
         max-height: 186px;
         font-size: 0.9rem;
     }
-
-    .bubble-wrapper {
-        height: 100%;
-        padding: 12px 0px;
-        transition: padding 0.2s ease-in-out;
-
-        &:hover {
-            padding: 0px;
-        }
-
-        .bubble {
-            border-radius: 50%;
-            background-color: $primary;
-            color: white;
-            border: 3px solid $primary;
-            text-align: center;
-            transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-            display: flex;
-            padding: 10px;
-            height: 100%;
-            aspect-ratio: 1/1;
-
-            &>div {
-                margin: auto;
-            }
-
-            &:hover {
-                background-color: white;
-                color: $primary;
-            }
-        }
-    }
 }
 
 .card-container {
@@ -269,72 +207,5 @@ const useBubbles = true;
     flex-direction: row;
     gap: 20px;
     justify-content: space-between;
-
-    .card {
-        display: flex;
-        flex-direction: column;
-        border-radius: 6px;
-        background-color: #e2e2e2;
-        flex-basis: 0;
-        flex-grow: 1;
-        gap: 12px;
-        padding: 12px;
-        margin: 12px 8px;
-        border: 1px solid transparent;
-        transition: margin 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
-        // height: 100%;
-
-        &:hover {
-            margin: 0;
-            box-shadow: 0px 0px 5px 4px #EDEDED;
-            border-color: $primary;
-        }
-
-        .card-icon {
-            // height: 100%;
-            // width: auto;
-            // max-height: 100px;
-            // height: 100px;
-            margin: 0 auto;
-
-            img {
-                height: 100%;
-                width: auto;
-                max-height: 100px;
-            }
-        }
-
-        .card-title {
-            text-align: center;
-            margin: 0;
-        }
-
-        .card-description {
-            flex-grow: 1;
-            font-size: 0.9rem;
-        }
-
-        .card-buttons {
-            display: flex;
-            flex-direction: row;
-            gap: 8px;
-            flex-wrap: wrap;
-
-            .button {
-                border: 1px solid $primary;
-                background-color: white;
-                color: $primary;
-                padding: 8px;
-                border-radius: 6px;
-                font-size: 0.9rem;
-                transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-
-                &:hover {
-                    background-color: $primary;
-                    color: white;
-                }
-            }
-        }
-    }
 }
 </style>
