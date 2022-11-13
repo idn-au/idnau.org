@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink } from "vue-router";
+import LinkWrapper from "@/components/LinkWrapper.vue";
 </script>
 
 <template>
@@ -11,10 +12,10 @@ import { RouterLink } from "vue-router";
         <RouterLink to="/resources/iircproject">IIRC Project Plan</RouterLink>
         <RouterLink to="/resources/faircare">FAIR, CARE, TK & Indigenous Data</RouterLink>
         <a href="http://" target="_blank">IDN Metadata Profile <i class="fa-regular fa-arrow-up-right-from-square"></i></a>
-        <a href="http://" target="_blank">Metadata Entry Tool <i class="fa-regular fa-arrow-up-right-from-square"></i></a>
-        <a href="/catalogue" target="_blank">IDN Catalogue <i class="fa-regular fa-arrow-up-right-from-square"></i></a>
-        <a href="http://" target="_blank">IDN Vocabs <i class="fa-regular fa-arrow-up-right-from-square"></i></a>
-        <a href="http://" target="_blank">IDN Catalogue Profile <i class="fa-regular fa-arrow-up-right-from-square"></i></a>
+        <a href="https://idn-au.github.io/idn-metadata-creator/" target="_blank">Metadata Entry Tool <i class="fa-regular fa-arrow-up-right-from-square"></i></a>
+        <LinkWrapper href="http://idn.kurrawong.net/catprez" target="_blank">IDN Catalogue <i class="fa-regular fa-arrow-up-right-from-square"></i></LinkWrapper>
+        <a href="http://idn.kurrawong.net/vocab" target="_blank">IDN Vocabs <i class="fa-regular fa-arrow-up-right-from-square"></i></a>
+        <a href="https://idn-au.github.io/idn-catalogue-profile/profile.html" target="_blank">IDN Catalogue Profile <i class="fa-regular fa-arrow-up-right-from-square"></i></a>
     </nav>
 </template>
 

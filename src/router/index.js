@@ -59,14 +59,28 @@ const router = createRouter({
             name: "contact",
             component: () => import("../views/ContactView.vue")
         },
-        {
-            path: "/catalogue",
-            beforeEnter: () => {
-                if (window.confirm("Be careful: This catalogue has been gathered from a wide range of sources and sometimes contains language and views that may be offensive to Aboriginal and Torres Strait Islander people. While the IDN does not support such language and views, it is considered important historically to present this information without alteration. Are you sure you want to proceed?")) {
-                    location.href = "http://idn.kurrawong.net/catprez";
-                }
-            }
-        }
+        // {
+        //     path: "/catalogue",
+        //     beforeEnter: (to, from) => {
+        //         if (window.confirm("Be careful: This catalogue has been gathered from a wide range of sources and sometimes contains language and views that may be offensive to Aboriginal and Torres Strait Islander people. While the IDN does not support such language and views, it is considered important historically to present this information without alteration. Are you sure you want to proceed?")) {
+        //             location.href = "http://idn.kurrawong.net/catprez";
+        //         }else {
+        //             router.push(from)
+        //             return false
+        //         }
+        //     }
+        // },
+        // {
+        //     path: "/consent",
+        //     beforeEnter: (to, from ) => {
+        //         if (window.confirm("Be careful: This catalogue has been gathered from a wide range of sources and sometimes contains language and views that may be offensive to Aboriginal and Torres Strait Islander people. While the IDN does not support such language and views, it is considered important historically to present this information without alteration. Are you sure you want to proceed?")) {
+        //             // location.href = "http://idn.kurrawong.net/catprez";//<p parameter
+        //             window.open("http://idn.kurrawong.net/catprez", '_blank');
+        //         }else {
+        //             router.push(from)
+        //         }
+        //     }
+        // }
     ]
 });
 

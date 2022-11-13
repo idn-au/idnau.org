@@ -65,7 +65,7 @@ const smallLinks = [
     {
         "label": "IDN Catalogue",
         "description": "desc",
-        "link": "/catalogue",
+        "link": "http://idn.kurrawong.net/catprez",
         "external": true,
         "icon": "",
         "iconAlt": ""

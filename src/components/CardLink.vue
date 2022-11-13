@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink } from "vue-router";
+import LinkWrapper from "@/components/LinkWrapper.vue";
 import placeholderSquare from "@/assets/images/placeholder-square.png";
 
 const props = defineProps({
@@ -7,13 +8,13 @@ const props = defineProps({
     external: Boolean,
     title: String,
     icon: String,
-    iconAlt: String,
-    beforeWarning: String
+    iconAlt: String
 });
+
 </script>
 
 <template>
-    <component :is="props.external ? 'a' : 'RouterLink'" :to="props.link" :href="props.link" :target="props.external ? '_blank' : ''" class="card">
+    <component :is="props.external ? LinkWrapper : RouterLink" :to="props.link" :href="props.link" :target="props.external ? '_blank' : ''" class="card">
         <i v-if="props.external" class="external-icon fa-regular fa-arrow-up-right-from-square"></i>
         <div class="card-icon"><img :src="!!props.icon ? props.icon : placeholderSquare" :alt="!!props.iconAlt ? '' : 'Icon'"></div>
         <h4 class="card-title">{{ props.title }}</h4>
