@@ -155,11 +155,6 @@ const useBubbles = false;
             </CardLink>
         </div>
     </template>
-    <div>
-        <p>This webpage is to communicate the work of the IDN Catalogue Project. Technical outcomes are in progress and
-            finalisation is subject to the consensus and agreement of the communities of Indigenous research data
-            custodians that support the project partners.</p>
-    </div>
 </template>
 
 <style lang="scss" scoped>

@@ -1,10 +1,17 @@
 <script setup>
 import { RouterView, RouterLink } from "vue-router";
 import { HeaderComponent, MainComponent, FooterComponent, navLinks } from "@idn-au/idn-lib";
+
+const banners = [
+    {
+        "type": "dev",
+        "message": "This webpage is to communicate the work of the IDN Catalogue Project. Technical outcomes are in progress and finalisation is subject to the consensus and agreement of the communities of Indigenous research data custodians that support the project partners."
+    }
+]
 </script>
 
 <template>
-    <HeaderComponent :internal="true" :dev="true">
+    <HeaderComponent :internal="true" :banners="banners">
         <RouterLink v-for="link in navLinks" :to="link.url">{{ link.label }}</RouterLink>
     </HeaderComponent>
     <MainComponent>

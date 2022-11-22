@@ -1,65 +1,127 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { FormInput } from "@idn-au/idn-lib";
 
-const name = ref("");
-const email = ref("");
-const message = ref("");
+const data = ref({
+    name: "",
+    email: "",
+    message: ""
+});
+
+const isEmpty = computed(() => {
+    return Object.values(data.value).find(item => item !== "") === undefined;
+});
+
+const isFull = computed(() => {
+    return Object.values(data.value).find(item => item === "") === undefined;
+});
+
+const validationMessages = ref({
+    name: [],
+    email: [],
+    message: []
+});
+
+const isValid = computed(() => {
+    return Object.values(validationMessages.value).find(item => item.length > 0) === undefined;
+});
+
+function clearValidate(key) {
+    validationMessages.value[key] = [];
+};
+
+function validateIsEmpty(key, message) {
+    if (data.value[key] === "" || data.value[key] === [] || data.value[key] === false) {
+        validationMessages.value[key].push(message);
+    }
+};
+
+function validateEmail(key) {
+    if (!data.value[key].match(/.+@.+\..+/)) {
+        validationMessages.value[key].push("Invalid email address");
+    }
+}
 
 </script>
 
 <template>
     <h2>Contact Us</h2>
-    <form action="">
-        <div id="contact-form">
-            <input type="text" name="name" id="name" placeholder="Name" v-model="name" />
-            <input type="email" name="email" id="email" placeholder="Email" v-model="email" />
-            <textarea name="message" id="message" cols="30" rows="10" placeholder="Type your message here..." v-model="message"></textarea>
-        </div>
-        <button type="submit">Submit</button>
-    </form>
+    <div id="contact-form-wrapper">
+        <form action="">
+            <div id="contact-form">
+                <FormInput
+                    type="text"
+                    name="name"
+                    id="name"
+                    label="Name"
+                    placeholder="Please enter your name"
+                    :required="true"
+                    @onBlur="clearValidate('name'); validateIsEmpty('name', 'Name must not be empty')"
+                    v-model="data.name"
+                    :invalidMessage="validationMessages.name"
+                />
+                <FormInput
+                    type="email"
+                    name="email"
+                    id="email"
+                    label="Email"
+                    placeholder="Please enter your email"
+                    :required="true"
+                    @onBlur="clearValidate('email'); validateIsEmpty('email', 'Email must not be empty'); validateEmail('email')"
+                    v-model="data.email"
+                    :invalidMessage="validationMessages.email"
+                />
+                <FormInput
+                    type="textarea"
+                    name="message"
+                    id="message"
+                    label="Message"
+                    placeholder="Type your message here..."
+                    :required="true"
+                    @onBlur="clearValidate('message'); validateIsEmpty('message', 'Message must not be empty')"
+                    v-model="data.message"
+                    :invalidMessage="validationMessages.message"
+                    :style="{ gridColumn: 'span 2' }"
+                />
+            </div>
+            <button type="submit" :disabled="!isFull || !isValid">Submit</button>
+        </form>
+    </div>
 </template>
 
 <style lang="scss" scoped>
 @import "@/assets/sass/_variables.scss";
 
-#contact-form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+#contact-form-wrapper {
+    border-radius: 6px;
+    // background-color: #f7f7f7;
+    border: 2px solid  #ececec;
     padding: 20px;
-    background-color: #f7f7f7;
-    margin-bottom: 16px;
-    border-radius: 6px;
 
-    textarea {
-        grid-column: span 2;
-        font-family: unset;
-        font-size: 13px;
+    #contact-form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        
+        margin-bottom: 16px;
+
+        :deep(textarea) {
+            font-size: 0.833em;
+        }
     }
 
-    input, textarea {
+    button {
         border-radius: 6px;
-        background-color: white;
-        padding: 8px;
-        border: 1px solid #9f9f9f;
+        border: none;
+        padding: 6px 8px;
+        background-color: $primary;
+        color: white;
+        cursor: pointer;
 
-        &:focus-visible {
-            outline: none;
-        }
-
-        &:focus {
-            box-shadow: 0px 0px 6px 2px rgba($color: #3780ee, $alpha: 0.4);
+        &:disabled {
+            cursor: default;
+            opacity: 0.8;
         }
     }
-}
-
-button {
-    border-radius: 6px;
-    border: none;
-    padding: 6px 8px;
-    background-color: $primary;
-    color: white;
-    cursor: pointer;
-    
 }
 </style>
