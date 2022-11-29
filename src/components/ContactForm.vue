@@ -2,10 +2,26 @@
 import { ref, computed } from "vue";
 import { FormInput } from "@idn-au/idn-lib";
 
+const topicOptions = [
+    {
+        label: "Question",
+        value: "question"
+    },
+    {
+        label: "Website feedback",
+        value: "website"
+    },
+    {
+        label: "Other",
+        value: "other"
+    },
+];
+
 const data = ref({
     name: "",
     email: "",
-    message: ""
+    message: "",
+    topic: ""
 });
 
 const isEmpty = computed(() => {
@@ -19,7 +35,8 @@ const isFull = computed(() => {
 const validationMessages = ref({
     name: [],
     email: [],
-    message: []
+    message: [],
+    topic: []
 });
 
 const isValid = computed(() => {
@@ -72,6 +89,17 @@ function validateEmail(key) {
                     :invalidMessage="validationMessages.email"
                 />
                 <FormInput
+                    type="select"
+                    name="topic"
+                    id="topic"
+                    label="Topic"
+                    :options="topicOptions"
+                    :required="true"
+                    @onBlur="clearValidate('topic'); validateIsEmpty('topic', 'Topic must not be empty')"
+                    v-model="data.topic"
+                    :invalidMessage="validationMessages.topic"
+                />
+                <FormInput
                     type="textarea"
                     name="message"
                     id="message"
@@ -81,7 +109,7 @@ function validateEmail(key) {
                     @onBlur="clearValidate('message'); validateIsEmpty('message', 'Message must not be empty')"
                     v-model="data.message"
                     :invalidMessage="validationMessages.message"
-                    :style="{ gridColumn: 'span 2' }"
+                    :style="{ gridColumn: 'span 3' }"
                 />
             </div>
             <button type="submit" :disabled="!isFull || !isValid">Submit</button>
@@ -100,7 +128,7 @@ function validateEmail(key) {
 
     #contact-form {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 20px;
         
         margin-bottom: 16px;

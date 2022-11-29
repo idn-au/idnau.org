@@ -96,7 +96,7 @@ const smallLinks = [
     }
 ];
 
-const useBubbles = false;
+const useBubbles = true;
 </script>
 
 <template>

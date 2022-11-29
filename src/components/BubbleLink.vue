@@ -46,6 +46,10 @@ const props = defineProps({
             background-color: white;
             color: $primary;
         }
+
+        &::after {
+            content: unset;
+        }
     }
 }
 </style>

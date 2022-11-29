@@ -1,7 +1,9 @@
 <script setup>
+import { computed } from "vue";
 import { RouterLink } from "vue-router";
 import LinkWrapper from "@/components/LinkWrapper.vue";
 import placeholderSquare from "@/assets/images/placeholder-square.png";
+import warnUrls from "@/utils/warnUrls.json";
 
 const props = defineProps({
     link: String,
@@ -11,11 +13,15 @@ const props = defineProps({
     iconAlt: String
 });
 
+const hasWarning = computed(() => {
+    return warnUrls.map(item => item.url).includes(props.link);
+})
 </script>
 
 <template>
     <component :is="props.external ? LinkWrapper : RouterLink" :to="props.link" :href="props.link" :target="props.external ? '_blank' : ''" class="card">
-        <i v-if="props.external" class="external-icon fa-regular fa-arrow-up-right-from-square"></i>
+        <i v-if="hasWarning" class="warning-icon fa-regular fa-triangle-exclamation" title="May contain sensitive/offensive content"></i>
+        <i v-if="props.external" class="external-icon fa-regular fa-arrow-up-right-from-square" title="External site"></i>
         <div class="card-icon"><img :src="!!props.icon ? props.icon : placeholderSquare" :alt="!!props.iconAlt ? '' : 'Icon'"></div>
         <h4 class="card-title">{{ props.title }}</h4>
         <div class="card-description">
@@ -37,7 +43,7 @@ a.card {
     display: flex;
     flex-direction: column;
     border-radius: 6px;
-    background-color: #e2e2e2;
+    background-color: #ebebeb;
     flex-basis: 0;
     flex-grow: 1;
     gap: 12px;
@@ -48,11 +54,22 @@ a.card {
     transition: margin 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
     position: relative;
     // height: 100%;
+    text-decoration: none;
 
     &:hover {
         margin: 0;
         box-shadow: 0px 0px 5px 4px #EDEDED;
         border-color: $primary;
+    }
+
+    &::after {
+        content: unset;
+    }
+
+    i.warning-icon {
+        position: absolute;
+        left: 12px;
+        color: #efa51c;
     }
 
     i.external-icon {
@@ -78,6 +95,7 @@ a.card {
     .card-title {
         text-align: center;
         margin: 0;
+        font-size: 1.3em;
     }
 
     .card-description {

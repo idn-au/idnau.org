@@ -6,58 +6,58 @@ const router = createRouter({
         {
             path: "/",
             name: "home",
-            component: () => import("../views/HomeView.vue") 
+            component: () => import("@/views/HomeView.vue") 
         },
         {
             path: "/about",
             name: "about",
-            component: () => import("../views/AboutView.vue")
+            component: () => import("@/views/AboutView.vue")
         },
         {
             path: "/resources",
-            component: () => import("../views/resources/ProjectResourcesWrapperView.vue"),
+            name: "resources",
+            component: () => import("@/views/ProjectResourcesView.vue")
+        },
+        {
+            path: "/resources",
+            component: () => import("@/views/resources/ProjectResourcesWrapperView.vue"),
             children: [
-                {
-                    path: "",
-                    name: "resources",
-                    component: () => import("../views/ProjectResourcesView.vue"),
-                },
                 {
                     path: "findingindigenousdata",
                     name: "finding data",
-                    component: () => import("../views/resources/FindingView.vue")
+                    component: () => import("@/views/resources/FindingView.vue")
                 },
                 {
                     path: "characterisingindigenousdata",
                     name: "characterising data",
-                    component: () => import("../views/resources/CharacterisingView.vue")
+                    component: () => import("@/views/resources/CharacterisingView.vue")
                 },
                 {
                     path: "senddatatous",
                     name: "send data to us",
-                    component: () => import("../views/resources/SendDataView.vue")
+                    component: () => import("@/views/resources/SendDataView.vue")
                 },
                 {
                     path: "indigenousdatagovernance",
                     name: "indigenous data governance",
-                    component: () => import("../views/resources/DataGovernanceView.vue")
+                    component: () => import("@/views/resources/DataGovernanceView.vue")
                 },
                 {
                     path: "iircproject",
                     name: "IIRC project",
-                    component: () => import("../views/resources/IIRCProjectView.vue")
+                    component: () => import("@/views/resources/IIRCProjectView.vue")
                 },
                 {
                     path: "faircare",
                     name: "fair care",
-                    component: () => import("../views/resources/FairCareView.vue")
+                    component: () => import("@/views/resources/FairCareView.vue")
                 },
             ]
         },
         {
             path: "/contact",
             name: "contact",
-            component: () => import("../views/ContactView.vue")
+            component: () => import("@/views/ContactView.vue")
         },
         // {
         //     path: "/catalogue",
