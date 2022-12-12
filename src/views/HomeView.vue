@@ -1,102 +1,10 @@
 <script setup>
+import { computed } from "vue";
 import BubbleLink from "@/components/BubbleLink.vue";
-import CardLink from "@/components/CardLink.vue";
+import links from "@/utils/resourceLinks";
 
-const largeLinks = [
-    {
-        "label": "Finding Indigenous data",
-        "description": "desc",
-        "link": "/resources/findingindigenousdata",
-        "external": false,
-        "icon": "",
-        "iconAlt": ""
-    },
-    {
-        "label": "Characterising Indigenous Data",
-        "description": "desc",
-        "link": "/resources/characterisingindigenousdata",
-        "external": false,
-        "icon": "",
-        "iconAlt": ""
-    },
-    {
-        "label": "Send your Indigenous Data to us",
-        "description": "desc",
-        "link": "/resources/senddatatous",
-        "external": false,
-        "icon": "",
-        "iconAlt": ""
-    },
-    {
-        "label": "Indigenous Data Governance and Sovereignty",
-        "description": "desc",
-        "link": "/resources/indigenousdatagovernance",
-        "external": false,
-        "icon": "",
-        "iconAlt": ""
-    },
-    {
-        "label": "Improving Indigenous Research Capabilities (IIRC) Project Plan",
-        "description": "desc",
-        "link": "/resources/iircproject",
-        "external": false,
-        "icon": "",
-        "iconAlt": ""
-    }
-];
-
-const smallLinks = [
-    {
-        "label": "IDN Metadata Profile",
-        "description": "desc",
-        "link": "",
-        "external": true,
-        "icon": "",
-        "iconAlt": ""
-    },
-    {
-        "label": "Metadata Entry Tool",
-        "description": "desc",
-        "link": "https://idn-au.github.io/idn-metadata-creator/",
-        "external": true,
-        "icon": "",
-        "iconAlt": ""
-    },
-    {
-        "label": "IDN Catalogue",
-        "description": "desc",
-        "link": "http://idn.kurrawong.net/catprez",
-        "external": true,
-        "icon": "",
-        "iconAlt": ""
-    },
-    {
-        "label": "IDN Vocabs",
-        "description": "desc",
-        "link": "http://idn.kurrawong.net/vocab",
-        "external": true,
-        "icon": "",
-        "iconAlt": ""
-    },
-    {
-        "label": "IDN Catalogue Profile",
-        "description": "desc",
-        "link": "https://idn-au.github.io/idn-catalogue-profile/profile.html",
-        "external": true,
-        "icon": "",
-        "iconAlt": ""
-    },
-    {
-        "label": "FAIR, CARE, TK and Indigenous Data",
-        "description": "desc",
-        "link": "/resources/faircare",
-        "external": false,
-        "icon": "",
-        "iconAlt": ""
-    }
-];
-
-const useBubbles = true;
+const topLinks = computed(() => links.filter(link => link.row === "top"));
+const bottomLinks = computed(() => links.filter(link => link.row === "bottom"));
 </script>
 
 <template>
@@ -111,50 +19,12 @@ const useBubbles = true;
             beyond. We acknowledge and respect that Aboriginal and Torres Strait Islander people have always used
             resources from the land and waters for nourishment, medicine and healing.</p>
     </div>
-    <template v-if="useBubbles">
-        <div class="bubbles">
-            <BubbleLink
-                v-for="link in largeLinks"
-                :title="link.label"
-                :link="link.link"
-                :external="link.external"
-            />
-        </div>
-        <div class="bubbles small">
-            <BubbleLink
-                v-for="link in smallLinks"
-                :title="link.label"
-                :link="link.link"
-                :external="link.external"
-            />
-        </div>
-    </template>
-    <template v-else>
-        <div class="card-container">
-            <CardLink
-                v-for="card in largeLinks"
-                :title="card.label"
-                :link="card.link"
-                :icon="card.icon"
-                :iconAlt="card.iconAlt"
-                :external="card.external"
-            >
-                {{ card.description }}
-            </CardLink>
-        </div>
-        <div class="card-container">
-            <CardLink
-                v-for="card in smallLinks"
-                :title="card.label"
-                :link="card.link"
-                :icon="card.icon"
-                :iconAlt="card.iconAlt"
-                :external="card.external"
-            >
-                {{ card.description }}
-            </CardLink>
-        </div>
-    </template>
+    <div class="bubbles">
+        <BubbleLink v-for="link in topLinks" v-bind="link"/>
+    </div>
+    <div class="bubbles">
+        <BubbleLink v-for="link in bottomLinks" v-bind="link" :small="true" />
+    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -183,24 +53,5 @@ const useBubbles = true;
     align-items: center;
     justify-content: space-around;
     gap: 12px;
-    height: 13vw;
-    min-height: 198px;
-    max-height: 270px;
-    font-size: 1.2rem;
-
-    &.small {
-        height: 9vw;
-        margin: 0px 40px;
-        min-height: 145px;
-        max-height: 186px;
-        font-size: 0.9rem;
-    }
-}
-
-.card-container {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    justify-content: space-between;
 }
 </style>

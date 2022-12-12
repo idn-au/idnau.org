@@ -15,13 +15,13 @@ const router = createRouter({
         },
         {
             path: "/resources",
-            name: "resources",
-            component: () => import("@/views/ProjectResourcesView.vue")
-        },
-        {
-            path: "/resources",
             component: () => import("@/views/resources/ProjectResourcesWrapperView.vue"),
             children: [
+                {
+                    path: "",
+                    name: "resources",
+                    component: () => import("@/views/resources/ProjectResourcesView.vue"),
+                },
                 {
                     path: "findingindigenousdata",
                     name: "finding data",
@@ -51,6 +51,31 @@ const router = createRouter({
                     path: "faircare",
                     name: "fair care",
                     component: () => import("@/views/resources/FairCareView.vue")
+                },
+                {
+                    path: "metadataprofile",
+                    name: "metadata profile",
+                    component: () => import("@/views/resources/MetadataProfileView.vue")
+                },
+                {
+                    path: "metadatacreator",
+                    name: "metadata creator",
+                    component: () => import("@/views/resources/MetadataCreatorView.vue")
+                },
+                {
+                    path: "catalog",
+                    name: "catalog",
+                    component: () => import("@/views/resources/CatalogView.vue")
+                },
+                {
+                    path: "vocabs",
+                    name: "vocabularies",
+                    component: () => import("@/views/resources/VocabsView.vue")
+                },
+                {
+                    path: "catalogprofile",
+                    name: "catalog profile",
+                    component: () => import("@/views/resources/CatalogProfileView.vue")
                 },
             ]
         },

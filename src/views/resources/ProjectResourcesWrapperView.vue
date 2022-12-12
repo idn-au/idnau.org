@@ -1,10 +1,13 @@
 <script setup>
+import { useRoute } from "vue-router";
 import ProjectResourcesNavBar from "@/components/ProjectResourcesNavBar.vue";
+
+const route = useRoute();
 </script>
 
 <template>
     <div id="resources-content-wrapper">
-        <ProjectResourcesNavBar />
+        <ProjectResourcesNavBar v-if="route.path !== '/resources'" />
         <div id="resources-content">
             <RouterView/>
         </div>

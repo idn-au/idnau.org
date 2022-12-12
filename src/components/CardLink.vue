@@ -1,39 +1,53 @@
 <script setup>
-import { computed } from "vue";
+// import { computed } from "vue";
 import { RouterLink } from "vue-router";
 import LinkWrapper from "@/components/LinkWrapper.vue";
-import placeholderSquare from "@/assets/images/placeholder-square.png";
-import warnUrls from "@/utils/warnUrls.json";
+// import placeholderSquare from "@/assets/images/placeholder-square.png";
+import idnLogo from "@/assets/images/idn-logo-250.png";
+// import warnUrls from "@/utils/warnUrls.json";
 
 const props = defineProps({
-    link: String,
-    external: Boolean,
+    url: String,
+    // external: Boolean,
     title: String,
+    description: String,
     icon: String,
-    iconAlt: String
+    iconAlt: String,
+    sublinks: Array
 });
 
-const hasWarning = computed(() => {
-    return warnUrls.map(item => item.url).includes(props.link);
-})
+// const hasWarning = computed(() => {
+//     return warnUrls.map(item => item.url).includes(props.url);
+// });
 </script>
 
 <template>
-    <component :is="props.external ? LinkWrapper : RouterLink" :to="props.link" :href="props.link" :target="props.external ? '_blank' : ''" class="card">
-        <i v-if="hasWarning" class="warning-icon fa-regular fa-triangle-exclamation" title="May contain sensitive/offensive content"></i>
-        <i v-if="props.external" class="external-icon fa-regular fa-arrow-up-right-from-square" title="External site"></i>
-        <div class="card-icon"><img :src="!!props.icon ? props.icon : placeholderSquare" :alt="!!props.iconAlt ? '' : 'Icon'"></div>
-        <h4 class="card-title">{{ props.title }}</h4>
-        <div class="card-description">
-            <slot></slot>
+    <RouterLink :to="props.url" class="card">
+        <!-- <i v-if="hasWarning" class="warning-icon fa-regular fa-triangle-exclamation" title="May contain sensitive/offensive content"></i> -->
+        <!-- <i v-if="props.external" class="external-icon fa-regular fa-arrow-up-right-from-square" title="External site"></i> -->
+        <div class="card-icon">
+            <img
+                :src="props.icon || idnLogo"
+                :alt="props.iconAlt"
+            >
         </div>
-        <!-- <div class="card-buttons">
-            <template v-for="link in props.links">
-                <a v-if="link.external" :href="link.url" class="button" target="_blank">{{ link.label }} <i class="fa-regular fa-arrow-up-right-from-square"></i></a>
-                <RouterLink v-else :to="link.url" class="button">{{ link.label }}</RouterLink>
+        <h4 class="card-title">{{ props.title }}</h4>
+        <div v-if="!!props.description" class="card-description">
+            {{ props.description }}
+        </div>
+        <div v-if="props.sublinks" class="card-buttons">
+            <template v-for="link in props.sublinks">
+                <LinkWrapper
+                    @click.stop
+                    :href="link.url"
+                    class="button"
+                    target="_blank"
+                >
+                    {{ link.title }} <i class="fa-regular fa-arrow-up-right-from-square"></i>
+                </LinkWrapper>
             </template>
-        </div> -->
-    </component>
+        </div>
+    </RouterLink>
 </template>
 
 <style lang="scss" scoped>
@@ -49,7 +63,7 @@ a.card {
     gap: 12px;
     color: black;
     padding: 12px;
-    margin: 12px 8px;
+    margin: 12px;
     border: 1px solid transparent;
     transition: margin 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
     position: relative;
@@ -108,8 +122,9 @@ a.card {
         flex-direction: row;
         gap: 8px;
         flex-wrap: wrap;
+        margin-top: auto;
 
-        .button {
+        a.button {
             border: 1px solid $primary;
             background-color: white;
             color: $primary;
@@ -119,9 +134,14 @@ a.card {
             transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
             cursor: pointer;
 
+            &::after {
+                content: unset;
+            }
+
             &:hover {
                 background-color: $primary;
                 color: white;
+                text-decoration: none;
             }
         }
     }

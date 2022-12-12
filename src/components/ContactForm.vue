@@ -62,7 +62,6 @@ function validateEmail(key) {
 </script>
 
 <template>
-    <h2>Contact Us</h2>
     <div id="contact-form-wrapper">
         <form action="">
             <div id="contact-form">

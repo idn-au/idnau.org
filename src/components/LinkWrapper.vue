@@ -14,7 +14,7 @@ function warnIfNeeded(e) {
 </script>
 
 <template>
-    <a @click="warnIfNeeded($event)">
+    <a @click.stop="warnIfNeeded($event)">
         <slot></slot>
     </a>
 </template>
