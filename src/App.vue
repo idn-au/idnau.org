@@ -1,6 +1,7 @@
 <script setup>
 import { RouterView, RouterLink } from "vue-router";
 import { HeaderComponent, MainComponent, FooterComponent, navLinks } from "@idn-au/idn-lib";
+import idnLogo from "@/assets/images/idn-logo-250.png";
 
 const banners = [
     {
@@ -12,7 +13,19 @@ const banners = [
 
 <template>
     <HeaderComponent :internal="true" :banners="banners">
-        <RouterLink v-for="link in navLinks" :to="link.url">{{ link.label }}</RouterLink>
+        <template #logo-link>
+            <RouterLink id="idn-logo" to="/">
+                <img :src="idnLogo" alt="IDN Logo" />
+            </RouterLink>
+        </template>
+        <template #heading-link>
+            <RouterLink to="/">
+                <h2>IDN Catalogue Project</h2>
+            </RouterLink>
+        </template>
+        <template #links>
+            <RouterLink v-for="link in navLinks" :to="link.url">{{ link.label }}</RouterLink>
+        </template>
     </HeaderComponent>
     <MainComponent>
         <RouterView />
