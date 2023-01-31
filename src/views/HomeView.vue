@@ -9,15 +9,18 @@ const bottomLinks = computed(() => links.filter(link => link.row === "bottom"));
 
 <template>
     <div class="jumbo">
-        <p class="jumbo-text">Welcome to the Indigenous Data Network (IDN) supporting work being trialled within the
-            Australian Research Data Commons (ARDC) HASS Research Data Commons and Indigenous Research Capability
-            Program projects, specifically the Improving Indigenous Research Capabilities (IIRC) Project.</p>
-        <p class="jumbo-text">-</p>
-        <p class="jumbo-text">The Indigenous Data Network acknowledges the Aboriginal and Torres Strait Islander
-            Traditional Custodians of the lands on which we work and live.
-            We pay respect to their Elders, past and present, and the place of Indigenous Knowledge in the academy and
-            beyond. We acknowledge and respect that Aboriginal and Torres Strait Islander people have always used
-            resources from the land and waters for nourishment, medicine and healing.</p>
+        <div class="jumbo-box">
+            <p class="jumbo-text">Welcome to the Indigenous Data Network (IDN) supporting work being trialled within the
+                Australian Research Data Commons (ARDC) HASS Research Data Commons and Indigenous Research Capability
+                Program projects, specifically the Improving Indigenous Research Capabilities (IIRC) Project.</p>
+        </div>
+        <div class="jumbo-box sm">
+            <p class="jumbo-text">The Indigenous Data Network acknowledges the Aboriginal and Torres Strait Islander
+                Traditional Custodians of the lands on which we work and live.
+                We pay respect to their Elders, past and present, and the place of Indigenous Knowledge in the academy and
+                beyond. We acknowledge and respect that Aboriginal and Torres Strait Islander people have always used
+                resources from the land and waters for nourishment, medicine and healing.</p>
+        </div>
     </div>
     <div class="bubbles">
         <BubbleLink v-for="link in topLinks" v-bind="link"/>
@@ -31,18 +34,37 @@ const bottomLinks = computed(() => links.filter(link => link.row === "bottom"));
 @import "@/assets/sass/_variables.scss";
 
 .jumbo {
-    background-image: url("@/assets/images/placeholder-landscape.png");
+    background-image: url("@/assets/images/Milky_Way_IDN_Logo_75percent.png");
     background-size: cover;
     background-position: center;
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    padding: 16px;
+    gap: 26px;
+    padding: 32px;
 
-    p.jumbo-text {
-        font-size: 1.4rem;
-        margin: 16px 0px;
+    .jumbo-box {
+        background-color: rgba(255, 255, 255, 0.7);
+        width: 60%;
+        margin: 0 auto;
+        padding: 12px 20px;
+
+        p.jumbo-text {
+            font-size: 1.45em;
+            color: black;
+        }
+
+        &.sm {
+            margin-top: 12px;
+            width: 80%;
+            padding: 8px 16px;
+
+            p.jumbo-text {
+                font-size: 1em;
+            }
+        }
+
+        
     }
 }
 
