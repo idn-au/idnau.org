@@ -5,7 +5,8 @@ import links from "@/utils/resourceLinks";
 
 <template>
     <h2>IDN Catalogue Project Resources</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore maiores nemo quae harum, laboriosam dolorum aperiam, minima doloribus, possimus sapiente quibusdam non suscipit fugit corporis est aut. Dolorum, fuga mollitia!</p>
+    <p>This page contains resources gathered and created during the IDN Catalogue project. The first two rows mirror the Home Page links but there are direct links included if you wish to open the resource page directly and bypass this web site.</p>
+    <p>Further presentations and resources will be added to this page as they are released.</p>
     <div class="resource-cards">
         <CardLink v-for="card in links" v-bind="card"/>
     </div>

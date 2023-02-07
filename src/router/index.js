@@ -58,9 +58,9 @@ const router = createRouter({
                     component: () => import("@/views/resources/MetadataProfileView.vue")
                 },
                 {
-                    path: "metadatacreator",
-                    name: "metadata creator",
-                    component: () => import("@/views/resources/MetadataCreatorView.vue")
+                    path: "metadataentry",
+                    name: "metadata entry",
+                    component: () => import("@/views/resources/MetadataEntryView.vue")
                 },
                 {
                     path: "catalog",

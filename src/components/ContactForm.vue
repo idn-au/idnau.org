@@ -111,7 +111,7 @@ function validateEmail(key) {
                     :style="{ gridColumn: 'span 3' }"
                 />
             </div>
-            <button type="submit" :disabled="!isFull || !isValid">Submit</button>
+            <button type="submit" title="Not available yet" :disabled="true || (!isFull || !isValid)">Submit</button>
         </form>
     </div>
 </template>

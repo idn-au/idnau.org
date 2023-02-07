@@ -34,7 +34,5 @@ const banners = [
 </template>
 
 <style lang="scss">
-#main-content {
-    max-width: unset !important;
-}
+
 </style>

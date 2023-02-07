@@ -4,14 +4,14 @@ import streamsDrawing from "@/assets/images/iirc-streams-drawing3-final.svg";
 
 <template>
     <h2>Improving Indigenous Research Capabilities (IIRC) Project Plan</h2>
-    <a href="https://mspgh.unimelb.edu.au/centres-institutes/centre-for-health-equity/research-group/indigenous-data-network/projects/improving-indigenous-research-capabilities-project" target="_blank">Improving Indigenous Research Capabilities: An Aboriginal and Torres Strait Islander Research Data Commons</a>
+    <p>The IIRC project<a href="https://mspgh.unimelb.edu.au/centres-institutes/centre-for-health-equity/research-group/indigenous-data-network/projects/improving-indigenous-research-capabilities-project" target="_blank" rel="noopener noreferrer"></a> (<a href="https://doi.org/10.5281/zenodo.6552024" target="_blank" rel="noopener noreferrer">PDF</a>) is one of four activity streams of the ARDC's HASS Research Data Commons program. The following video was created during the initial planning of the project and explains the outcomes under consideration:</p>
     <iframe src="https://www.youtube.com/embed/6mqOOJ65XMw" frameborder="0" width="560" height="315"></iframe>
 
-    <p><a href="https://doi.org/10.5281/zenodo.6552024" target="_blank" rel="noopener noreferrer">The IIRC project</a> is one of four activity streams of the ARDC's HASS Research Data Commons program. The following picture represents the project as a series of rivers flowing into a lake. Hover over the text to see a summary, and click the circles or text to open the relevant section of the project plan in a new tab.</p>
+    <p>The following picture represents the project as a series of rivers flowing into a lake. Hover over the text to see a summary, and click the circles or text to open the relevant section of the project plan in a new tab.</p>
     <object width="50%" :data="streamsDrawing" type="image/svg+xml" ></object>
     <p>Alternatively, you can jump into these particular parts of the full IIRC project plan by clicking the links below (opens in a new tab/window).</p>
     <ul>
-        <li><a href="https://test.idnau.org/reports/ardc/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=2" target="_blank">Objectives</a></li>
+        <li><a href="https://test.idnau.org/reports/ardc/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=3" target="_blank">Objectives</a></li>
         <li><a href="https://test.idnau.org/reports/ardc/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=3" target="_blank">Governance</a></li>
         <li><a href="https://test.idnau.org/reports/ardc/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=4" target="_blank">Outcome and Impact</a></li>
         <li><a href="https://test.idnau.org/reports/ardc/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=5" target="_blank">Project Partners</a></li>

@@ -30,7 +30,7 @@ export default [
     //     "row": "top"
     // },
     {
-        "title": "Indigenous Data Governance and Sovereignty",
+        "title": "Indigenous Data Governance",
         "shortTitle": "Indigenous Data Governance",
         "description": "",
         "url": "/resources/indigenousdatagovernance",
@@ -69,22 +69,22 @@ export default [
         "sublinks": [
             {
                 "title": "Profile",
-                "url": ""
+                "url": "https://w3id.org/idn/def/cp/guide"
             }
         ],
         "row": "bottom"
     },
     {
-        "title": "Metadata Creator Tool",
-        "shortTitle": "Metadata Creator Tool",
+        "title": "Metadata Entry Tool",
+        "shortTitle": "Metadata Entry Tool",
         "description": "",
-        "url": "/resources/metadatacreator",
+        "url": "/resources/metadataentry",
         "icon": "",
         "iconAlt": "",
         "sublinks": [
             {
                 "title": "Tool",
-                "url": "https://idn-au.github.io/idn-metadata-creator/"
+                "url": "https://idn-au.github.io/idn-metadata-creator/#/"
             }
         ],
         "row": "bottom"
@@ -99,7 +99,7 @@ export default [
         "sublinks": [
             {
                 "title": "Catalog",
-                "url": "http://idn.kurrawong.net/catprez"
+                "url": "https://w3id.org/idn/dataset/democat"
             }
         ],
         "row": "bottom"
