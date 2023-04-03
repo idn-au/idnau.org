@@ -4,24 +4,69 @@ import { FormInput } from "@idn-au/idn-lib";
 
 const topicOptions = [
     {
-        label: "Question",
-        value: "question"
+        label: "Website or Project feedback",
+        value: "feedback"
     },
     {
-        label: "Website feedback",
-        value: "website"
+        label: "Assistance with Indigenous Data management",
+        value: "indigenousAssistance"
     },
     {
-        label: "Other",
-        value: "other"
+        label: "Technical assistance with the Indigenous catalogue project",
+        value: "technicalAssistance"
+    },
+    {
+        label: "Indigenous Data access or rematriation",
+        value: "dataAccess"
+    },
+    {
+        label: "Indigenous Data Advocacy",
+        value: "dataAdvocacy"
+    },
+    {
+        label: "General Enquiry about the IDN Catalogue Project",
+        value: "enquiry"
+    },
+];
+
+const interestsOptions = [
+    {
+        label: "Indigenous Languages",
+        value: "languages"
+    },
+    {
+        label: "Cultural Heritage",
+        value: "heritage"
+    },
+    {
+        label: "Health and Wellness",
+        value: "health"
+    },
+    {
+        label: "Data Management",
+        value: "dataManagement"
+    },
+    {
+        label: "Environmental Monitoring",
+        value: "monitoring"
+    },
+    {
+        label: "Economic Development",
+        value: "develompment"
+    },
+    {
+        label: "Governance and Policy",
+        value: "governance"
     },
 ];
 
 const data = ref({
     name: "",
     email: "",
+    organisation: "",
     message: "",
-    topic: ""
+    topic: "",
+    interests: []
 });
 
 const isEmpty = computed(() => {
@@ -35,8 +80,10 @@ const isFull = computed(() => {
 const validationMessages = ref({
     name: [],
     email: [],
+    organisation: [],
     message: [],
-    topic: []
+    topic: [],
+    interests: []
 });
 
 const isValid = computed(() => {
@@ -88,6 +135,17 @@ function validateEmail(key) {
                     :invalidMessage="validationMessages.email"
                 />
                 <FormInput
+                    type="text"
+                    name="organisation"
+                    id="organisation"
+                    label="Organisation"
+                    placeholder="Please enter your organisation"
+                    :required="true"
+                    @onBlur="clearValidate('organisation'); validateIsEmpty('organisation', 'Organisation must not be empty')"
+                    v-model="data.organisation"
+                    :invalidMessage="validationMessages.organisation"
+                />
+                <FormInput
                     type="select"
                     name="topic"
                     id="topic"
@@ -97,6 +155,20 @@ function validateEmail(key) {
                     @onBlur="clearValidate('topic'); validateIsEmpty('topic', 'Topic must not be empty')"
                     v-model="data.topic"
                     :invalidMessage="validationMessages.topic"
+                />
+                <FormInput
+                    type="select"
+                    name="interests"
+                    id="interests"
+                    label="Interests"
+                    :options="interestsOptions"
+                    :required="true"
+                    @onBlur="clearValidate('interests'); validateIsEmpty('interests', 'Interests must not be empty')"
+                    v-model="data.interests"
+                    :invalidMessage="validationMessages.interests"
+                    multiple
+                    allowAdd
+                    searchable
                 />
                 <FormInput
                     type="textarea"

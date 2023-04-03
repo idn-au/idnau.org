@@ -13,9 +13,8 @@ const bottomLinks = computed(() => links.filter(link => link.row === "bottom"));
             <p class="jumbo-text">Welcome to the Indigenous Data Network (IDN) supporting work being trialled within the
                 Australian Research Data Commons (ARDC) HASS Research Data Commons and Indigenous Research Capability
                 Program projects, specifically the Improving Indigenous Research Capabilities (IIRC) Project.</p>
-        </div>
-        <div class="jumbo-box sm">
-            <p class="jumbo-text">The Indigenous Data Network acknowledges the Aboriginal and Torres Strait Islander
+                <hr/>
+                <p class="jumbo-text small">The Indigenous Data Network acknowledges the Aboriginal and Torres Strait Islander
                 Traditional Custodians of the lands on which we work and live.
                 We pay respect to their Elders, past and present, and the place of Indigenous Knowledge in the academy and
                 beyond. We acknowledge and respect that Aboriginal and Torres Strait Islander people have always used
@@ -34,37 +33,45 @@ const bottomLinks = computed(() => links.filter(link => link.row === "bottom"));
 @import "@/assets/sass/_variables.scss";
 
 .jumbo {
-    background-image: url("@/assets/images/Milky_Way_IDN_Logo_75percent.png");
+    background-image: url("@/assets/images/Milky_Way_IDN_Logo_75percent-fpng.webp");
     background-size: cover;
     background-position: center;
     text-align: center;
     display: flex;
-    flex-direction: column;
-    gap: 26px;
-    padding: 32px;
+    // flex-direction: column;
+    // gap: 26px;
+    padding: 36px;
+    margin-top: -20px;
 
     .jumbo-box {
-        background-color: rgba(255, 255, 255, 0.7);
-        width: 60%;
+        background-color: rgba(255, 255, 255, 0.6);
+        // background-color: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(.5rem);
+        width: 66%;
         margin: 0 auto;
-        padding: 12px 20px;
+        padding: 12px 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        border-radius: 6px;
 
         p.jumbo-text {
             font-size: 1.45em;
             color: black;
-        }
+            // color: white;
+            font-weight: 500;
 
-        &.sm {
-            margin-top: 12px;
-            width: 80%;
-            padding: 8px 16px;
-
-            p.jumbo-text {
+            &.small {
                 font-size: 1em;
+                font-weight: unset;
             }
         }
 
-        
+        hr {
+            width: 66%;
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+        }
     }
 }
 

@@ -24,7 +24,7 @@ onMounted(() => {
     <h2>FAIR, CARE, TK and Indigenous Data Governance</h2>
     <p>The IDN Catalogue Project will leverage Indigenous Data Network and ARDC capabilities and research in creating programmatic applications for FAIR and CARE scoring of metadata records. 
     <br>
-    It will also seek to model Traditional and Biocultural Knowledge Notices and Labels<a href="https://localcontexts.org/notices/aboutnotices/" target="_blank"></a> that institutions and researchers can apply these labels to their metadata records in the future should they decide to.</p>
+    It will also seek to model Traditional and Biocultural Knowledge Notices and Labels<a href="https://localcontexts.org/notices/aboutnotices/" target="_blank"></a> so that institutions and researchers can apply these labels to their metadata records in the future should they decide to.</p>
     <p>Outcomes include supporting institutions to manage and share data more freely and cooperatively following the principles of:</p>
     <ul>
         <li>FAIR (Findable, Accessible, Interoperable and Reusable)</li>
@@ -34,9 +34,11 @@ onMounted(() => {
     </ul>
     <p>Detailed information about FAIR and CARE Principles and Traditional Knowledge Labels are given below.</p>
     <h3>FAIR and CARE Principles</h3>
-    <div>
-        <img :src="fairCareImg" alt="Be FAIR and CARE" />
-        <div>Image credit: <a href="https://www.gida-global.org/care" target="_blank">GIDA</a></div>
+    <div class="image-container">
+        <div class="image">
+            <img :src="fairCareImg" alt="Be FAIR and CARE" />
+            <div class="caption">Image credit: <a href="https://www.gida-global.org/care" target="_blank">GIDA</a></div>
+        </div>
     </div>
     <div class="accordion">
         <div class="section" id="FAIR">
@@ -175,6 +177,33 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 @import "@/assets/sass/_variables.scss";
+
+.image-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+
+    .image {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #d8d8d8;
+        border-radius: 4px;
+        padding: 2px;
+        gap: 4px;
+        margin: 0 auto;
+        width: 66%;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        .caption {
+            padding: 4px;
+            font-size: 0.9em;
+        }
+    }   
+}
 
 .accordion {
     display: flex;

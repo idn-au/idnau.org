@@ -35,7 +35,7 @@ $margin: 20px;
 $padding: 20px;
 $iconWidth: 75%;
 $iconMarginTop: 0%;
-$titleSize: 0.9em;
+$titleSize: 1em;
 $titleMarginBottom: 5%;
 $titleWidth: 80%;
 
@@ -52,14 +52,14 @@ $smMargin: 16px;
 $smPadding: 16px;
 $smIconWidth: 70%;
 $smIconMarginTop: 0%;
-$smTitleSize: 0.8em;
+$smTitleSize: 0.85em;
 $smTitleMarginBottom: 5%;
 $smTitleWidth: 80%;
 
 $smHoverPadding: 20px;
 $smHoverIconWidth: 55%;
 $smHoverIconMarginTop: 0%;
-$smHoverTitleSize: 1em;
+$smHoverTitleSize: 1.1em;
 $smHoverTitleMarginBottom: 18%;
 $smHoverTitleWidth: 100%;
 
@@ -129,7 +129,8 @@ $smHoverTitleWidth: 100%;
         }
 
         &:hover {
-            box-shadow: 0px 0px 5px 4px rgba($color: $primary, $alpha: 0.4);
+            // box-shadow: 0px 0px 5px 4px rgba($color: $primary, $alpha: 0.4);
+            box-shadow: 0px 4px 14px 8px rgba(0, 0, 0, 0.15);
             margin: 0;
 
             .icon-wrapper {

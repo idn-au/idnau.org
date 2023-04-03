@@ -18,7 +18,7 @@
         with the following outcomes expected:
     <ul>
         <li>The development of an Aboriginal and Torres Strait Islander Research Data Catalogue. This includes
-            vocabulary development and metadata labelling; incorporating of Institutional Traditional Knowledge and
+            vocabulary development and metadata labelling; incorporating Institutional Traditional Knowledge and
             Biocultural Knowledge labels will be investigated.</li>
         <li>Geospatial portal supporting development of an Indigenous Loc-I (<a
                 href="https://publications.csiro.au/rpr/download?pid=csiro:EP192957&dsid=DS1" target="_blank"
@@ -32,5 +32,4 @@
 </template>
 
 <style lang="scss" scoped>
-
 </style>

@@ -9,5 +9,4 @@ import { RouterLink } from "vue-router";
 </template>
 
 <style lang="scss" scoped>
-
 </style>
