@@ -99,7 +99,7 @@ export default [
         "sublinks": [
             {
                 "title": "Catalog",
-                "url": "https://w3id.org/idn/dataset/democat"
+                "url": "https://data.idnau.org/c"
             }
         ],
         "row": "bottom"
@@ -114,7 +114,7 @@ export default [
         "sublinks": [
             {
                 "title": "Vocabs",
-                "url": "http://idn.kurrawong.net/vocab"
+                "url": "https://data.idnau.org/v/vocab"
             }
         ],
         "row": "bottom"

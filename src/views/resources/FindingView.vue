@@ -10,7 +10,7 @@ import { RouterLink } from "vue-router";
     <ul>
         <li>Describing Indigenous Data for discovery. This was initially tested in a simple spreadsheet before moving to the online <a href="https://idn-au.github.io/idn-metadata-creator/#/" target="_blank" rel="noopener noreferrer">Metadata Creation Tool</a>. Guidance on the use of the metadata profile can be found <a href="https://w3id.org/idn/def/cp/guide" target="_blank" rel="noopener noreferrer">here</a>.</li>
         <li>Enabling <a href="https://github.com/idn-au/scores-ont" target="_blank" rel="noopener noreferrer">programmatic FAIR scoring</a></li>
-        <li><a href="http://idn.kurrawong.net/vocab" target="_blank" rel="noopener noreferrer">IDN Catalogue Vocabularies</a></li>
+        <li><a href="https://data.idnau.org/v/vocab" target="_blank" rel="noopener noreferrer">IDN Catalogue Vocabularies</a></li>
     </ul>
 </template>
 
