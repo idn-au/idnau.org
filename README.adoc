@@ -1,18 +1,22 @@
-= https://www.idnau.org[idnau.org website content]
+= https://idn-au.github.io/dev.idnau.org/[dev.idnau.org website content]
 
-This repository contains the source code of the https://www.idnau.org[idnau.org website]. 
+This repository contains the source code of the https://idn-au.github.io/dev.idnau.org/[dev.idnau.org website]. 
 
 
 == License & Rights
 
 The contents of this repository is licensed under Creative Commons 4.0 International. See the LICENSE file in the repository for details.
 
-All repository conten: (c) Indigenous Data Network, 2022.
+All repository content: (c) Indigenous Data Network, 2022.
 
 
 == Contacts
 
 Initial technical development of this work is being undertaken by the following, for the Indigenous Data Network:
+
+**Jamie Feiss** +
+*Data Infrastructure Developer* +
+Indigenous Data Network +
 
 **Nicholas J. Car** +
 *Data Architect* +
