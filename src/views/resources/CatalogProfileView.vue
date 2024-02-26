@@ -7,9 +7,13 @@ import LinkWrapper from "@/components/LinkWrapper.vue";
         IDN Catalogue Profile
         <small><LinkWrapper class="resource-btn" href="https://idn-au.github.io/idn-catalogue-profile/profile.html" target="_blank" rel="noopener noreferrer">IDN Catalogue Profile</LinkWrapper></small>
     </h2>
-    <p>The IDN Catalogue is based on the W3C Dataset Catalog Vocabulary (<a href="https://www.w3.org/TR/vocab-dcat-2/" target="_blank" rel="noopener noreferrer">DCATv2</a>) which is "an RDF vocabulary designed to facilitate interoperability between data catalogs published on the Web. By using DCAT to describe datasets in data catalogues, publishers increase discoverability and enable (other) applications easily to consume metadata."</p>
-    <p>A 'profile' means the standard, in this case DCAT, has been extended without changing the underlying model or structure of DCAT. Profiles aim to increase interoperability within a community of users by introducing constraints, extensions or combinations on the use of more general specifications. If data conforms to the IDN Catalogue Profile, it will also conform to DCAT.</p>
-    <p>Where DCAT is designed for the representation of data catalogues and their content in general, the IDN Catalogue Profile of it aims to cater for the enhanced representation of Indigenous data governance. </p>
+    <p>The IDN Catalogue Profile (IDN CP) is a specialised version - a 'profile' - of the general-purpose W3C Dataset Catalog Vocabulary (<a href="https://www.w3.org/TR/vocab-dcat/">DCAT</a>). DCAT is used to "facilitate interoperability between data catalogs published on the Web". The IDN CP is used to do that but is tuned to best represent information about indigenous people and their data.</p>
+    <p>The IDN CP requires the use of standard metadata fields to describe catalogued data, such as titles, descriptions, licenses and so on, but also descriptions of the following:</p>
+    <ul>
+        <li><strong>attribution</strong>: people and organisations with relations to the data and the roles they play</li>
+        <li><strong>policies</strong>: policies that affect the data and categorisation of them</li>
+    </ul>
+    <p>With <em>attribution</em> and <em>policies</em> details, IDN CP information can be used to assess the indigenous data governance status of indigenous data.</p>
 </template>
 
 <style lang="scss" scoped>
