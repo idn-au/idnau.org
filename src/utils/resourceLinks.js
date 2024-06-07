@@ -69,7 +69,7 @@ export default [
         "sublinks": [
             {
                 "title": "Profile",
-                "url": "https://w3id.org/idn/def/cp/guide"
+                "url": "https://data.idnau.org/pid/cp/guide"
             }
         ],
         "row": "bottom"
@@ -84,7 +84,7 @@ export default [
         "sublinks": [
             {
                 "title": "Tool",
-                "url": "https://idn-au.github.io/idn-metadata-creator/#/"
+                "url": "https://metadata.idnau.org"
             }
         ],
         "row": "bottom"
@@ -129,7 +129,7 @@ export default [
         "sublinks": [
             {
                 "title": "Profile",
-                "url": "https://idn-au.github.io/idn-catalogue-profile/profile.html"
+                "url": "https://data.idnau.org/pid/cp"
             }
         ],
         "row": "bottom"

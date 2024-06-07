@@ -5,7 +5,7 @@ import LinkWrapper from "@/components/LinkWrapper.vue";
 <template>
     <h2 class="resource-title">
         IDN Metadata Profile
-        <small><LinkWrapper class="resource-btn" href="https://w3id.org/idn/def/cp/guide" target="_blank" rel="noopener noreferrer">IDN Guidance page</LinkWrapper></small>
+        <small><LinkWrapper class="resource-btn" href="https://data.idnau.org/pid/cp/guide" target="_blank" rel="noopener noreferrer">IDN Guidance page</LinkWrapper></small>
     </h2>
     <p>In this project the <a href="https://www.w3.org/TR/vocab-dcat-2/" target="_blank" rel="noopener noreferrer">W3C recommended Data Catalog Vocabulary (DCAT) - Version 2</a>, which is a metadata model, has been extended to include the Indigenous Data Characteristics being trialled (see the Metadata Entry Tool).</p>
     <p>These standard characteristics are then used to:</p>
