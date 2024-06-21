@@ -1,6 +1,6 @@
 = https://idnau.org[idnau.org website content]
 
-This repository contains the source code of the https://idn-au.github.io/dev.idnau.org/[dev.idnau.org website]. 
+This repository contains the source code of the https://idnau.org/[idnau.org website]. 
 
 
 == License & Rights
