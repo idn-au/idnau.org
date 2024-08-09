@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Some paper",
+        "url": "https://example.com",
+        "img": "/img/document-placeholder.jpg",
+        "author": "Author 1",
+        "date": "2024-08-06",
+        "description": "Some description...",
+        "type": "literature",
+        "length": "3 pages"
+    },
+    {
+        "title": "Some podcast",
+        "url": "https://example.com",
+        "img": "/img/document-placeholder.jpg",
+        "author": "Author 2",
+        "date": "2024-08-06",
+        "description": "Some description...",
+        "type": "podcast",
+        "length": "4:01"
+    },
+    {
+        "title": "Some youtube video",
+        "url": "https://example.com",
+        "img": "/img/document-placeholder.jpg",
+        "author": "Author 3",
+        "date": "2024-08-06",
+        "description": "Some description...",
+        "type": "video",
+        "length": "12:36"
+    }
+]

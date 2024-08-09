@@ -1,0 +1,15 @@
+version: "3"
+name: idn-website
+services:
+  website:
+    image: ghcr.io/idn-au/idnau:latest
+    restart: always
+    ports:
+        - "3000:3000"
+    networks:
+      - network
+
+networks:
+  network:
+    name: idn_network
+    external: true
