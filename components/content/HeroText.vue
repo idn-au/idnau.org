@@ -31,7 +31,7 @@ const slots = defineSlots();
     align-items: center;
 
     .hero-text {
-        font-size: 1.3rem;
+        font-size: 1.3em;
     }
 
     hr {

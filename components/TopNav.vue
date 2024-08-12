@@ -3,12 +3,13 @@ const route = useRoute();
 </script>
 
 <template>
-    <BNavbar toggleable="lg" v-b-color-mode="'light'" class="bg-light">
+    <BNavbar toggleable="lg" v-b-color-mode="'light'" class="bg-light" sticky="top">
+        <BNavbarToggle target="nav-collapse" />
         <BNavbarBrand to="/">
             <BImg src="/public/img/idn-logo-250.png" alt="IDN logo" :style="{height: '40px'}" />
-            <span>The Indigenous Data Network</span>
+            <span class="nav-title d-none d-sm-inline">The Indigenous Data Network</span>
+            <span class="nav-title d-sm-none">IDN</span>
         </BNavbarBrand>
-        <BNavbarToggle target="nav-collapse" />
         <BCollapse id="nav-collapse" is-nav>
             <BNavbarNav class="ms-auto mb-2 mb-lg-0">
                 <ContentNavigation v-slot="{ navigation }">
@@ -86,6 +87,26 @@ $hoverColor: #efefef;
 }
 
 .navbar {
-    // background-color: #e7e7e7;
+    .navbar-toggler {
+        padding: 4px 6px;
+        border: none;
+    }
+}
+
+.nav-title {
+    margin-left: 6px;
+    // font-size: 0.9em;
+
+    // @media (min-width: 576px) {
+    //     font-size: 0.9em;
+    // }
+
+    // @media (min-width: 768px) {
+    //     font-size: 1em;
+    // }
+
+    // @media (min-width: 992px) {
+    //     font-size: 1em;
+    // }
 }
 </style>

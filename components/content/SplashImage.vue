@@ -7,7 +7,7 @@ const props = defineProps<{
 
 <template>
     <div class="splash-image" :style="{ backgroundImage: `url(${props.src})` }">
-        <div class="splash-overlay">
+        <div class="splash-overlay w-xs-100">
             <div class="splash-text">
                 <slot />
             </div>
@@ -21,7 +21,7 @@ const props = defineProps<{
     background-position: center;
     text-align: center;
     display: flex;
-    padding: 36px;
+    padding: 28px;
     min-height: 400px;
 
     .splash-overlay {
@@ -35,9 +35,25 @@ const props = defineProps<{
         flex-direction: column;
         gap: 8px;
         border-radius: 6px;
-        
-        .splash-text {
 
+        @media (max-width: 575px) { // xs
+            width: 100%;
+        }
+
+        @media (min-width: 768px) { // md
+            width: 80%;
+        }
+        
+        .splash-text :deep(.hero-text) {
+            font-size: 1.3rem;
+            
+            @media (max-width: 575px) { // xs
+                font-size: 1rem;
+            }
+
+            @media (min-width: 767px) { // md
+                font-size: 1.15rem;
+            }
         }
     }
 }
