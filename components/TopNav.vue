@@ -3,7 +3,7 @@ const route = useRoute();
 </script>
 
 <template>
-    <BNavbar toggleable="lg" v-b-color-mode="'light'" class="bg-light" sticky="top">
+    <BNavbar toggleable="lg" v-b-color-mode="'light'" class="bg-light">
         <BNavbarToggle target="nav-collapse" />
         <BNavbarBrand to="/">
             <BImg src="/public/img/idn-logo-250.png" alt="IDN logo" :style="{height: '40px'}" />

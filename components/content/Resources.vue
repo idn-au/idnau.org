@@ -24,24 +24,28 @@ function getTags() {
     <div class="header">
         <BFormInput id="input-1" class="mb-2" v-model="search" type="search" placeholder="Search" size="lg" />
         <div class="tags">
-            <BButton v-for="tag in tags" class="tag" size="sm" pill v-model:pressed="tag.active" variant="outline-primary">{{ tag.label }}</BButton>
-            <BButton class="tag ms-auto" size="sm" pill variant="outline-secondary">Clear</BButton>
+            <div class="tag-list">
+                <BButton v-for="tag in tags" class="tag" size="sm" pill v-model:pressed="tag.active" variant="outline-primary">{{ tag.label }}</BButton>
+            </div>
+            <BButton class="tag align-self-baseline" size="sm" pill variant="outline-secondary">Clear</BButton>
         </div>
     </div>
-    <div class="resources">
+    <Grid cols="1" smCols="2" mdCols="3" lgCols="4">
         <NuxtLink v-for="result in results" :to="result._path">
             <Card class="resource">
                 <template #title>{{ result.title }}</template>
                 {{ result.description }}
             </Card>
         </NuxtLink>
-        <!-- <ContentList path="/resources" v-slot="{ list }">
+    </Grid>
+    <!-- <div class="resources">
+        <ContentList path="/resources" v-slot="{ list }">
             <Card v-for="resource in list" class="resource" :src="resource.thumbnail" @click="handleOpen(resource)">
                 <template #title>{{ resource.title }}</template>
                 {{ resource.description }}
             </Card>
-        </ContentList> -->
-    </div>
+        </ContentList>
+    </div> -->
 </template>
 
 <style lang="scss" scoped>
@@ -50,20 +54,23 @@ function getTags() {
 .tags {
     display: flex;
     flex-direction: row;
-    gap: 6px;
+    gap: 20px;
+    justify-content: space-between;
+
+    .tag-list {
+        display: flex;
+        flex-direction: row;
+        gap: 6px;
+        // overflow-x: auto;
+        flex-wrap: wrap;
+    }
 }
 
-.resources {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+.resource {
+    cursor: pointer;
 
-    .resource {
-        cursor: pointer;
-
-        &:hover {
-            border-color: $primary;
-        }
+    &:hover {
+        border-color: $primary;
     }
 }
 </style>
