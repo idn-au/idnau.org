@@ -3,6 +3,7 @@ name: idn-website
 services:
   website:
     image: ghcr.io/idn-au/idnau:latest
+    pull_policy: always
     restart: always
     ports:
         - "3000:3000"
