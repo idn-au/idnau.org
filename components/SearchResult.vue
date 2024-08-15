@@ -16,9 +16,13 @@ const props = defineProps<SearchResult>();
 
 .search-result {
     color: unset;
+    text-wrap: wrap;
+    padding: 6px;
+    border-radius: 0.25rem;
 
     &:hover {
         color: $link-color;
+        background-color: #f8f9fa;
     }
 
     .title {
@@ -26,7 +30,8 @@ const props = defineProps<SearchResult>();
         font-weight: bold;
     }
     .content {
-
+        font-size: 0.9rem;
+        color: #444444;
     }
 }
 </style>

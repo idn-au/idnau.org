@@ -1,15 +1,18 @@
 <script lang="ts" setup>
+import type { BFormInput } from "bootstrap-vue-next";
+import { faMagnifyingGlass, faTimes } from "@fortawesome/free-solid-svg-icons";
 import type { SearchResult as SearchResultType } from "~/types";
 
 const router = useRouter();
 
 const searchKey = ref("");
-const open = ref(false);
+const modal = ref(false)
+const inputRef = ref<InstanceType<typeof BFormInput> | null>(null);
 
 const { data, status, error, refresh } = await useLazyAsyncData(() => searchContent(searchKey));
 
 const results = computed(() => {
-    return (data.value?.value as SearchResultType[]).slice(0, 5).map(r => {
+    return (data.value?.value as SearchResultType[]).map(r => {
         const { content, ...result } = r;
         r.content = content.length > 100 ? content.slice(0, 100) + "..." : content;
         return r;
@@ -18,37 +21,58 @@ const results = computed(() => {
 
 router.beforeEach(() => {
     searchKey.value = "";
-    open.value = false;
+    modal.value = false;
 });
+
+function handleFocus() {
+    if (inputRef.value) {
+        inputRef.value.focus();
+    }
+}
+
+function handleSearchX() {
+    if (searchKey.value.length > 0) {
+        searchKey.value = "";
+    } else {
+        modal.value = false;
+    }
+}
 </script>
 
 <template>
-    <div class="nav-search">
-        <BPopover v-model="open" manual id="search-popover" teleportTo="body" :teleportDisabled="true" :offset="0" placement="bottom">
-            <template #target>
-                <BFormInput id="search" v-model="searchKey" type="search" @focus="open = true" @blur="open = false" placeholder="Search" @input="refresh" debounce="500" />
+    <BButton @click="modal = !modal" variant="outline-secondary" title="Search">
+        <FontAwesome :icon="faMagnifyingGlass" />
+        <span class="d-none d-lg-inline ms-1">Search</span>
+    </BButton>
+    <BModal v-model="modal" size="lg" hideHeader hideFooter teleportDisabled teleportTo="body" id="search-modal" @shown="handleFocus">
+        <BInputGroup>
+            <template #prepend>
+                <BInputGroupText><FontAwesome :icon="faMagnifyingGlass" /></BInputGroupText>
             </template>
-            <div v-if="searchKey.length > 0" class="results">
+            <BFormInput type="search" id="search" placeholder="Search" v-model="searchKey" @input="refresh" debounce="200" ref="inputRef" />
+            <template #append>
+                <BButton variant="outline-secondary" :title="searchKey.length > 0 ? 'Clear' : 'Close'" @click="handleSearchX"><FontAwesome :icon="faTimes" /></BButton>
+            </template>
+        </BInputGroup>
+        <template v-if="searchKey.length > 0">
+            <hr/>
+            <div class="results">
                 <div v-if="error">Error: {{ error.message }}</div>
                 <div v-else-if="data && data.value?.length === 0">No results</div>
                 <template v-else-if="data && data.value?.length > 0">
-                    <SearchResult v-for="result in results" v-bind="result" @click="open = false" />
+                    <SearchResult v-for="result in results" v-bind="result" />
                 </template>
             </div>
-        </BPopover>
-    </div>
+        </template>
+    </BModal>
 </template>
 
 <style lang="scss" scoped>
-.nav-search {
-    :deep(.popover-arrow) {
-        display: none;
-    }
-
-    .results {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
+.results {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow-y: auto;
+    height: 80dvh;
 }
 </style>

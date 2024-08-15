@@ -10,6 +10,9 @@ const route = useRoute();
             <span class="nav-title d-none d-sm-inline">The Indigenous Data Network</span>
             <span class="nav-title d-sm-none">IDN</span>
         </BNavbarBrand>
+        <span class="d-lg-none">
+            <NavSearch />
+        </span>
         <BCollapse id="nav-collapse" is-nav>
             <BNavbarNav class="ms-auto mb-2 mb-lg-0">
                 <ContentNavigation v-slot="{ navigation }">
@@ -43,7 +46,9 @@ const route = useRoute();
                     </template>
                 </ContentNavigation>
             </BNavbarNav>
-            <NavSearch />
+            <span class="d-none d-lg-inline">
+                <NavSearch />
+            </span>
         </BCollapse>
     </BNavbar>
 </template>
