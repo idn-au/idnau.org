@@ -133,5 +133,20 @@ export default [
             }
         ],
         "row": "bottom"
+    },
+    {
+        "title": "IDN Agents Database",
+        "shortTitle": "IDN Agents DB",
+        "description": "",
+        "url": "/resources/agentsdb",
+        "icon": "",
+        "iconAlt": "",
+        "sublinks": [
+            {
+                "title": "Database",
+                "url": "https://agentsdb.idnau.org"
+            }
+        ],
+        "row": "bottom"
     }
 ];

@@ -78,6 +78,11 @@ const router = createRouter({
                     name: "catalog profile",
                     component: () => import("@/views/resources/CatalogProfileView.vue")
                 },
+                {
+                    path: "agentsdb",
+                    name: "agentsdb",
+                    component: () => import("@/views/resources/AgentsDBView.vue")
+                },
             ]
         },
         {
