@@ -5,7 +5,7 @@ export default defineNuxtConfig({
     // typescript: {
     //     typeCheck: true
     // },
-    modules: ["@nuxt/content", "@bootstrap-vue-next/nuxt", "@vesp/nuxt-fontawesome", "nuxt-time"],
+    modules: ["@nuxt/content", "@bootstrap-vue-next/nuxt", "@vesp/nuxt-fontawesome", "nuxt-time", "@nuxt/image"],
     content: {
         documentDriven: true,
         experimental: {
