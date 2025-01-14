@@ -1,4 +1,0 @@
-<template>
-    <ArdcNav />
-    <slot />
-</template>
