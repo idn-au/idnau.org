@@ -1,15 +1,54 @@
 <script lang="ts" setup>
-const props = defineProps<{
-    src?: string;
-    alt?: string;
-}>();
+import type { HTMLAttributes } from "vue";
+import { cn } from "@/lib/utils";
+
+const props = withDefaults(defineProps<{
+    class?: HTMLAttributes["class"];
+    imgPosition?: "top" | "right" | "bottom" | "left";
+    imgHalf?: boolean;
+}>(), {
+    imgPosition: "right",
+    imgHalf: false,
+});
 </script>
 
 <template>
-    <BCard :img-src="props.src" :img-alt="props.alt" :img-top="props.src ? true : undefined">
-        <BCardTitle><slot name="title"></slot></BCardTitle>
-        <slot />
-    </BCard>
+    <ShadCard :class="cn(`${$slots.img ? `flex ${props.imgPosition === 'bottom' ? 'flex-col' : 'flex-col-reverse'} ${props.imgPosition === 'top' ? 'sm:flex-col-reverse' : (props.imgPosition === 'bottom' ? 'sm:flex-col' : (props.imgPosition === 'left' ? 'sm:flex-row-reverse' : 'sm:flex-row'))}` : ''}`, props.class)">
+        <div :class="props.imgHalf ? 'flex-1' : 'grow'">
+            <ShadCardHeader v-if="$slots.title || $slots.header" class="card-header">
+                <slot name="header">
+                    <ShadCardTitle class="font-normal text-xl"><ContentSlot :use="$slots.title" unwrap="p" /></ShadCardTitle>
+                    <ShadCardDescription><ContentSlot :use="$slots.description" unwrap="p" /></ShadCardDescription>
+                </slot>
+            </ShadCardHeader>
+            <ShadCardContent :class="`card-body ${$slots.title || $slots.header ? '' : 'pt-6'}`">
+                <slot />
+            </ShadCardContent>
+            <ShadCardFooter v-if="$slots.footer">
+                <ContentSlot :use="$slots.footer" unwrap="p" />
+            </ShadCardFooter>
+        </div>
+        <div v-if="$slots.img" :class="`flex shrink-0 justify-center items-center p-3 img ${props.imgHalf ? 'flex-1' : ''}`">
+            <ContentSlot :use="$slots.img" unwrap="p" />
+        </div>
+    </ShadCard>
 </template>
 
-<style lang="scss" scoped></style>
+<style scoped>
+h3, :deep(h3) {
+    margin: 0;
+}
+
+.card-header :deep(p) {
+    margin: 0;
+}
+.card-body > :deep(p:first-child) {
+    margin-top: 0;
+}
+.card-body > :deep(p:last-child) {
+    margin-bottom: 0;
+}
+.img :deep(img) {
+    margin: 0;
+}
+</style>

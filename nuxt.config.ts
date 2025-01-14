@@ -1,21 +1,32 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    css: ["~/assets/sass/main.scss"],
-    // devtools: { enabled: true },
-    // typescript: {
-    //     typeCheck: true
-    // },
-    modules: ["@nuxt/content", "@bootstrap-vue-next/nuxt", "@vesp/nuxt-fontawesome", "nuxt-time", "@nuxt/image"],
+    compatibilityDate: "2024-11-01",
+    devtools: { enabled: true },
+    modules: [
+        "@nuxt/content",
+        "@nuxtjs/tailwindcss",
+        "shadcn-nuxt",
+        "@nuxtjs/color-mode",
+        "@nuxt/image"
+    ],
     content: {
-        documentDriven: true,
         experimental: {
-            search: {
-                indexed: true
-            }
+            search: true
         },
-        markdown: {
-            anchorLinks: false
-        }
     },
-    compatibilityDate: "2024-07-26",
+    shadcn: {
+        prefix: "shad"
+    },
+    colorMode: {
+        classPrefix: "",
+        classSuffix: "",
+    },
+    css: ["./assets/css/style.css"],
+    app: {
+        head: {
+            link: [
+                { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap", type: "text/css" }
+            ]
+        }
+    }
 });
