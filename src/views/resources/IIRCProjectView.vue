@@ -1,102 +1,104 @@
 <script setup>
-import streamsDrawing from "@/assets/images/iirc-streams-drawing3-final.svg";
+// import streamsDrawing from "@/assets/images/iirc-streams-drawing3-final.svg";
 </script>
 
 <template>
-    <h2>Improving Indigenous Research Capabilities (IIRC) Project Plan</h2>
-    <div class="centre-card">
-        <p>The IIRC project<a href="https://mspgh.unimelb.edu.au/centres-institutes/centre-for-health-equity/research-group/indigenous-data-network/projects/improving-indigenous-research-capabilities-project" target="_blank" rel="noopener noreferrer"></a> (<a href="https://doi.org/10.5281/zenodo.6552024" target="_blank" rel="noopener noreferrer">PDF</a>) is one of four activity streams of the ARDC's HASS Research Data Commons program. The following video was created during the initial planning of the project and explains the outcomes under consideration:</p>
-        <div class="centre-item">
-            <iframe src="https://www.youtube.com/embed/6mqOOJ65XMw" frameborder="0" width="560" height="315"></iframe>
-        </div>
-    </div>
-    <div class="section-split">
-        <div class="subsection">
-            <object width="100%" :data="streamsDrawing" type="image/svg+xml"></object>
-        </div>
-        <div class="subsection fill">
-            <p>The left picture represents the project as a series of rivers flowing into a lake. Hover over the text to see a summary, and click the circles or text to open the relevant section of the project plan in a new tab.</p>
-    
-            <p>Alternatively, you can jump into these particular parts of the full IIRC project plan by clicking the links below (opens in a new tab/window).</p>
-            <ul>
-                <li><a href="https://test.idnau.org/reports/ardc/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=3" target="_blank">Objectives</a></li>
-                <li><a href="https://test.idnau.org/reports/ardc/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=3" target="_blank">Governance</a></li>
-                <li><a href="https://test.idnau.org/reports/ardc/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=4" target="_blank">Outcome and Impact</a></li>
-                <li><a href="https://test.idnau.org/reports/ardc/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=5" target="_blank">Project Partners</a></li>
-                <li><a href="https://test.idnau.org/reports/ardc/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=8" target="_blank">Team Roles and Responsibilities</a></li>
+    <h2 class="iirc-title">
+        Improving Indigenous Research Capabilities
+        <small>Building an Aboriginal and Torres Strait Islander Research Data Commons</small>
+    </h2>
+    <p>
+        This project will strengthen the foundations of Aboriginal and Torres Strait Islander data governance, use, accessibility and management principles.
+    </p>
+    <p>
+        The project represents Aboriginal and Torres Strait Islander researchers, organisations and communities across Australia, and facilitates collaboration with government agencies and other stakeholders.
+    </p>
+    <p>
+        <a href="https://ardc.edu.au/project/improving-indigenous-research-capabilities/" target="_blank" rel="noopener noreferrer">Phase 1</a> of the project was undertaken from 2022-2024. Key outcomes included: 
+    </p>
+    <ul style="margin-top: 0;">
+        <li>Reviewing existing national and international Indigenous data governance frameworks.</li>
+        <li>Establishing novel data governance frameworks that are aligned with community needs, including the <a href="https://www.niaa.gov.au/resource-centre/framework-governance-indigenous-data" target="_blank" rel="noopener noreferrer">Framework for Governance of Indigenous Data</a>.</li>
+        <li>Developing the <a href="https://idnau.org/resources/catalog" target="_blank" rel="noopener noreferrer">Indigenous Data Network Catalogue</a>, including a culturally appropriate spatio-temporal framework and vocabularies.</li>
+        <li>Digitising initial legacy data assets.</li>
+        <li>Translating interoperability between data infrastructures and platforms.</li>
+        <li>Delivering training programs and workshops that significantly enhanced the capabilities of Indigenous data technicians and researchers.</li>
+    </ul>
+    <p>
+        <a href="https://ardc.edu.au/project/improving-indigenous-research-capabilities/" target="_blank" rel="noopener noreferrer">Phase 2</a> of the project will be undertaken from 2024-2028. It will extend the foundations developed in Phase 1 through several activity streams:
+    </p>
+    <ul style="margin-top: 0;">
+        <li>
+            Foundation Stream: Aboriginal and Torres Strait Islander data governance and sovereignty
+            <ul class="blocklist">
                 <li>
-                    Activities
-                    <ul>
-                        <li><a href="https://test.idnau.org/reports/ardc/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=21" target="_blank">Stream 1</a></li>
-                        <li><a href="https://test.idnau.org/reports/ardc/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=24" target="_blank">Stream 2</a></li>
-                        <li><a href="https://test.idnau.org/reports/ardc/2021/11/Indigenous-Research-Capability-Revised-project-plan-Oct-2021.pdf#page=28" target="_blank">Stream 3</a></li>
-                    </ul>
+                    The Foundation Stream will facilitate collaboration among Indigenous data governance leaders and stakeholders from Aboriginal and Torres Strait Islander communities and data custodians. This stream aims to develop Indigenous data governance principles and frameworks, such as the <a href="https://www.niaa.gov.au/resource-centre/framework-governance-indigenous-data" target="_blank" rel="noopener noreferrer">Framework for Governance of Indigenous Data</a>, which was co-designed with Australian Public Service Agencies.
                 </li>
             </ul>
-        </div>
-    </div>
-    
-    <h3>About the Improving Indigenous Research Capabilities Project</h3>
-    <p>Representing Aboriginal and Torres Strait Islander researchers, organisations and communities across Australia, this project will apply national and international frameworks of Indigenous Data Governance (IDG) and Indigenous Data Sovereignty (IDS) to collectively strengthen the foundations of Aboriginal and Torres Strait Islander data governance principles, which will be translated and applied to Indigenous research data tools and infrastructure.</p>
-    <p>The program will achieve this by working with Aboriginal and Torres Strait Islander communities to determine their engagement with, and aspirations for, their data. The program will be delivered by the development of three parallel streams of activities:</p>
-    <ol>
-        <li>Development of social architecture: Indigenous data governance and sovereignty</li>
-        <li>Development of technical architecture: Building the foundations for an Aboriginal and Torres Strait Islander Research Data Commons</li>
-        <li>Core National Indigenous Data Assets: Building an Aboriginal and Torres Strait Islander Spatio-temporal Framework.</li>
-    </ol>
-    <p>Collectively, the three activity streams will lay the foundation to build national Indigenous research capabilities, framed by a set of agreed Indigenous Data Governance principles that can leverage existing data assets, linking them with new and existing Aboriginal and Torres Strait Islander data assets. This project will generate a detailed account of research data ecosystems, including how research data is distributed and used for the benefit of Aboriginal and Torres Strait Islander people. The IIRC project is one of four activity streams of the ARDC's HASS Research Data Commons program.</p>
-    <p>The core objectives of the Indigenous Research Capability program are to:</p>
-    <ol>
-        <li>collectively agree on, and apply, a set of uniquely Australian, Aboriginal and Torres Strait Islander Data Governance Principles;</li>
-        <li>enable Aboriginal and Torres Strait Islander organisations and researchers to manage their data sustainably;</li>
-        <li>establish the breadth and depth of Aboriginal and Torres Strait Islander research data available across Australia that are relevant to the needs of Aboriginal and Torres Strait Islander peoples;</li>
-        <li>develop the foundations of an Aboriginal and Torres Strait Islander Data Commons; and</li>
-        <li>value adding through access to appropriate aggregation and analysis tools.</li>
-    </ol>
-    <p><em>The project framework embeds Indigenous Data Governance and Sovereignty across all streams of activities.</em></p>
+        </li>
+        <li>
+            Sub-Stream 1: Indigenous research data catalogue resources and extensions.
+            <ul class="blocklist">
+                <li>
+                    Sub-Stream 1 will work with multiple Indigenous data custodians to review, refine and extend the Indigenous Data Network Catalogue model. This will include the digitisation and cataloguing of Indigenous data held by several Australian universities and contextual application of the Indigenous Data Catalogue model and tooling at the Yirrkala School Language Production Centre.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Sub-Stream 2: Indigenous spatio-temporal frameworks and infrastructure.
+            <ul class="blocklist">
+                <li>
+                    Sub-Stream 2 will broaden the application of the Indigenous spatio-temporal framework, developing more sophisticated and accessible geospatial research tools. This will enhance the mapping of Indigenous data and multi-language representations of place names, and refine an interface that includes socioeconomic, education, cultural and social indicators.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Sub-Stream 3: Data capability building for Indigenous digital futures in Indigenous Australia.
+            <ul class="blocklist">
+                <li>
+                    Sub-Stream 3 will strengthen the capacity of Indigenous communities and organisations to collect, manage, analyse and utilise data that is relevant to their needs and priorities. This will be achieved by developing and delivering formal training at the University of Melbourne, an internship program, and both researcher and community training modules.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Sub-Stream 4: Indigenous data repositories and data rematriation.
+            <ul class="blocklist" style="margin-bottom: 0;">
+                <li>
+                    Sub-Stream 4 will investigate culturally appropriate and sustainable data repositories required for a wide range of Indigenous data custodians. It will prioritise refining, developing and leveraging data repository services to support critical and at-risk Indigenous data holdings. Rematriation and rehousing will be undertaken across several case studies, including <a href="https://yirrkala.com/" target="_blank" rel="noopener noreferrer">Buku-Larrnggay Mulka Centre</a>, working through community-led governance structures to protect sensitive information and foster collaboration between Indigenous communities and researchers.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+        The Improving Indigenous Research Capabilities project received investment (<a href="doi.org/10.3565/pr3g-s109" target="_blank" rel="noopener noreferrer">doi.org/10.3565/pr3g-s109</a> & <a href="doi.org/10.47486/HIR003" target="_blank" rel="noopener noreferrer">doi.org/10.47486/HIR003</a>) from the Australian Research Data Commons (ARDC) through the HASS and Indigenous Research Data Commons. The ARDC is enabled by the Australian Government's National Collaborative Research Infrastructure Strategy (NCRIS).
+    </p>
 </template>
 
 <style lang="scss" scoped>
-.centre-card {
+$muted: #555555;
+
+.iirc-title {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    align-items: center;
-    // background-color: #d9d9d9;
-    // padding: 12px;
-    margin-bottom: 12px;
 
-    p {
-        margin-top: 0;
-    }
-
-    .centre-item {
-        width: 100%;
-        max-width: 66%;
-
-        iframe {
-            aspect-ratio: 16 / 9;
-            height: 100%;
-            width: 100%;
-        }
+    small {
+        font-size: 0.6em;
+        color: $muted;
     }
 }
 
-.section-split {
-    display: flex;
-    flex-direction: row;
+ul.blocklist {
+    padding-left: 12px;
+    margin-bottom: 20px;
 
-    .subsection {
-        width: 50%;
-        padding: 12px;
-
-        p {
-            margin-top: 0;
-        }
-
-        &.fill {
-            background-color: #f7f7f7;
-        }
+    & > li {
+        list-style: none;
+        padding: 6px 12px;
+        margin-top: 12px;
+        // font-style: italic;
+        color: $muted;
+        border-left: 2px solid grey;
     }
 }
 </style>

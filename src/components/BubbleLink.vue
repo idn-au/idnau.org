@@ -1,81 +1,53 @@
-<script setup>
-import idnLogo from "@/assets/images/idn-logo-250.png";
-
-const props = defineProps({
-    shortTitle: String,
-    url: String,
-    icon: String,
-    iconAlt: String,
-    small: {
-        type: Boolean,
-        default: false
-    }
+<script lang="ts" setup>
+const props = withDefaults(defineProps<{
+    shortTitle: string;
+    url: string;
+    small?: boolean;
+    color: string;
+}>(), {
+    small: false,
 });
 </script>
 
 <template>
     <div :class="`bubble-wrapper ${props.small ? 'sm' : ''}`">
-        <RouterLink :to="props.url" :class="`bubble ${props.small ? 'sm' : ''}`">
-            <div class="icon-wrapper">
-                <img class="icon" :src="props.icon || idnLogo" :alt="iconAlt" />
-            </div>
+        <RouterLink :to="props.url" :class="`bubble ${props.small ? 'sm' : ''}`" :style="`border-color: ${props.color};`">
             <div class="title">{{ props.shortTitle }}</div>
         </RouterLink>
     </div>
-    
 </template>
 
 <style lang="scss" scoped>
 @import "@/assets/sass/_variables.scss";
 @import "@/assets/sass/_mixins.scss";
 
-$minHeight: 160px;
-$maxHeight: 280px;
+$height: 240px;
 $margin: 20px;
 $padding: 20px;
-$iconWidth: 75%;
-$iconMarginTop: 0%;
-$titleSize: 1em;
-$titleMarginBottom: 5%;
+$titleSize: 1.2em;
+$hoverTitleSize: 1.4em;
+
 $titleWidth: 80%;
 
-$hoverPadding: 20px;
-$hoverIconWidth: 55%;
-$hoverIconMarginTop: 0%;
-$hoverTitleSize: 1.2em;
-$hoverTitleMarginBottom: 18%;
-$hoverTitleWidth: 100%;
-
-$smMinHeight: 120px;
-$smMaxHeight: 220px;
+$smHeight: 180px;
 $smMargin: 16px;
 $smPadding: 16px;
-$smIconWidth: 70%;
-$smIconMarginTop: 0%;
-$smTitleSize: 0.85em;
-$smTitleMarginBottom: 5%;
-$smTitleWidth: 80%;
-
-$smHoverPadding: 20px;
-$smHoverIconWidth: 55%;
-$smHoverIconMarginTop: 0%;
+$smTitleSize: 0.9em;
 $smHoverTitleSize: 1.1em;
-$smHoverTitleMarginBottom: 18%;
-$smHoverTitleWidth: 100%;
 
 .bubble-wrapper {
     flex: 1;
     display: flex;
-    min-height: $minHeight;
-    max-height: $maxHeight;
-    min-width: $minHeight;
-    max-width: $maxHeight;
+    min-height: $height;
+    max-height: $height;
+    min-width: $height;
+    max-width: $height;
 
     &.sm {
-        min-height: $smMinHeight;
-        max-height: $smMaxHeight;
-        min-width: $smMinHeight;
-        max-width: $smMaxHeight;
+        min-height: $smHeight;
+        max-height: $smHeight;
+        min-width: $smHeight;
+        max-width: $smHeight;
     }
 
     a.bubble {
@@ -84,31 +56,22 @@ $smHoverTitleWidth: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        border: 2px solid $primary;
+        border-width: 4px;
+        border-style: solid;
         border-radius: 50%;
         overflow: hidden;
         margin: $margin;
         padding: $padding;
-        justify-content: space-between;
+        justify-content: center;
         text-decoration: none;
         @include transition(margin, box-shadow);
-
-        .icon-wrapper {
-            width: $iconWidth;
-            margin-top: $iconMarginTop;
-            @include transition(width, margin-top);
-
-            img.icon {
-                height: auto;
-                max-width: 100%;
-            }
-        }
 
         .title {
             font-size: $titleSize;
             text-align: center;
-            margin-bottom: $titleMarginBottom;
             width: $titleWidth;
+            color: black;
+            font-weight: bold;
             @include transition(margin-bottom, font-size, width);
         }
 
@@ -116,44 +79,26 @@ $smHoverTitleWidth: 100%;
             margin: $smMargin;
             padding: $smPadding;
 
-            .icon-wrapper {
-                width: $smIconWidth;
-                margin-top: $smIconMarginTop;
-            }
 
             .title {
                 font-size: $smTitleSize;
-                margin-bottom: $smTitleMarginBottom;
-                width: $smTitleWidth;
+                width: $titleWidth;
             }
         }
 
         &:hover {
-            // box-shadow: 0px 0px 5px 4px rgba($color: $primary, $alpha: 0.4);
             box-shadow: 0px 4px 14px 8px rgba(0, 0, 0, 0.15);
             margin: 0;
 
-            .icon-wrapper {
-                width: $hoverIconWidth;
-                margin-top: $hoverIconMarginTop;
-            }
 
             .title {
-                margin-bottom: $hoverTitleMarginBottom;
                 font-size: $hoverTitleSize;
-                width: $hoverTitleWidth;
             }
 
             &.sm {
-                .icon-wrapper {
-                    width: $smHoverIconWidth;
-                    margin-top: $smHoverIconMarginTop
-                }
 
                 .title {
-                    margin-bottom: $smHoverTitleMarginBottom;
                     font-size: $smHoverTitleSize;
-                    width: $smHoverTitleWidth;
                 }
             }
         }

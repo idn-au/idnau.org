@@ -1,31 +1,25 @@
 <script setup>
-import { computed } from "vue";
-import BubbleLink from "@/components/BubbleLink.vue";
-import links from "@/utils/resourceLinks";
-
-const topLinks = computed(() => links.filter(link => link.row === "top"));
-const bottomLinks = computed(() => links.filter(link => link.row === "bottom"));
+import BubbleList from "@/components/BubbleList.vue";
 </script>
 
 <template>
     <div class="jumbo">
         <div class="jumbo-box">
-            <p class="jumbo-text">Welcome to the Indigenous Data Network (IDN) supporting work being trialled within the
-                Australian Research Data Commons (ARDC) HASS Research Data Commons and Indigenous Research Capability
-                Program projects, specifically the Improving Indigenous Research Capabilities (IIRC) Project.</p>
-                <hr/>
-                <p class="jumbo-text small">The Indigenous Data Network acknowledges the Aboriginal and Torres Strait Islander
-                Traditional Custodians of the lands on which we work and live.
-                We pay respect to their Elders, past and present, and the place of Indigenous Knowledge in the academy and
-                beyond. We acknowledge and respect that Aboriginal and Torres Strait Islander people have always used
-                resources from the land and waters for nourishment, medicine and healing.</p>
+            <p class="jumbo-text">
+                Welcome to the Indigenous Data Network (IDN) portal. This portal communicates the technical outcomes towards a research infrastructure. 
+            </p>
         </div>
     </div>
-    <div class="bubbles">
-        <BubbleLink v-for="link in topLinks" v-bind="link"/>
-    </div>
-    <div class="bubbles">
-        <BubbleLink v-for="link in bottomLinks" v-bind="link" :small="true" />
+    <BubbleList />
+    <BubbleList small />
+    <div class="acknowledgement">
+        <p>
+            The Indigenous Data Network acknowledges the Aboriginal and Torres Strait Islander
+            Traditional Custodians of the lands on which we work and live.
+            We pay respect to their Elders, past and present, and the place of Indigenous Knowledge in the academy and
+            beyond. We acknowledge and respect that Aboriginal and Torres Strait Islander people have always used
+            resources from the land and waters for nourishment, medicine and healing.
+        </p>
     </div>
 </template>
 
@@ -40,7 +34,7 @@ const bottomLinks = computed(() => links.filter(link => link.row === "bottom"));
     display: flex;
     // flex-direction: column;
     // gap: 26px;
-    padding: 36px;
+    padding: 48px 36px;
     margin-top: -20px;
 
     .jumbo-box {
@@ -75,12 +69,11 @@ const bottomLinks = computed(() => links.filter(link => link.row === "bottom"));
     }
 }
 
-.bubbles {
+.acknowledgement {
+    // background-color: #eeeeee;
+    font-style: italic;
+    font-size: 0.9em;
     padding: 12px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    gap: 12px;
+    margin-top: 12px;
 }
 </style>
