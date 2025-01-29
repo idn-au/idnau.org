@@ -70,7 +70,7 @@
         </li>
     </ul>
     <p>
-        The Improving Indigenous Research Capabilities project received investment (<a href="doi.org/10.3565/pr3g-s109" target="_blank" rel="noopener noreferrer">doi.org/10.3565/pr3g-s109</a> & <a href="doi.org/10.47486/HIR003" target="_blank" rel="noopener noreferrer">doi.org/10.47486/HIR003</a>) from the Australian Research Data Commons (ARDC) through the HASS and Indigenous Research Data Commons. The ARDC is enabled by the Australian Government's National Collaborative Research Infrastructure Strategy (NCRIS).
+        The Improving Indigenous Research Capabilities project received co-investment (<a href="doi.org/10.3565/pr3g-s109" target="_blank" rel="noopener noreferrer">doi.org/10.3565/pr3g-s109</a> & <a href="doi.org/10.47486/HIR003" target="_blank" rel="noopener noreferrer">doi.org/10.47486/HIR003</a>) from the Australian Research Data Commons (ARDC) through the HASS and Indigenous Research Data Commons. The ARDC is enabled by the Australian Government's National Collaborative Research Infrastructure Strategy (NCRIS).
     </p>
 </template>
 
