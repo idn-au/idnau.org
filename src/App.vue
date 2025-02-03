@@ -6,7 +6,7 @@ import { HeaderComponent, MainComponent, FooterComponent } from "@idn-au/idn-lib
 const banners = [
     {
         "type": "dev",
-        "message": "To date, this website has facilitated technical outcomes towards the development of a research infrastructure."
+        "message": "To date, this website has facilitated technical outcomes towards the development of a research infrastructure for Indigenous Data Governance and Sovereignty"
     }
 ];
 </script>
