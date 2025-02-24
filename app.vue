@@ -5,7 +5,7 @@ import { faFacebookF, faLinkedinIn, faYoutube, faXTwitter } from "@fortawesome/f
 
 useHead({
     titleTemplate: (titleChunk) => {
-        return titleChunk && titleChunk !== 'The Indigenous Data Network' ? `${titleChunk} | IDN` : 'The Indigenous Data Network';
+        return titleChunk && titleChunk !== "The Indigenous Data Network" ? `${titleChunk} | IDN` : "The Indigenous Data Network";
     }
 });
 
