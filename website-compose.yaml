@@ -2,15 +2,16 @@ version: "3"
 name: idn-website
 services:
   website:
-    image: ghcr.io/idn-au/idnau:latest
-    pull_policy: always
-    restart: always
+    # image: ghcr.io/idn-au/idnau:latest
+    # pull_policy: always
+    # restart: always
+    build: .
     ports:
         - "3000:3000"
-    networks:
-      - network
+#     networks:
+#       - network
 
-networks:
-  network:
-    name: idn_network
-    external: true
+# networks:
+#   network:
+#     name: idn_network
+#     external: true

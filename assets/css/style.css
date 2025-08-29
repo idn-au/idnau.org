@@ -11,11 +11,11 @@ body {
 }
 
 .prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)):not(h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a):not(.btn):not(nav a) {
-    color: hsl(var(--link));
+    color: var(--color-link);
 }
 
-main a, footer a {
-    color: hsl(var(--link));
+main a:not(.btn), footer a:not(.btn) {
+    color: var(--color-link);
 }
 
 a.btn:hover {
@@ -27,7 +27,7 @@ main a:not(nav a):hover, footer a:hover {
 }
 
 h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {
-    color: hsl(var(--foreground));
+    color: var(--color-foreground);
     position: relative;
 }
 
@@ -37,7 +37,7 @@ h1 > a:hover, h2 > a:hover, h3 > a:hover, h4 > a:hover, h5 > a:hover, h6 > a:hov
 
 h1 > a:hover::before, h2 > a:hover::before, h3 > a:hover::before, h4 > a:hover::before, h5 > a:hover::before, h6 > a:hover::before {
     content: "#";
-    color: hsl(var(--link));
+    color: var(--color-link);
     left: -0.75em;
     position: absolute;
     line-height: 1.25em;

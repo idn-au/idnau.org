@@ -15,21 +15,21 @@ const props = withDefaults(defineProps<{
 <template>
     <ShadCard :class="cn(`${$slots.img ? `flex ${props.imgPosition === 'bottom' ? 'flex-col' : 'flex-col-reverse'} ${props.imgPosition === 'top' ? 'sm:flex-col-reverse' : (props.imgPosition === 'bottom' ? 'sm:flex-col' : (props.imgPosition === 'left' ? 'sm:flex-row-reverse' : 'sm:flex-row'))}` : ''}`, props.class)">
         <div :class="props.imgHalf ? 'flex-1' : 'grow'">
-            <ShadCardHeader v-if="$slots.title || $slots.header" class="card-header">
+            <CardHeader v-if="$slots.title || $slots.header" class="card-header">
                 <slot name="header">
-                    <ShadCardTitle class="font-normal text-xl"><ContentSlot :use="$slots.title" unwrap="p" /></ShadCardTitle>
-                    <ShadCardDescription><ContentSlot :use="$slots.description" unwrap="p" /></ShadCardDescription>
+                    <CardTitle class="font-normal text-xl"><slot name="title" mdc-unwrap="p" /></CardTitle>
+                    <CardDescription><slot name="description" mdc-unwrap="p" /></CardDescription>
                 </slot>
-            </ShadCardHeader>
-            <ShadCardContent :class="`card-body ${$slots.title || $slots.header ? '' : 'pt-6'}`">
+            </CardHeader>
+            <CardContent :class="`card-body ${$slots.title || $slots.header ? '' : 'pt-6'}`">
                 <slot />
-            </ShadCardContent>
-            <ShadCardFooter v-if="$slots.footer">
-                <ContentSlot :use="$slots.footer" unwrap="p" />
-            </ShadCardFooter>
+            </CardContent>
+            <CardFooter v-if="$slots.footer">
+                <slot name="footer" mdc-unwrap="p" />
+            </CardFooter>
         </div>
         <div v-if="$slots.img" :class="`flex shrink-0 justify-center items-center p-3 img ${props.imgHalf ? 'flex-1' : ''}`">
-            <ContentSlot :use="$slots.img" unwrap="p" />
+            <slot name="img" mdc-unwrap="p" />
         </div>
     </ShadCard>
 </template>

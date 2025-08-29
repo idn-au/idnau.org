@@ -1,12 +1,12 @@
 <template>
     <Card imgPosition="right" class="mb-6">
         <template #header>
-            <ContentSlot :use="$slots.name" unwrap="p" />
-            <ShadCardDescription><ContentSlot :use="$slots.position" unwrap="p" /></ShadCardDescription>
+            <slot name="name" mdc-unwrap="p" />
+            <CardDescription><slot name="position" mdc-unwrap="p" /></CardDescription>
         </template>
         <slot />
         <template #img>
-            <ContentSlot :use="$slots.img" unwrap="p" />
+            <slot name="img" mdc-unwrap="p" />
         </template>
     </Card>
 </template>

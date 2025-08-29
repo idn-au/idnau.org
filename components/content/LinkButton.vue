@@ -15,15 +15,15 @@ const props = withDefaults(defineProps<{
 </script>
 
 <template>
-    <ShadButton :variant="props.variant" :size="props.size" :class="cn('btn', props.class)" :as-child="!!props.to">
+    <Button :variant="props.variant" :size="props.size" :class="cn('btn', props.class)" :as-child="!!props.to">
         <template v-if="props.to">
             <NuxtLink v-if="props.to.startsWith('/')" :to="props.to">
-                <ContentSlot :use="$slots.default" unwrap="p" />
+                <slot mdc-unwrap="p" />
             </NuxtLink>
             <a v-else :href="props.to" target="_blank" rel="noopener noreferrer">
-                <ContentSlot :use="$slots.default" unwrap="p" />
+                <slot mdc-unwrap="p" />
             </a>
         </template>
-        <ContentSlot v-else :use="$slots.default" unwrap="p" />
-    </ShadButton>
+        <slot v-else mdc-unwrap="p" />
+    </Button>
 </template>
