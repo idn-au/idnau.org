@@ -1,5 +1,5 @@
 # New IDN Website
-The in-progress website for the Indigenous Data Network as a whole. Will be available at [dev.idnau.org](https://dev.idnau.org).
+The website for the Indigenous Data Network as a whole. Available at [idnau.org](https://idnau.org).
 
 Written in [Nuxt](https://nuxt.com/), [Nuxt Content](https://content.nuxt.com/), [Shadcn-vue](https://www.shadcn-vue.com/) and [Tailwind](https://tailwindcss.com/).
 
