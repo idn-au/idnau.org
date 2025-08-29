@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faFacebookF, faLinkedinIn, faYoutube, faXTwitter } from "@fortawesome/free-brands-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+// import { faFacebookF, faLinkedinIn, faYoutube, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 
 useHead({
     titleTemplate: (titleChunk) => {
@@ -22,6 +22,10 @@ const { data: page } = await useAsyncData(route.path, () => {
             <div class="mx-auto max-w-[1200px] px-5 prose dark:prose-invert">
                 <ArdcNav v-if="route.path.startsWith('/research/ardc')" />
                 <ContentRenderer v-if="page" :value="page" />
+                <div v-else>
+                    <h1>Page not found</h1>
+                    <p>Sorry, this page does not exist. <NuxtLink to="/">Go home</NuxtLink>.</p>
+                </div>
             </div>
         </main>
         <footer class="bg-secondary">

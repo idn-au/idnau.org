@@ -1,9 +1,8 @@
 ---
-title: About ARDC Project 
-description: description
-navigation:
-    title: About
+title: Blog 
+# description: description
 ---
 
-# About ARDC Research Project
+# Blog
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus fugiat eum, eligendi excepturi sapiente iusto rerum cupiditate odit incidunt quo neque non odio quas nam quibusdam quis dolorum quia numquam.
+
