@@ -4,13 +4,16 @@ import { ChevronDown, ChevronUp } from "lucide-vue-next";
 
 const route = useRoute();
 
-const { data } = await useAsyncData("navigation-ardc", () => queryCollectionNavigation("content"));
+const { data } = await useAsyncData("navigation-iirc", () => queryCollectionNavigation("content"));
 
-const children = findPageChildren(data.value, "/research/ardc");
+const children = findPageChildren(data.value, "/research/iirc");
 </script>
 
 <template>
     <nav class="flex flex-row flex-wrap gap-2">
+        <Button variant="ghost" :class="`rounded-none p-2 border-b-2 border-b-transparent ${route.path === '/research/iirc' ? 'border-b-isu-red' : ''}`" as-child>
+            <NuxtLink to="/research/iirc">IIRC Home</NuxtLink>
+        </Button>
         <template v-for="(link, index) of children">
             <DropdownMenu v-if="link.children && link.children.length > 1" v-slot="{open}">
                 <DropdownMenuTrigger as-child>
@@ -41,14 +44,3 @@ const children = findPageChildren(data.value, "/research/ardc");
         </template>
     </nav>
 </template>
-
-<style scoped>
-.ardc-nav {
-    overflow-x: auto;
-    flex-wrap: nowrap;
-}
-
-.ardc-nav .nav-item {
-    flex-shrink: 0;
-}
-</style>
