@@ -1,19 +1,47 @@
 {
-    "name": "idn-project-site",
-    "version": "0.0.0",
+    "name": "idn-website",
+    "private": true,
+    "type": "module",
     "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "preview": "vite preview --port 4173"
+        "build": "nuxt build",
+        "dev": "nuxt dev",
+        "generate": "nuxt generate",
+        "preview": "nuxt preview",
+        "postinstall": "nuxt prepare"
     },
     "dependencies": {
-        "@idn-au/idn-lib": "^0.1.1",
-        "vue": "^3.2.38",
-        "vue-router": "^4.1.5"
+        "@nuxt/content": "^3.6.3",
+        "@nuxt/image": "^1.11.0",
+        "@nuxtjs/color-mode": "^3.5.2",
+        "@tailwindcss/vite": "^4.1.12",
+        "@vueuse/core": "^13.7.0",
+        "better-sqlite3": "^12.2.0",
+        "class-variance-authority": "^0.7.1",
+        "clsx": "^2.1.1",
+        "lucide-vue-next": "^0.541.0",
+        "minisearch": "^7.1.2",
+        "nuxt": "^3.18.1",
+        "reka-ui": "^2.4.1",
+        "shadcn-nuxt": "^2.2.0",
+        "tailwind-merge": "^3.3.1",
+        "tailwindcss": "^4.1.12",
+        "tw-animate-css": "^1.3.7",
+        "vue": "^3.5.20",
+        "vue-router": "^4.5.1"
     },
     "devDependencies": {
-        "@vitejs/plugin-vue": "^3.0.3",
-        "sass": "^1.55.0",
-        "vite": "^3.0.9"
+        "@fortawesome/fontawesome-svg-core": "^7.0.0",
+        "@fortawesome/free-brands-svg-icons": "^7.0.0",
+        "@fortawesome/vue-fontawesome": "^3.1.1",
+        "@tailwindcss/typography": "^0.5.16",
+        "typescript": "^5.9.2"
+    },
+    "pnpm": {
+        "overrides": {
+            "ipx": "^3.0.0"
+        },
+        "onlyBuiltDependencies": [
+            "better-sqlite3"
+        ]
     }
 }
