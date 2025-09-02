@@ -3,7 +3,7 @@ name: Publish Docker image and deploy
 on:
   push:
     branches:
-      - feature/idn-website-refactor
+      - main
   repository_dispatch:
     types: [trigger-workflow]
   workflow_dispatch:
