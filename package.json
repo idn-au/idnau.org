@@ -39,6 +39,9 @@
     "pnpm": {
         "overrides": {
             "ipx": "^3.0.0"
-        }
+        },
+        "onlyBuiltDependencies": [
+            "better-sqlite3"
+        ]
     }
 }
