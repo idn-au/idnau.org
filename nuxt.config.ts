@@ -26,4 +26,7 @@ export default defineNuxtConfig({
         prefix: "",
         componentDir: "./components/ui"
     },
+    image: {
+        provider: "none",
+    },
 });
