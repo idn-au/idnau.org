@@ -59,7 +59,7 @@ watch(open, (newValue) => {
 </script>
 
 <template>
-    <Button variant="ghost" size="icon" :class="cn('md:w-[160px] font-normal md:text-muted-foreground md:border md:px-2', props.class)" @click="open = true">
+    <Button variant="ghost" size="icon" :class="cn('md:w-[160px] font-normal bg-background/40 md:text-muted-foreground md:border md:px-2', props.class)" @click="open = true">
         <Search />
         <span class="hidden md:flex">Search...</span>
         <kbd class="items-center pointer-events-none h-5 select-none gap-1 rounded border bg-muted font-sans font-medium min-h-4 text-[10px] px-1.5 ml-auto hidden md:inline-flex">

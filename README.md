@@ -1,7 +1,7 @@
-# New IDN Website
+# Indigenous Data Network Website
 The website for the Indigenous Data Network as a whole. Available at [idnau.org](https://idnau.org).
 
-Written in [Nuxt](https://nuxt.com/), [Nuxt Content](https://content.nuxt.com/), [Shadcn-vue](https://www.shadcn-vue.com/) and [Tailwind](https://tailwindcss.com/).
+Written in [Nuxt](https://nuxt.com/docs/3.x) (v3), [Nuxt Content](https://content.nuxt.com/), [Shadcn-vue](https://www.shadcn-vue.com/) and [Tailwind](https://tailwindcss.com/).
 
 ## Contents
 - [Making Changes on GitHub](#making-changes-on-github)
@@ -19,8 +19,6 @@ Written in [Nuxt](https://nuxt.com/), [Nuxt Content](https://content.nuxt.com/),
 For simple changes like updating Markdown files or uploading images, you can do so on GitHub in the browser. Make sure you make a _pull request_, which will be reviewed by Jamie for merging.
 
 For more complex changes such as styling or functional changes not in Markdown, please make a feature request on GitHub for Jamie to do - see below.
-
-(For now) ensure you select the "feature/idn-website-refactor" branch **before** making changes in the browser.
 
 ![Selecting the branch](/docs/branch-select.png)
 
@@ -62,7 +60,7 @@ You can specify the order of pages that appear in the nav by prefixing page titl
 
 ```
 4.projects/
-    2.ardc.md
+    2.iirc.md
     1.index.md
 2.about.md
 3.contact.md

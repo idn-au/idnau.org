@@ -13,7 +13,7 @@ const internal = computed(() => props.to.startsWith("/"));
 
 <template>
     <component :is="internal ? NuxtLink : 'a'" :to="internal ? props.to : undefined" :href="internal ? undefined : props.to" :target="internal ? undefined : '_blank'">
-        <ShadCard class="rounded-lg border hover:bg-accent transition-all h-full flex items-center justify-center text-center text-lg">
+        <ShadCard :class="cn('rounded-lg border hover:bg-accent transition-all h-full flex items-center justify-center text-center text-lg', props.class)">
             <slot mdc-unwrap="p" />
         </ShadCard>
     </component>

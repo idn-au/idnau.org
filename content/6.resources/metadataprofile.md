@@ -1,8 +1,8 @@
 ---
 title: IDN Metadata Profile
-description: IDN Metadata Profile is...
+description: DCAT profile extended to include the Indigenous Data Characteristics
 navigation: false
-tags: ["idc", "metadata", "catalogue"]
+tags: ["idc", "metadata", "catalogue", "profile"]
 ---
 
 # IDN Metadata Profile

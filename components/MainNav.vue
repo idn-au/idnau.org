@@ -17,7 +17,7 @@ router.beforeEach((from, to) => {
 </script>
 
 <template>
-    <header class="top-nav sticky top-0 bg-background/50 grid grid-cols-3 md:flex md:flex-row md:justify-between items-center p-2 z-50 gap-2 backdrop-blur-sm">
+    <header class="top-nav sticky top-0 bg-background/60 grid grid-cols-3 md:flex md:flex-row md:justify-between items-center p-2 z-50 gap-2 backdrop-blur-sm">
         <!-- mobile nav -->
         <Sheet v-model:open="showSidenav">
             <SheetTrigger as-child>

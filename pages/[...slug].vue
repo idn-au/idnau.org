@@ -20,7 +20,7 @@ const { data: page } = await useAsyncData(route.path, () => {
         <MainNav />
         <main class="grow mb-12">
             <div class="mx-auto max-w-[1200px] px-5 prose dark:prose-invert">
-                <IIRCNav v-if="route.path.startsWith('/research/iirc')" />
+                <!-- <IIRCNav v-if="route.path.startsWith('/research/iirc')" /> -->
                 <ContentRenderer v-if="page" :value="page" />
                 <div v-else>
                     <h1>Page not found</h1>
