@@ -87,11 +87,10 @@ Metadata and data should be well-described so that they can be replicated and/or
 
  
 ## Other supporting principles and policies
-Closing the Gap Priority Reforms, in particular Priority Reform #4: https://www.closingthegap.gov.au/national-agreement/priority-reforms
-UNDRIP: https://social.desa.un.org/issues/indigenous-peoples/united-nations-declaration-on-the-rights-of-indigenous-peoples
-National Cultural Policy—Revive: a place for every story, a story for every place: https://www.arts.gov.au/publications/national-cultural-policy-revive-place-every-story-story-every-place
-National Statement on Ethical Conduct in Human Research 2025: https://www.nhmrc.gov.au/about-us/publications/national-statement-ethical-conduct-human-research-2025
-AIATSIS Code of Ethics 2020: https://aiatsis.gov.au/research/ethical-research/code-ethics
-Ethical conduct in research with ATSI peoples and communities 2018: https://www.nhmrc.gov.au/about-us/publications/ethical-conduct-research-aboriginal-and-torres-strait-islander-peoples-and-communities
-Keeping research on track II: https://www.nhmrc.gov.au/about-us/publications/keeping-research-track-ii
- 
+- Closing the Gap Priority Reforms, in particular Priority Reform #4: https://www.closingthegap.gov.au/national-agreement/priority-reforms
+- UNDRIP: https://social.desa.un.org/issues/indigenous-peoples/united-nations-declaration-on-the-rights-of-indigenous-peoples
+- National Cultural Policy—Revive: a place for every story, a story for every place: https://www.arts.gov.au/publications/national-cultural-policy-revive-place-every-story-story-every-place
+- National Statement on Ethical Conduct in Human Research 2025: https://www.nhmrc.gov.au/about-us/publications/national-statement-ethical-conduct-human-research-2025
+- AIATSIS Code of Ethics 2020: https://aiatsis.gov.au/research/ethical-research/code-ethics
+- Ethical conduct in research with ATSI peoples and communities 2018: https://www.nhmrc.gov.au/about-us/publications/ethical-conduct-research-aboriginal-and-torres-strait-islander-peoples-and-communities
+- Keeping research on track II: https://www.nhmrc.gov.au/about-us/publications/keeping-research-track-ii
