@@ -21,19 +21,25 @@
         "lucide-vue-next": "^0.541.0",
         "minisearch": "^7.1.2",
         "nuxt": "^3.18.1",
+        "ol": "^10.6.1",
+        "ol-contextmenu": "^5.5.0",
+        "ol-ext": "^4.0.35",
+        "prez-lib": "^4.1.4",
         "reka-ui": "^2.4.1",
         "shadcn-nuxt": "^2.2.0",
         "tailwind-merge": "^3.3.1",
         "tailwindcss": "^4.1.12",
         "tw-animate-css": "^1.3.7",
         "vue": "^3.5.20",
-        "vue-router": "^4.5.1"
+        "vue-router": "^4.5.1",
+        "vue3-openlayers": "^12.1.1"
     },
     "devDependencies": {
         "@fortawesome/fontawesome-svg-core": "^7.0.0",
         "@fortawesome/free-brands-svg-icons": "^7.0.0",
         "@fortawesome/vue-fontawesome": "^3.1.1",
         "@tailwindcss/typography": "^0.5.16",
+        "sass-embedded": "^1.93.2",
         "typescript": "^5.9.2"
     },
     "pnpm": {

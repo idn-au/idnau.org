@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import Card from "./Card.vue";
+
 const { data: pages } = await useAsyncData("resources", () => {
     return queryCollection("content").where("path", "LIKE", "/resources/%").select("title", "description", "path", "tags").all();
 });
