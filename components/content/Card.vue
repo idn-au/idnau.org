@@ -17,8 +17,8 @@ const props = withDefaults(defineProps<{
         <div :class="props.imgHalf ? 'flex-1' : 'grow'">
             <CardHeader v-if="$slots.title || $slots.header" class="card-header">
                 <slot name="header">
-                    <CardTitle class="font-normal text-xl"><slot name="title" mdc-unwrap="p" /></CardTitle>
-                    <CardDescription><slot name="description" mdc-unwrap="p" /></CardDescription>
+                    <CardTitle v-if="$slots.title" class="font-normal text-xl"><slot name="title" mdc-unwrap="p" /></CardTitle>
+                    <CardDescription v-if="$slots.description"><slot name="description" mdc-unwrap="p" /></CardDescription>
                 </slot>
             </CardHeader>
             <CardContent :class="`card-body ${$slots.title || $slots.header ? '' : 'pt-6'}`">
@@ -39,9 +39,9 @@ h3, :deep(h3) {
     margin: 0;
 }
 
-.card-header :deep(p) {
+/* .card-header :deep(p) {
     margin: 0;
-}
+} */
 .card-body > :deep(p:first-child) {
     margin-top: 0;
 }

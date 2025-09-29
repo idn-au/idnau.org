@@ -27,12 +27,12 @@ main a:not(nav a):hover, footer a:hover {
 }
 
 h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {
-    color: var(--color-foreground);
+    color: var(--color-foreground) !important;
     position: relative;
 }
 
 h1 > a:hover, h2 > a:hover, h3 > a:hover, h4 > a:hover, h5 > a:hover, h6 > a:hover {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 h1 > a:hover::before, h2 > a:hover::before, h3 > a:hover::before, h4 > a:hover::before, h5 > a:hover::before, h6 > a:hover::before {
