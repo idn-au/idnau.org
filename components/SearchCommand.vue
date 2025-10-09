@@ -25,6 +25,7 @@ const { data } = await useAsyncData("search", () => queryCollectionSearchSection
 
 const open = ref(false);
 const query = ref("");
+const modifierKeySymbol = ref("ctrl");
 
 const result = computed(() => miniSearch.search(toValue(query)));
 const notUsingInput = computed(() => activeElement.value?.tagName !== "INPUT" && activeElement.value?.tagName !== "TEXTAREA");
@@ -56,6 +57,12 @@ watch(open, (newValue) => {
         query.value = "";
     }
 });
+
+onMounted(() => {
+    if (import.meta.client && navigator.platform.startsWith("Mac")) {
+        modifierKeySymbol.value = "⌘";
+    }
+});
 </script>
 
 <template>
@@ -63,7 +70,7 @@ watch(open, (newValue) => {
         <Search />
         <span class="hidden md:flex">Search...</span>
         <kbd class="items-center pointer-events-none h-5 select-none gap-1 rounded border bg-muted font-sans font-medium min-h-4 text-[10px] px-1.5 ml-auto hidden md:inline-flex">
-            ⌘ K
+            {{ modifierKeySymbol }} K
         </kbd>
     </Button>
     <CommandDialog v-model:open="open">
