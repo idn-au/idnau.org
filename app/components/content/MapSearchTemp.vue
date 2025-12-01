@@ -1,8 +1,20 @@
 <script lang="ts" setup>
 import { type HTMLAttributes } from "vue";
 import { OlZoomToExtentControl } from "vue3-openlayers/controls";
-import { Locate, ChevronLeft, ChevronsLeft, ChevronRight, ChevronsRight } from "lucide-vue-next";
+import {
+	Locate,
+	ChevronLeft,
+	ChevronsLeft,
+	ChevronRight,
+	ChevronsRight,
+	Filter,
+	Search,
+	Delete,
+	Pentagon, Menu, Trash
+} from "lucide-vue-next";
 import { cn } from "~/lib/utils";
+import {fromExtent} from 'ol/geom/Polygon';
+import {GeoJSON, WKT} from "ol/format";
 
 type SPARQLResultsJSON = {
     head: {
@@ -162,33 +174,50 @@ function handleCheck(iri: string) {
         searchWithin(drawnGeometry.value);
     }
 }
+
+const wktFormat = new WKT();
+const geoJSONFormat = new GeoJSON();
+
+function searchWithinBbox() {
+	if (baseMapRef.value?.viewRef) {
+		const extent = baseMapRef.value.viewRef.view.getViewStateAndExtent().extent;
+		const polygon = fromExtent(extent);
+		const geoJSON = geoJSONFormat.writeGeometry(polygon, {
+			dataProjection: "EPSG:4326"
+		});
+		const wkt = wktFormat.writeGeometry(polygon, {
+			dataProjection: "EPSG:4326",
+		});
+		searchWithin({geoJSON, wkt});
+	}
+}
 </script>
 
 <template>
     <ClientOnly>
         <div :class="cn('', props.class)">
             <div class="flex flex-col gap-4">
-                <Accordion type="single" collapsible class="border rounded-md">
-                    <AccordionItem value="filter" class="border-0">
-                        <AccordionTrigger class="p-3">Filter by dataset</AccordionTrigger>
-                        <AccordionContent class="p-3 border-t">
-                            <div class="flex flex-col gap-1 text-sm">
-                                <template v-if="datasetStatus === 'pending'">
-                                    <Skeleton v-for="_ in 5" class="h-6 w-42" />
-                                </template>
-                                <template v-else-if="datasetStatus === 'success'">
-                                    <div v-for="dataset in datasetOptions" class="flex items-center gap-2">
-                                        <Checkbox :id="dataset.value" :value="dataset.value" @click="handleCheck(dataset.value)" :modelValue="selectedDatasets.includes(dataset.value)" />
-                                        <label :for="dataset.value">{{ dataset.label }}</label>
-                                    </div>
-                                </template>
-                            </div>
-                        </AccordionContent>
-                    </AccordionItem>
-                </Accordion>
+<!--                <Accordion type="single" collapsible class="border rounded-md">-->
+<!--                    <AccordionItem value="filter" class="border-0">-->
+<!--                        <AccordionTrigger class="p-3">Filter by dataset</AccordionTrigger>-->
+<!--                        <AccordionContent class="p-3 border-t">-->
+<!--                            <div class="flex flex-col gap-1 text-sm">-->
+<!--                                <template v-if="datasetStatus === 'pending'">-->
+<!--                                    <Skeleton v-for="_ in 5" class="h-6 w-42" />-->
+<!--                                </template>-->
+<!--                                <template v-else-if="datasetStatus === 'success'">-->
+<!--                                    <div v-for="dataset in datasetOptions" class="flex items-center gap-2">-->
+<!--                                        <Checkbox :id="dataset.value" :value="dataset.value" @click="handleCheck(dataset.value)" :modelValue="selectedDatasets.includes(dataset.value)" />-->
+<!--                                        <label :for="dataset.value">{{ dataset.label }}</label>-->
+<!--                                    </div>-->
+<!--                                </template>-->
+<!--                            </div>-->
+<!--                        </AccordionContent>-->
+<!--                    </AccordionItem>-->
+<!--                </Accordion>-->
                 <MapTemp
                     ref="baseMapRef"
-                    class="h-[500px]"
+                    class="h-[85dvh]"
                     :layers="[features]"
                     fitAddedLayersToExtent
                     :animationDuration="1000"
@@ -201,49 +230,81 @@ function handleCheck(iri: string) {
                     @clearDrawing="drawnGeometry = undefined"
                 >
                     <template #controls>
+	                    <Button class="absolute z-[1] left-12 top-2 !bg-primary" size="lg" @click="searchWithinBbox">
+		                    Go
+		                    <Search class="size-5" />
+	                    </Button>
                         <OlZoomToExtentControl :extent="[94.40010000000001, -47.24705625, 173.1501, -3.30174375]" label="^" tipLabel="Reset zoom" />
+	                    <Popover>
+		                    <PopoverTrigger as-child>
+			                    <Button
+				                    size="icon"
+				                    variant="secondary"
+				                    class="z-[1] absolute right-2 top-12 !bg-secondary"
+				                    title="Filter datasets"
+			                    >
+				                    <Filter class="size-4" />
+			                    </Button>
+		                    </PopoverTrigger>
+		                    <PopoverContent class="mr-2">
+			                    <div class="flex flex-col gap-2 text-sm">
+				                    <div class="font-bold">Datasets</div>
+				                    <template v-if="datasetStatus === 'pending'">
+					                    <Skeleton v-for="_ in 5" class="h-6 w-42" />
+				                    </template>
+				                    <template v-else-if="datasetStatus === 'success'">
+					                    <div v-for="dataset in datasetOptions" class="flex flex-row gap-2">
+						                    <Checkbox :id="dataset.value" :value="dataset.value" @click="handleCheck(dataset.value)" :modelValue="selectedDatasets.includes(dataset.value)" class="mt-0.5" />
+						                    <label :for="dataset.value">{{ dataset.label }}</label>
+					                    </div>
+				                    </template>
+			                    </div>
+		                    </PopoverContent>
+	                    </Popover>
                     </template>
                 </MapTemp>
             </div>
-            <div class="flex flex-col my-4">
-                <div v-for="result in paginatedResults" class="flex flex-col p-2 even:bg-muted/50" :key="result.iri">
-                    <div class="flex flex-row items-start justify-between">
-                        <div class="flex flex-row gap-2 items-center">
-                            <a :href="`https://data.idnau.org/object?uri=${result.iri}`" target="_blank" rel="noopener noreferrer" class="font-bold">{{ result.label }}</a>
-                        </div>
-                        <div class="flex flex-row gap-2 items-center">
-                            <Button variant="outline" size="icon" title="Select feature on map" @click="baseMapRef?.selectFeatureByIRI(result.iri, false)"><Locate /></Button>
-                        </div>
-                    </div>
-                    <div class="flex flex-row items-center gap-2 !text-muted-foreground text-xs">
-                        <a :href="`https://data.idnau.org/object?uri=${result.d}`" target="_blank" rel="noopener noreferrer">{{ result.dLabel }}</a>
-                        <ChevronRight class="size-4" />
-                        <a :href="`https://data.idnau.org/object?uri=${result.fc}`" target="_blank" rel="noopener noreferrer">{{ result.fcLabel }}</a>
-                        <ChevronRight class="size-4" />
-                        <a :href="`https://data.idnau.org/object?uri=${result.iri}`" target="_blank" rel="noopener noreferrer" class="font-bold">{{ result.label }}</a>
-                    </div>
-                </div>
-            </div>
-            <template v-if="searchResults.length > 0">
-                <Pagination v-model:page="pageNumber" :total="searchResults.length" :itemsPerPage="PER_PAGE" showEdges :siblingCount="1" v-slot="{ page }">
-                    <PaginationContent v-slot="{ items }" class="flex items-center gap-1 justify-center">
-                        <PaginationFirst><ChevronsLeft class="size-4" /></PaginationFirst>
-                        <PaginationPrevious><ChevronLeft class="size-4" /></PaginationPrevious>
-                        <template v-for="(item, index) in items">
-                            <PaginationItem v-if="item.type === 'page'" :key="index" :value="item.value" as-child>
-                                <Button class="w-10 h-10 p-0" :variant="item.value === page ? 'default' : 'outline'" @click="pageNumber = item.value">{{ item.value }}</Button>
-                            </PaginationItem>
-                            <PaginationEllipsis v-else :key="item.type" :index="index" />
-                        </template>
-                        <PaginationNext><ChevronRight class="size-4" /></PaginationNext>
-                        <PaginationLast><ChevronsRight class="size-4" /></PaginationLast>
-                    </PaginationContent>
-                </Pagination>
-                <div class="text-sm text-muted-foreground text-center mt-2">
-                    Showing {{ (pageNumber - 1) * PER_PAGE + 1 }} to 
-                    {{ Math.min(pageNumber * PER_PAGE, searchResults.length) }} of {{ searchResults.length }} items
-                </div>
-            </template>
+	        <div class="mx-auto max-w-[1200px]">
+		        <div class="flex flex-col my-4">
+			        <div v-for="result in paginatedResults" class="flex flex-col p-2 even:bg-muted/50" :key="result.iri">
+				        <div class="flex flex-row items-start justify-between">
+					        <div class="flex flex-row gap-2 items-center">
+						        <a :href="`https://data.idnau.org/object?uri=${result.iri}`" target="_blank" rel="noopener noreferrer" class="font-bold">{{ result.label }}</a>
+					        </div>
+					        <div class="flex flex-row gap-2 items-center">
+						        <Button variant="outline" size="icon" title="Select feature on map" @click="baseMapRef?.selectFeatureByIRI(result.iri, false)"><Locate /></Button>
+					        </div>
+				        </div>
+				        <div class="flex flex-row items-center gap-2 !text-muted-foreground text-xs">
+					        <a :href="`https://data.idnau.org/object?uri=${result.d}`" target="_blank" rel="noopener noreferrer">{{ result.dLabel }}</a>
+					        <ChevronRight class="size-4" />
+					        <a :href="`https://data.idnau.org/object?uri=${result.fc}`" target="_blank" rel="noopener noreferrer">{{ result.fcLabel }}</a>
+					        <ChevronRight class="size-4" />
+					        <a :href="`https://data.idnau.org/object?uri=${result.iri}`" target="_blank" rel="noopener noreferrer" class="font-bold">{{ result.label }}</a>
+				        </div>
+			        </div>
+		        </div>
+		        <template v-if="searchResults.length > 0">
+			        <Pagination v-model:page="pageNumber" :total="searchResults.length" :itemsPerPage="PER_PAGE" showEdges :siblingCount="1" v-slot="{ page }">
+				        <PaginationContent v-slot="{ items }" class="flex items-center gap-1 justify-center">
+					        <PaginationFirst><ChevronsLeft class="size-4" /></PaginationFirst>
+					        <PaginationPrevious><ChevronLeft class="size-4" /></PaginationPrevious>
+					        <template v-for="(item, index) in items">
+						        <PaginationItem v-if="item.type === 'page'" :key="index" :value="item.value" as-child>
+							        <Button class="w-10 h-10 p-0" :variant="item.value === page ? 'default' : 'outline'" @click="pageNumber = item.value">{{ item.value }}</Button>
+						        </PaginationItem>
+						        <PaginationEllipsis v-else :key="item.type" :index="index" />
+					        </template>
+					        <PaginationNext><ChevronRight class="size-4" /></PaginationNext>
+					        <PaginationLast><ChevronsRight class="size-4" /></PaginationLast>
+				        </PaginationContent>
+			        </Pagination>
+			        <div class="text-sm text-muted-foreground text-center mt-2 mb-8">
+				        Showing {{ (pageNumber - 1) * PER_PAGE + 1 }} to
+				        {{ Math.min(pageNumber * PER_PAGE, searchResults.length) }} of {{ searchResults.length }} items
+			        </div>
+		        </template>
+	        </div>
         </div>
     </ClientOnly>
 </template>

@@ -1,0 +1,9 @@
+version: "3"
+name: idn-website-dev
+services:
+  website-dev:
+    image: ghcr.io/idn-au/idnau:dev
+    pull_policy: always
+    restart: always
+    ports:
+      - 3001:3000

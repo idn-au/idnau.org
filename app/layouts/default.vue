@@ -1,10 +1,15 @@
+<script setup lang="ts">
+const route = useRoute();
+</script>
+
 <template>
 	<div class="flex flex-col min-h-dvh">
 		<MainNav />
-		<main class="grow mb-12">
+		<main :class="`grow ${route.path === '/resources/map' ? '' : 'mb-12'}`">
 			<div class="mx-auto max-w-[1200px] px-5 prose dark:prose-invert">
 				<slot />
 			</div>
+			<MapSearchTemp v-if="route.path === '/resources/map'" />
 		</main>
 		<footer class="bg-secondary">
 			<div class="mx-auto max-w-[1200px] py-12 px-5 text-center flex flex-col items-center gap-6">
