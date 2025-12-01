@@ -14,17 +14,17 @@ const props = withDefaults(defineProps<{
 
 <template>
     <ShadCard :class="cn(`${$slots.img ? `flex ${props.imgPosition === 'bottom' ? 'flex-col' : 'flex-col-reverse'} ${props.imgPosition === 'top' ? 'sm:flex-col-reverse' : (props.imgPosition === 'bottom' ? 'sm:flex-col' : (props.imgPosition === 'left' ? 'sm:flex-row-reverse' : 'sm:flex-row'))}` : ''}`, props.class)">
-        <div :class="props.imgHalf ? 'flex-1' : 'grow'">
+        <div :class="props.imgHalf ? 'flex-1' : 'grow flex flex-col'">
             <CardHeader v-if="$slots.title || $slots.header" class="card-header">
                 <slot name="header">
                     <CardTitle v-if="$slots.title" class="font-normal text-xl"><slot name="title" mdc-unwrap="p" /></CardTitle>
                     <CardDescription v-if="$slots.description"><slot name="description" mdc-unwrap="p" /></CardDescription>
                 </slot>
             </CardHeader>
-            <CardContent :class="`card-body ${$slots.title || $slots.header ? '' : 'pt-6'}`">
+            <CardContent :class="`card-body grow ${$slots.title || $slots.header ? '' : 'pt-6'}`">
                 <slot />
             </CardContent>
-            <CardFooter v-if="$slots.footer">
+            <CardFooter v-if="$slots.footer" class="pt-2">
                 <slot name="footer" mdc-unwrap="p" />
             </CardFooter>
         </div>

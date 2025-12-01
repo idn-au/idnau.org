@@ -3,11 +3,12 @@ title: Agents Database
 description: A collection of people & organisations related to metadata in the IDN catalogue
 navigation: false
 tags: ["metadata", "catalogue", "idc"]
+websiteURL: https://agentsdb.idnau.org
 ---
 
 # Agents Database
-::LinkButton{to="https://agentsdb.idnau.org"}
-Agents Database
+::LinkButton{:to="websiteURL"}
+Go to Agents Database
 ::
 
 The Indigenous Data Network's Agents Database is a collection of people and organisations (or "agents") related to metadata in the IDN catalogue. This collection includes IDN partners, universities, government organisations and researchers. 

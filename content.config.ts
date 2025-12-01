@@ -9,7 +9,8 @@ export default defineContentConfig({
                 exclude: ["**/_*.md", "**/_*/*.md"],
             },
             schema: z.object({
-                tags: z.string().array(),
+                tags: z.string().array().optional(),
+                websiteURL: z.string().optional(),
             }),
         }),
     },

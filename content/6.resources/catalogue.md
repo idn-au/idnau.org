@@ -3,11 +3,12 @@ title: IDN Catalogue
 description: Data catalogue of metadata for the discovery of IDN assets
 navigation: false
 tags: ["metadata", "catalogue", "idc"]
+websiteURL: https://data.idnau.org
 ---
 
 # IDN Catalogue
-::LinkButton{to="https://data.idnau.org"}
-IDN Catalogue
+::LinkButton{:to="websiteURL"}
+Go to IDN Catalogue
 ::
 
 Data, or information collected and organised for analysis and interpretation, can shape debate and guide policy decisions. In order to find, use and reuse data that has been collected, it needs to be findable and accessible (the first two principles of [FAIR data](/resources/faircare#FAIR)). When beginning this type of data inventory organisations may use a spreadsheet or shared web page for internal access. However in order to scale and share a large inventory easily it is best to catalogue your data.

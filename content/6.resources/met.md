@@ -3,11 +3,12 @@ title: Metadata Entry Tool
 description: A tool for creating & scoring metadata for the IDN
 navigation: false
 tags: ["metadata", "catalogue", "idc"]
+websiteURL: https://metadata.idnau.org
 ---
 
 # Metadata Entry Tool
-::LinkButton{to="https://metadata.idnau.org"}
-Metadata Entry Tool
+::LinkButton{:to="websiteURL"}
+Go to Metadata Entry Tool
 ::
 
 In order to catalogue Indigenous data, the metadata describing the data needs to be collected and stored in a standardised way - as outlined on the [Characterising Indigenous Data](/resources/characterisingindigenousdata)  page and explained in the [Metadata Profile](https://data.idnau.org/pid/cp/guide).
