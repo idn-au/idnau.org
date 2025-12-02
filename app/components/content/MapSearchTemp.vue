@@ -230,21 +230,23 @@ function searchWithinBbox() {
                     @clearDrawing="drawnGeometry = undefined"
                 >
                     <template #controls>
-	                    <Button class="absolute z-[1] left-12 top-2 !bg-primary" size="lg" @click="searchWithinBbox">
+	                    <MapButton class="left-12 top-2" size="lg" @click="searchWithinBbox">
 		                    Go
 		                    <Search class="size-5" />
-	                    </Button>
+	                    </MapButton>
                         <OlZoomToExtentControl :extent="[94.40010000000001, -47.24705625, 173.1501, -3.30174375]" label="^" tipLabel="Reset zoom" />
-	                    <Popover>
+	                    <Popover v-slot="{open}">
 		                    <PopoverTrigger as-child>
-			                    <Button
+			                    <MapButton
 				                    size="icon"
 				                    variant="secondary"
-				                    class="z-[1] absolute right-2 top-12 !bg-secondary"
-				                    title="Filter datasets"
+				                    :active="open"
+				                    class="right-2 top-12"
+				                    tooltip="Filter datasets"
+				                    tooltipSide="left"
 			                    >
 				                    <Filter class="size-4" />
-			                    </Button>
+			                    </MapButton>
 		                    </PopoverTrigger>
 		                    <PopoverContent class="mr-2">
 			                    <div class="flex flex-col gap-2 text-sm">
@@ -254,7 +256,13 @@ function searchWithinBbox() {
 				                    </template>
 				                    <template v-else-if="datasetStatus === 'success'">
 					                    <div v-for="dataset in datasetOptions" class="flex flex-row gap-2">
-						                    <Checkbox :id="dataset.value" :value="dataset.value" @click="handleCheck(dataset.value)" :modelValue="selectedDatasets.includes(dataset.value)" class="mt-0.5" />
+						                    <Checkbox
+						                        :id="dataset.value"
+						                        :value="dataset.value"
+						                        @click="handleCheck(dataset.value)"
+						                        :modelValue="selectedDatasets.includes(dataset.value)"
+						                        class="mt-0.5"
+						                    />
 						                    <label :for="dataset.value">{{ dataset.label }}</label>
 					                    </div>
 				                    </template>
