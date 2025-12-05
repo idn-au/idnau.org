@@ -9,7 +9,7 @@ const route = useRoute();
 			<div class="mx-auto max-w-[1200px] px-5 prose dark:prose-invert">
 				<slot />
 			</div>
-			<MapSearchTemp v-if="route.path === '/resources/map'" />
+			<SearchPage v-if="route.path === '/resources/map'" />
 		</main>
 		<footer class="bg-secondary">
 			<div class="mx-auto max-w-[1200px] py-12 px-5 text-center flex flex-col items-center gap-6">
