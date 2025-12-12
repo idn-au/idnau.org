@@ -225,11 +225,11 @@ See the [NuxtImage docs](https://image.nuxt.com/usage/nuxt-img) for how to inclu
 ## Styling & Tailwind
 Styling can be done in two ways: global CSS changes and Tailwind classes.
 
-See [Tailwind](https://tailwindcss.com/) docs for more info on how to use Tailwind.
+Global styles go in [`app/assets/css/style.css`](app/assets/css/style.css).
 
-Variables to be used in Tailwind classes must be defined as CSS variables in `assets/css/tailwind.css`. For colours, define them in HSL values ***without*** the `hsl()` function. You can also define dark mode-specific values inside the `.dark` class in that file.
+See the [Tailwind docs](https://tailwindcss.com/) for more info on how to use Tailwind.
 
-These variables should then be listed in `tailwind.config.js`. For colours, call the `hsl()` function here.
+Variables to be used in Tailwind classes must be defined as CSS variables in [`app/assets/css/tailwind.css`](app/assets/css/tailwind.css). For colours, define them in HSL values without commas. You can also define dark mode-specific values inside the `.dark` class in that file.
 
 ## Install & Run
 To install, ensure [pnpm](https://pnpm.io/) is installed, then run:
@@ -239,6 +239,7 @@ pnpm install
 ```
 
 Then to run locally, run:
+
 ```bash
 pnpm dev
 ```
