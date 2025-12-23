@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { type HTMLAttributes } from "vue";
-import { Trash, Delete, Pentagon, LoaderCircle } from "lucide-vue-next";
+import {Trash, Delete, Pentagon, LoaderCircle, PencilRuler, Filter} from "lucide-vue-next";
 import { OlMap, OlView, OlOverlay } from "vue3-openlayers/map";
 import { OlTileLayer, OlVectorLayer } from "vue3-openlayers/layers";
 import { OlSourceOSM, OlSourceVector } from "vue3-openlayers/sources";
@@ -88,18 +88,19 @@ const emit = defineEmits<{
     clearDrawing: [];
 }>();
 
-defineExpose({
-    escapeOverlay,
-    selectFeatureByIRI,
-    // fitToExtent,
-});
-
 const mapRef = useTemplateRef("mapRef");
 const viewRef = useTemplateRef("viewRef");
 const layersRef = useTemplateRef("layersRef");
 const layerSourcesRef = useTemplateRef("layerSourcesRef");
 const clickSelectRef = useTemplateRef("clickSelectRef");
 const drawSourceRef = useTemplateRef("drawSourceRef");
+
+defineExpose({
+	escapeOverlay,
+	selectFeatureByIRI,
+	// fitToExtent,
+	viewRef,
+});
 
 const options: Vue3OpenlayersGlobalOptions = {
     debug: false,
@@ -420,49 +421,111 @@ onMounted(() => {
             <OlScaleLineControl />
             <OlZoomSliderControl />
 
-            <div v-if="props.enableToolbar" class="z-[1] ol-unselectable ol-control ol-bar ol-group flex flex-row !absolute !left-1/2 !top-2 !transform-[translate(-50%,0)]">
-                <template v-if="props.enableDrawing">
-                    <!-- &#9645; -->
-                    <!-- &#9675; -->
-                    <button
-                        type="button"
-                        name="drawButton"
-                        :class="`${drawModeEnabled ? 'active' : ''}`"
-                        title="Draw an area on the map"
-                        @click="toggleDrawMode"
-                    >
-                        <Pentagon class="size-4" />
-                    </button>
-                    <button
-                        type="button"
-                        class=""
-                        name="clearDrawingsButton"
-                        title="Clear all drawn features from the map"
-                        @click="clearDrawings"
-                    >
-                        <Delete class="size-4" />
-                    </button>
-                </template>
-                <button
-                    type="button"
-                    :class="`!pb-1 ${clickThroughModeEnabled ? 'active' : ''}`"
-                    name="clickThroughButton"
-                    :title="clickThroughModeEnabled ? 'Disable to only select top feature on click' : 'Enable to select all overlapping features on click'"
-                    @click="toggleClickThroughMode"
-                >
-                    &DoubleDownArrow;
-                </button>
-                <button
-                    v-if="enableClearFeatures"
-                    class=""
-                    type="button"
-                    name="clearButton"
-                    title="Clear all features from the map"
-                    @click="clearAll"
-                >
-                    <Trash class="size-4" />
-                </button>
-            </div>
+	        <Collapsible v-if="props.enableToolbar" class="flex flex-col gap-3 z-[1] absolute right-2 top-24" v-slot="{open}">
+		        <CollapsibleTrigger>
+			        <MapButton
+				        size="icon"
+				        variant="secondary"
+				        :active="open"
+				        class="relative"
+				        :tooltip="open ? 'Collapse drawing tools' : 'Expand drawing tools'"
+				        tooltipSide="left"
+			        >
+				        <PencilRuler class="size-4" />
+			        </MapButton>
+		        </CollapsibleTrigger>
+		        <CollapsibleContent class="flex flex-col gap-3 transition-all">
+			        <template v-if="props.enableDrawing">
+				        <MapButton
+					        size="icon"
+					        variant="secondary"
+					        :active="drawModeEnabled"
+					        class="relative"
+					        tooltip="Draw an area on the map"
+					        tooltipSide="left"
+					        @click="toggleDrawMode"
+				        >
+					        <Pentagon class="size-4" />
+				        </MapButton>
+				        <MapButton
+					        size="icon"
+					        variant="secondary"
+					        class="relative"
+					        tooltip="Clear all drawn features from the map"
+					        tooltipSide="left"
+					        @click="clearDrawings"
+				        >
+					        <Delete class="size-4" />
+				        </MapButton>
+			        </template>
+			        <MapButton
+				        size="icon"
+				        variant="secondary"
+				        :active="clickThroughModeEnabled"
+				        class="relative"
+				        :tooltip="clickThroughModeEnabled ? 'Disable to only select top feature on click' : 'Enable to select all overlapping features on click'"
+				        tooltipSide="left"
+				        @click="toggleClickThroughMode"
+			        >
+				        &DoubleDownArrow;
+			        </MapButton>
+			        <MapButton
+				        v-if="enableClearFeatures"
+				        size="icon"
+				        variant="secondary"
+				        class="relative"
+				        tooltip="Clear all features from the map"
+				        tooltipSide="left"
+				        @click="clearAll"
+			        >
+				        <Trash class="size-4" />
+			        </MapButton>
+		        </CollapsibleContent>
+	        </Collapsible>
+
+<!--            <div v-if="props.enableToolbar" class="z-[1] ol-unselectable ol-control ol-bar ol-group flex flex-row !absolute !left-1/2 !top-2 !transform-[translate(-50%,0)]">-->
+<!--                <template v-if="props.enableDrawing">-->
+<!--                    &lt;!&ndash; &#9645; &ndash;&gt;-->
+<!--                    &lt;!&ndash; &#9675; &ndash;&gt;-->
+<!--                    <button-->
+<!--                        type="button"-->
+<!--                        name="drawButton"-->
+<!--                        :class="`${drawModeEnabled ? 'active' : ''}`"-->
+<!--                        title="Draw an area on the map"-->
+<!--                        @click="toggleDrawMode"-->
+<!--                    >-->
+<!--                        <Pentagon class="size-4" />-->
+<!--                    </button>-->
+<!--                    <button-->
+<!--                        type="button"-->
+<!--                        class=""-->
+<!--                        name="clearDrawingsButton"-->
+<!--                        title="Clear all drawn features from the map"-->
+<!--                        @click="clearDrawings"-->
+<!--                    >-->
+<!--                        <Delete class="size-4" />-->
+<!--                    </button>-->
+<!--                </template>-->
+<!--                <button-->
+<!--                    type="button"-->
+<!--                    :class="`!pb-1 ${clickThroughModeEnabled ? 'active' : ''}`"-->
+<!--                    name="clickThroughButton"-->
+<!--                    :title="clickThroughModeEnabled ? 'Disable to only select top feature on click' : 'Enable to select all overlapping features on click'"-->
+<!--                    @click="toggleClickThroughMode"-->
+<!--                >-->
+<!--                    &DoubleDownArrow;-->
+<!--                </button>-->
+<!--                <button-->
+<!--                    v-if="enableClearFeatures"-->
+<!--                    class=""-->
+<!--                    type="button"-->
+<!--                    name="clearButton"-->
+<!--                    title="Clear all features from the map"-->
+<!--                    @click="clearAll"-->
+<!--                >-->
+<!--                    <Trash class="size-4" />-->
+<!--                </button>-->
+<!--            </div>-->
 
             <slot name="controls" />
 
@@ -491,7 +554,7 @@ onMounted(() => {
 
             <slot name="overlays" />
         </OlMap>
-        <span class="text-xs text-muted-foreground">{{ modifierKeySymbol }} + scroll wheel to zoom</span>
+        <span class="text-xs text-muted-foreground px-2">{{ modifierKeySymbol }} + scroll wheel to zoom</span>
     </div>
 </template>
 

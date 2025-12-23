@@ -2,7 +2,7 @@ FROM node:24.9.0-alpine AS base
 ARG PORT=3000
 WORKDIR /src
 
-FROM base as build
+FROM base AS build
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"

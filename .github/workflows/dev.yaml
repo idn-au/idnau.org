@@ -1,0 +1,49 @@
+name: Deploy dev website
+
+on:
+  push:
+    branches:
+      - jamie/map-redesign
+  repository_dispatch:
+    types: [trigger-workflow]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: ghcr.io/idn-au/idnau:dev
+  deploy:
+    needs: publish
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v4
+    - name: Stop current website if exists
+      run: |
+        if [ -d "/home/ubuntu/website-dev/" ]; then
+          cd /home/ubuntu/website-dev/
+          docker compose -f website-dev-compose.yaml stop website-dev
+        fi
+    - name: Copy files
+      run: |
+        mkdir -p /home/ubuntu/website-dev/
+        cp -Rf website-dev-compose.yaml /home/ubuntu/website-dev/
+    - name: Deploy website
+      working-directory: /home/ubuntu/website-dev/
+      run: docker compose -f website-dev-compose.yaml up -d
