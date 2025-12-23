@@ -49,6 +49,9 @@ function searchNavigate() {
 
 <template>
 	<div class="mx-auto max-w-[1200px]">
+		<div class="py-5">
+			<p>If you would like to search by location name use the text search box to find data by entering a location name.</p>
+		</div>
 		<div class="flex flex-row max-w-md mx-auto">
 			<ButtonGroup class="w-full">
 				<InputGroup>

@@ -196,6 +196,10 @@ function searchWithinBbox() {
 <template>
     <ClientOnly>
         <div :class="cn('', props.class)">
+	        <div class="mx-auto max-w-[1200px] p-5">
+		        <p>Use the zoom slider on the left side of the map to focus on the location you want to explore.</p>
+		        <p>Once you’ve zoomed in, click “Go” to search for data in the visible area. (Please note: loading may take a little time.)</p>
+	        </div>
             <div class="flex flex-col gap-4">
 <!--                <Accordion type="single" collapsible class="border rounded-md">-->
 <!--                    <AccordionItem value="filter" class="border-0">-->
