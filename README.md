@@ -1,7 +1,7 @@
 # Indigenous Data Network Website
 The website for the Indigenous Data Network as a whole. Available at [idnau.org](https://idnau.org).
 
-Written in [Nuxt](https://nuxt.com/docs/3.x) (v3), [Nuxt Content](https://content.nuxt.com/), [Shadcn-vue](https://www.shadcn-vue.com/) and [Tailwind](https://tailwindcss.com/).
+Written in [Nuxt](https://nuxt.com/docs/3.x), [Nuxt Content](https://content.nuxt.com/), [Shadcn-vue](https://www.shadcn-vue.com/) and [Tailwind](https://tailwindcss.com/).
 
 ## Contents
 - [Making Changes on GitHub](#making-changes-on-github)
@@ -70,7 +70,7 @@ You can specify the order of pages that appear in the nav by prefixing page titl
 See [Nuxt Content docs](https://content.nuxt.com/usage/markdown) for more info.
 
 ### Front Matter
-Meta information and other data, defined in YAML, goes above the markdown seperated by `---`, e.g.:
+Meta information and other data, defined in YAML, goes above the Markdown separated by `---`, e.g.:
 
 ```yaml
 ---
@@ -81,7 +81,7 @@ Markdown content
 ```
 
 ### Content Components
-Vue components to be used in Markdown pages are located in `components/content/`. To use them in Markdown pages, simply have a colon `:` before the name of the component, e.g.:
+Vue components to be used in Markdown pages are located in `app/components/content/`. To use them in Markdown pages, simply have a colon `:` before the name of the component, e.g.:
 
 ```
 ...

@@ -10,12 +10,16 @@ const props = defineProps<{
 }>();
 
 const activeElement = useActiveElement();
-const { Meta_K, Ctrl_K, Slash } = useMagicKeys({
+const {
+	Meta_K,
+	Ctrl_K,
+	// Slash,
+} = useMagicKeys({
     passive: false,
     onEventFired(e) {
         if (
-            (e.key === "k" && (e.metaKey || e.ctrlKey)) ||
-            (e.key === "/" && notUsingInput.value)
+            (e.key === "k" && (e.metaKey || e.ctrlKey))
+	        // || (e.key === "/" && notUsingInput.value)
         )
             e.preventDefault()
     },
@@ -46,8 +50,16 @@ function handleOpenChange() {
     open.value = !open.value;
 }
 
-watch([Meta_K, Ctrl_K, Slash], (v) => {
-    if (v[0] || v[1] || (v[2] && notUsingInput.value)) {
+watch([
+	Meta_K,
+	Ctrl_K,
+	// Slash,
+], (v) => {
+    if (
+		v[0]
+	    || v[1]
+	    // || (v[2] && notUsingInput.value)
+    ) {
         handleOpenChange();
     }
 });
