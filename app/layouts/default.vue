@@ -33,7 +33,7 @@ const route = useRoute();
 				<div class="text-sm">
 					Improving Indigenous Research Capabilities is a co-investment partnership with the Australian Research Data Commons (ARDC) through the HASS and Indigenous Research Data Commons (DOI: <a href="https://doi.org/10.3565/pr3g-s109" target="_blank">10.3565/pr3g-s109</a>). The ARDC is enabled by the Australian Government’s National Collaborative Research Infrastructure Strategy (NCRIS).
 				</div>
-				<div>&copy; Indigenous Data Network 2025</div>
+				<div>&copy; Indigenous Data Network 2026</div>
 			</div>
 		</footer>
 	</div>

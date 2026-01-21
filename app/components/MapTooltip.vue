@@ -58,8 +58,8 @@ onUnmounted(() => {
         <div class="tooltip-attribute" v-if="props.selectedFeature.data && props.selectedFeature.data.iri">
             <a class="tooltip-iri" :href="`https://data.idnau.org/object?uri=${props.selectedFeature.data.iri}${props.queryString? '&' + props.queryString : ''}`" target="_blank">{{props.selectedFeature.data.iri}}</a>
         </div>
-        <!-- <div class="metadata">
-            <slot name="metadata">
+        <!-- <div class="8.metadata">
+            <slot name="8.metadata">
               <div v-if="props.selectedFeature.data" v-for="item in Object.keys(props.selectedFeature.data)">
                 <div class="tooltip-attribute flex flex-row" v-if="['iri', 'name', 'wktGeometry'].indexOf(item) === -1">
                   <div class="attribute-title">
