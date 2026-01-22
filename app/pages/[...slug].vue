@@ -10,7 +10,7 @@ const { data: page } = await useAsyncData(route.path, () => {
 
 useHead({
 	titleTemplate: (titleChunk) => {
-		let title = "The Indigenous Data Network";
+		let title = "The Indigenous Data Commons";
 		if (page.value) {
 			if (page.value.path !== "/") {
 				title = `${page.value.title} | ${title}`;

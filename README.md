@@ -1,5 +1,7 @@
-# Indigenous Data Network Website
-The website for the Indigenous Data Network as a whole. Available at [idnau.org](https://idnau.org).
+# Indigenous Data Commons Website
+The website for the Indigenous Data Commons. Available at [dev.idnau.org](https://dev.idnau.org).
+
+(Coming soon at indigenousdatacommons.org)
 
 Written in [Nuxt](https://nuxt.com/docs/3.x), [Nuxt Content](https://content.nuxt.com/), [Shadcn-vue](https://www.shadcn-vue.com/) and [Tailwind](https://tailwindcss.com/).
 

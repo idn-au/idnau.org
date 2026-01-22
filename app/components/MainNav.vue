@@ -41,8 +41,8 @@ router.beforeEach((from, to) => {
                     </SheetClose>
                     <NuxtLink to="/">
                         <div class="flex flex-row gap-2 items-center justify-center">
-                            <NuxtImg v-show="colorMode.unknown || colorMode.value === 'light'" src="/img/idn-logo-250.png" alt="IDN Logo" class="h-[40px]" />
-                            <NuxtImg v-show="!colorMode.unknown && colorMode.value === 'dark'" src="/img/idn-logo-250.png" alt="IDN Logo" class="h-[40px]" />
+                            <NuxtImg v-show="colorMode.unknown || colorMode.value === 'light'" src="/apple-touch-icon.png" alt="IDN Logo" class="h-[40px]" />
+                            <NuxtImg v-show="!colorMode.unknown && colorMode.value === 'dark'" src="/apple-touch-icon.png" alt="IDN Logo" class="h-[40px]" />
                             <span class="text-xl">IDN</span>
                         </div>
                     </NuxtLink>
@@ -84,8 +84,8 @@ router.beforeEach((from, to) => {
         </Sheet>
         <NuxtLink to="/">
             <div class="flex flex-row gap-2 items-center justify-center">
-                <NuxtImg v-show="colorMode.unknown || colorMode.value === 'light'" src="/img/idn-logo-250.png" alt="IDN Logo" class="h-[40px] md:h-[54px]" />
-                <NuxtImg v-show="!colorMode.unknown && colorMode.value === 'dark'" src="/img/idn-logo-250.png" alt="IDN Logo" class="h-[40px] md:h-[54px]" />
+                <NuxtImg v-show="colorMode.unknown || colorMode.value === 'light'" src="/apple-touch-icon.png" alt="IDN Logo" class="h-[40px] md:h-[54px]" />
+                <NuxtImg v-show="!colorMode.unknown && colorMode.value === 'dark'" src="/apple-touch-icon.png" alt="IDN Logo" class="h-[40px] md:h-[54px]" />
                 <span class="hidden md:inline text-xl">The Indigenous Data Commons</span>
                 <span class="md:hidden text-xl">IDN</span>
             </div>

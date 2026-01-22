@@ -12,6 +12,6 @@ const props = defineProps<SkeletonProps>()
 <template>
   <div
     data-slot="skeleton"
-    :class="cn('animate-pulse rounded-md bg-primary/10', props.class)"
-  />
+    :class="cn('animate-pulse rounded-md', !!$slots.default ? 'bg-muted/30 dark:bg-muted/20' : 'bg-muted/90 dark:bg-muted/50', props.class)"
+  ><slot /></div>
 </template>
