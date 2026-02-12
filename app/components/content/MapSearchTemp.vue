@@ -16,22 +16,6 @@ import { cn } from "~/lib/utils";
 import {fromExtent} from 'ol/geom/Polygon';
 import {GeoJSON, WKT} from "ol/format";
 
-type SPARQLResultsJSON = {
-    head: {
-        vars?: string[];
-        link?: string[];
-    },
-    results?: {
-        bindings: Record<string, {
-            type: "uri" | "literal" | "bnode";
-            value: string;
-            "xml:lang"?: string;
-            datatype?: string;
-        }>[];
-    },
-    boolean?: boolean;
-};
-
 type SearchResult = {
     iri: string;
     label: string;
