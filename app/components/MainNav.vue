@@ -8,11 +8,15 @@ const route = useRoute();
 const colorMode = useColorMode();
 
 const externalLinks: {title: string; url: string}[] = [
-	{
-		title: "IDN",
-		url: "https://mspgh.unimelb.edu.au/centres-institutes/onemda/research-group/indigenous-studies-unit/indigenous-data-network",
-	}
-];
+// 	{
+// 		title: "IDN",
+// 		url: "https://mspgh.unimelb.edu.au/centres-institutes/onemda/research-group/indigenous-studies-unit/indigenous-data-network",
+// 	}
+    {
+        title: "The National Indigenous Data Catalogue",
+        url: "https://data.idnau.org/catalogs"
+    }
+ ];
 
 const showSidenav = ref(false);
 
