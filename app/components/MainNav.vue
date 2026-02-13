@@ -20,7 +20,9 @@ const externalLinks: {title: string; url: string}[] = [
 
 const showSidenav = ref(false);
 
-const { data: navigation } = await useAsyncData("navigation", () => queryCollectionNavigation("content", ["description"]));
+const { data: navigation } = await useAsyncData("navigation", () => queryCollectionNavigation("content", ["description", "websiteURL"]));
+
+console.log(navigation.value);
 
 router.beforeEach((from, to) => {
     showSidenav.value = false;
@@ -189,7 +191,7 @@ router.beforeEach((from, to) => {
 <!--									    </NavigationMenuList>-->
 <!--								    </NavigationMenuSub>-->
 								    <NavigationMenuLink v-else asChild :active="route.path.startsWith(child.path)">
-									    <NuxtLink :to="child.path">
+									    <NuxtLink :to="child.websiteURL || child.path">
 										    <div class="text-sm leading-none font-medium">
 											    {{ child.title }}
 										    </div>
