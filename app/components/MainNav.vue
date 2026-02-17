@@ -22,8 +22,6 @@ const showSidenav = ref(false);
 
 const { data: navigation } = await useAsyncData("navigation", () => queryCollectionNavigation("content", ["description", "websiteURL"]));
 
-console.log(navigation.value);
-
 router.beforeEach((from, to) => {
     showSidenav.value = false;
 });
