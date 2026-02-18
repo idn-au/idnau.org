@@ -2,10 +2,15 @@
 import { ChevronDown, ChevronUp, Sun, Moon, SunMoon, Menu, ExternalLink, ChevronRight } from "lucide-vue-next";
 import { NavigationMenuSub } from "reka-ui";
 import {navigationMenuTriggerStyle} from "~/components/ui/navigation-menu";
+import type {ContentNavigationItem} from "@nuxt/content";
 
 const router = useRouter();
 const route = useRoute();
 const colorMode = useColorMode();
+
+const props = defineProps<{
+	navigation: ContentNavigationItem[];
+}>();
 
 const externalLinks: {title: string; url: string}[] = [
 // 	{
@@ -19,8 +24,6 @@ const externalLinks: {title: string; url: string}[] = [
  ];
 
 const showSidenav = ref(false);
-
-const { data: navigation } = await useAsyncData("navigation", () => queryCollectionNavigation("content", ["description", "websiteURL"]));
 
 router.beforeEach((from, to) => {
     showSidenav.value = false;
@@ -53,7 +56,7 @@ router.beforeEach((from, to) => {
                     <div></div>
                 </SheetHeader>
                 <nav class="nav-sidebar flex flex-col gap-2">
-                    <template v-for="link of navigation">
+                    <template v-for="link of props.navigation">
                         <Collapsible v-if="link.children && link.children.length > 1" :defaultOpen="route.path.startsWith(link.path)" v-slot="{open}">
                             <CollapsibleTrigger :class="`rounded-none border-l-2 border-l-transparent ${route.path.startsWith(link.path) ? 'border-l-isu-red' : ''}`" asChild>
                                 <Button variant="ghost" class="w-full">
@@ -131,7 +134,7 @@ router.beforeEach((from, to) => {
 <!--        </nav>-->
 	    <NavigationMenu>
 		    <NavigationMenuList>
-			    <NavigationMenuItem v-for="link of navigation">
+			    <NavigationMenuItem v-for="link of props.navigation">
 				    <template v-if="!!link.children && link.children.length > 1">
 					    <NavigationMenuTrigger :class="route.path.startsWith(link.path) ? 'bg-accent/50 text-accent-foreground' : ''">{{link.title}}</NavigationMenuTrigger>
 					    <NavigationMenuContent>

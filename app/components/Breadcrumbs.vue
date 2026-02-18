@@ -1,26 +1,31 @@
 <script setup lang="ts">
 import { findPageBreadcrumb } from '@nuxt/content/utils'
+import type {ContentNavigationItem} from "@nuxt/content";
 
 const route = useRoute();
 
-const { data: navigation } = await useAsyncData("navigation", () => queryCollectionNavigation("content", ["description"]));
+const props = defineProps<{
+	navigation: ContentNavigationItem[];
+}>();
 
-const breadcrumbs = findPageBreadcrumb(navigation.value, route.path);
+const breadcrumbs = computed(() => findPageBreadcrumb(props.navigation, route.path, {indexAsChild: true}));
+
+const currentPage = computed(() => breadcrumbs.value[breadcrumbs.value.length - 1]?.children?.find(c => c.path === route.path));
 </script>
 
-<template v-if="route.path !== '/' && breadcrumbs.length > 0">
-    <Breadcrumb>
+<template>
+    <Breadcrumb v-if="route.path !== '/' && breadcrumbs.length > 0">
         <BreadcrumbList class="p-0 list-none">
-            <template v-if="route.path !== navigation?.[0].path">
+            <template v-if="route.path !== props.navigation?.[0].path">
                 <BreadcrumbItem>
                     <BreadcrumbLink as-child>
-                        <NuxtLink :to="navigation?.[0].path">{{ navigation?.[0].title }}</NuxtLink>
+                        <NuxtLink :to="props.navigation?.[0].path">{{ props.navigation?.[0].title }}</NuxtLink>
                     </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
             </template>
             <template v-for="crumb in breadcrumbs">
-                <template v-if="crumb.path !== navigation?.[0].path">
+                <template v-if="crumb.path !== currentPage?.path">
                     <BreadcrumbItem>
                         <BreadcrumbPage v-if="crumb.page === false">{{ crumb.title }}</BreadcrumbPage>
                         <BreadcrumbLink v-else as-child>
@@ -33,7 +38,7 @@ const breadcrumbs = findPageBreadcrumb(navigation.value, route.path);
             <BreadcrumbItem>
                 <BreadcrumbPage>
                     <!-- find the current page in breadcrumbs to display -->
-                    {{ breadcrumbs[breadcrumbs.length - 1]?.children?.find(c => c.path === route.path)?.title }}
+                    {{ currentPage?.title }}
                 </BreadcrumbPage>
             </BreadcrumbItem>
         </BreadcrumbList>
