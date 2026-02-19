@@ -23,6 +23,87 @@ const externalLinks: {title: string; url: string}[] = [
     }
  ];
 
+ const externalLinksResourcesTools: {title: string; path: string, stem: string, children?: any[]}[] = [
+ 	{
+        "title": "Resources",
+        "path": "/resources",
+        "stem": "3.resources/1.index",
+        "children": [
+            {
+                "title": "IDN Catalogue Profile",
+                "path": "/resources/idn-catalogue-profile",
+                "stem": "3.resources/2.idn-catalogue-profile",
+                "description": "",
+                "websiteURL": "https://idn-au.github.io/idn-catalogue-profile/profile.html"
+            },
+            {
+                "title": "IDN Metadata Profile",
+                "path": "/resources/idn-metadata-profile",
+                "stem": "3.resources/3.idn-metadata-profile",
+                "description": "",
+                "websiteURL": "https://idn-au.github.io/idn-catalogue-profile/resources/guidance.html"
+            }
+        ]
+    },
+    {
+        "title": "Tools",
+        "path": "/tools",
+        "stem": "4.tools/1.index",
+        "children": [
+            {
+                "title": "Map Search",
+                "path": "/tools/map-search",
+                "stem": "4.tools/2.map-search",
+                "description": "",
+                "websiteURL": null
+            },
+            {
+                "title": "Agent Database",
+                "path": "/tools/agent-database",
+                "stem": "4.tools/3.agent-database",
+                "description": "",
+                "websiteURL": "https://agentsdb.idnau.org"
+            },
+            {
+                "title": "Metadata Entry Tools",
+                "path": "/tools/metadata-entry-tool",
+                "stem": "4.tools/4.metadata-entry-tool",
+                "description": "",
+                "websiteURL": "https://metadata.idnau.org/"
+            }
+        ]
+    }
+ ];
+
+function mergeExternalLinks(nav: any[], external: any[]) {
+  const map = new Map(nav.map(i => [i.path, i]));
+
+  for (const ext of external) {
+    const parent = map.get(ext.path);
+
+    if (!parent) {
+      nav.push(ext);
+      continue;
+    }
+
+    const existing = new Set(parent.children?.map((c: any) => c.path));
+
+    parent.children = [
+      ...(parent.children ?? []),
+      ...(ext.children ?? []).filter((c: any) => !existing.has(c.path))
+    ].sort((a, b) => a.stem.localeCompare(b.stem, undefined, { numeric: true }));
+  }
+
+  return nav.sort((a, b) =>
+    a.stem.localeCompare(b.stem, undefined, { numeric: true })
+  );
+}
+
+const navigation = mergeExternalLinks(
+  [...props.navigation], 
+  externalLinksResourcesTools
+);
+
 const showSidenav = ref(false);
 
 router.beforeEach((from, to) => {
@@ -56,7 +137,7 @@ router.beforeEach((from, to) => {
                     <div></div>
                 </SheetHeader>
                 <nav class="nav-sidebar flex flex-col gap-2">
-                    <template v-for="link of props.navigation">
+                    <template v-for="link of navigation">
                         <Collapsible v-if="link.children && link.children.length > 1" :defaultOpen="route.path.startsWith(link.path)" v-slot="{open}">
                             <CollapsibleTrigger :class="`rounded-none border-l-2 border-l-transparent ${route.path.startsWith(link.path) ? 'border-l-isu-red' : ''}`" asChild>
                                 <Button variant="ghost" class="w-full">
@@ -134,7 +215,7 @@ router.beforeEach((from, to) => {
 <!--        </nav>-->
 	    <NavigationMenu>
 		    <NavigationMenuList>
-			    <NavigationMenuItem v-for="link of props.navigation">
+			    <NavigationMenuItem v-for="link of navigation">
 				    <template v-if="!!link.children && link.children.length > 1">
 					    <NavigationMenuTrigger :class="route.path.startsWith(link.path) ? 'bg-accent/50 text-accent-foreground' : ''">{{link.title}}</NavigationMenuTrigger>
 					    <NavigationMenuContent>
