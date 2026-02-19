@@ -19,7 +19,7 @@ const externalLinks: {title: string; url: string}[] = [
 // 	}
     {
         title: "The National Indigenous Data Catalogue",
-        url: "https://data.idnau.org/catalogs"
+        url: "https://data.idnau.org/"
     }
  ];
 
@@ -48,9 +48,9 @@ router.beforeEach((from, to) => {
                     </SheetClose>
                     <NuxtLink to="/">
                         <div class="flex flex-row gap-2 items-center justify-center">
-                            <NuxtImg v-show="colorMode.unknown || colorMode.value === 'light'" src="/apple-touch-icon.png" alt="IDN Logo" class="h-[40px]" />
-                            <NuxtImg v-show="!colorMode.unknown && colorMode.value === 'dark'" src="/apple-touch-icon.png" alt="IDN Logo" class="h-[40px]" />
-                            <span class="text-xl">IDN</span>
+                            <NuxtImg v-show="colorMode.unknown || colorMode.value === 'light'" src="/apple-touch-icon.png" alt="The Indigenous Data Commons Logo" class="h-[40px]" />
+                            <NuxtImg v-show="!colorMode.unknown && colorMode.value === 'dark'" src="/apple-touch-icon.png" alt="The Indigenous Data Commons Logo" class="h-[40px]" />
+                            <span class="text-xl">The Indigenous Data Commons</span>
                         </div>
                     </NuxtLink>
                     <div></div>
@@ -60,7 +60,7 @@ router.beforeEach((from, to) => {
                         <Collapsible v-if="link.children && link.children.length > 1" :defaultOpen="route.path.startsWith(link.path)" v-slot="{open}">
                             <CollapsibleTrigger :class="`rounded-none border-l-2 border-l-transparent ${route.path.startsWith(link.path) ? 'border-l-isu-red' : ''}`" asChild>
                                 <Button variant="ghost" class="w-full">
-                                    {{ link.children.find(c => c.path === link.path)?.title || link.title }}
+                                    {{ link.children.find(c => c.path === link.path)?.title || link.title }} 
                                     <ChevronUp v-if="open" class="size-4" />
                                     <ChevronDown v-else class="size-4" />
                                 </Button>
@@ -75,7 +75,7 @@ router.beforeEach((from, to) => {
                                     <Separator />
                                 </template>
                                 <Button v-for="child in link.children" variant="ghost" :class="`rounded-none border-l-2 border-l-transparent ${route.path.startsWith(child.path) ? 'border-l-isu-red' : ''}`" asChild>
-                                    <NuxtLink v-if="child.path !== link.path" :to="child.path">{{ child.title }}</NuxtLink>
+                                    <NuxtLink v-if="child.path !== link.path" :to="child.path">{{ child.title }} </NuxtLink>
                                 </Button>
                             </CollapsibleContent>
                         </Collapsible>
@@ -91,10 +91,10 @@ router.beforeEach((from, to) => {
         </Sheet>
         <NuxtLink to="/">
             <div class="flex flex-row gap-2 items-center justify-center">
-                <NuxtImg v-show="colorMode.unknown || colorMode.value === 'light'" src="/apple-touch-icon.png" alt="IDN Logo" class="h-[40px] md:h-[54px]" />
-                <NuxtImg v-show="!colorMode.unknown && colorMode.value === 'dark'" src="/apple-touch-icon.png" alt="IDN Logo" class="h-[40px] md:h-[54px]" />
-                <span class="hidden md:inline text-xl">The Indigenous Data Commons</span>
-                <span class="md:hidden text-xl">IDN</span>
+                <NuxtImg v-show="colorMode.unknown || colorMode.value === 'light'" src="/apple-touch-icon.png" alt="The Indigenous Data Commons Logo" class="h-[40px] md:h-[54px]" />
+                <NuxtImg v-show="!colorMode.unknown && colorMode.value === 'dark'" src="/apple-touch-icon.png" alt="The Indigenous Data Commons Logo" class="h-[40px] md:h-[54px]" />
+                <!-- <span class="hidden md:inline text-xl">The Indigenous Data Commons</span> -->
+                <!-- <span class="md:hidden text-xl">IDN</span> -->
             </div>
         </NuxtLink>
         <!-- desktop nav -->
@@ -139,24 +139,15 @@ router.beforeEach((from, to) => {
 					    <NavigationMenuTrigger :class="route.path.startsWith(link.path) ? 'bg-accent/50 text-accent-foreground' : ''">{{link.title}}</NavigationMenuTrigger>
 					    <NavigationMenuContent>
 						    <ul class="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-							    <li v-for="child in link.children" >
-<!--								    <HoverCard v-if="!!child.children && child.children.length > 1" :openDelay="300">-->
-<!--									    <HoverCardTrigger asChild tabindex="0">-->
-<!--										    <NavigationMenuLink class="flex flex-row items-center justify-between cursor-default">{{child.title}} <ChevronRight class="size-4" /></NavigationMenuLink>-->
-<!--									    </HoverCardTrigger>-->
-<!--									    <HoverCardContent side="right" align="start">-->
-<!--										    <NavigationMenuLink v-for="grandchild in child.children" asChild>-->
-<!--											    <NuxtLink :to="grandchild.path">-->
-<!--												    <div class="text-sm leading-none font-medium">-->
-<!--													    {{ grandchild.title }}-->
-<!--												    </div>-->
-<!--												    <p v-if="child.description" class="text-muted-foreground line-clamp-2 text-sm leading-snug">-->
-<!--													    {{ grandchild.description }}-->
-<!--												    </p>-->
-<!--											    </NuxtLink>-->
-<!--										    </NavigationMenuLink>-->
-<!--									    </HoverCardContent>-->
-<!--								    </HoverCard>-->
+                                <li v-if="link.children?.find(c => c.path === link.path)" class="md:col-span-2">
+                                    <NavigationMenuLink asChild :active="route.path === link.path">
+                                        <NuxtLink :to="link.path" class="font-bold">
+                                            {{ link.children.find(c => c.path === link.path)?.title }} Home
+                                        </NuxtLink>
+                                    </NavigationMenuLink>
+                                </li>
+                                <li v-if="link.children?.find(c => c.path === link.path)" class="md:col-span-2 border-t my-1"> </li>
+							    <li v-for="child in link.children.filter(c => c.path !== link.path)" >
 								    <div v-if="!!child.children && child.children.length > 1">
 									    <div class="text-sm">{{child.title}}</div>
 									    <div class="ml-4">
@@ -172,25 +163,6 @@ router.beforeEach((from, to) => {
 										    </NavigationMenuLink>
 									    </div>
 								    </div>
-<!--								    <NavigationMenuSub v-if="!!child.children && child.children.length > 1">-->
-<!--									    <NavigationMenuList>-->
-<!--										    <NavigationMenuItem>-->
-<!--											    <NavigationMenuTrigger>{{child.title}}</NavigationMenuTrigger>-->
-<!--											    <NavigationMenuContent>-->
-<!--												    <NavigationMenuLink v-for="grandchild in child.children" asChild>-->
-<!--													    <NuxtLink :to="grandchild.path">-->
-<!--	                                                        <div class="text-sm leading-none font-medium">-->
-<!--	                                                            {{ grandchild.title }}-->
-<!--	                                                        </div>-->
-<!--	                                                        <p v-if="child.description" class="text-muted-foreground line-clamp-2 text-sm leading-snug">-->
-<!--	                                                            {{ grandchild.description }}-->
-<!--	                                                        </p>-->
-<!--	                                                    </NuxtLink>-->
-<!--												    </NavigationMenuLink>-->
-<!--											    </NavigationMenuContent>-->
-<!--										    </NavigationMenuItem>-->
-<!--									    </NavigationMenuList>-->
-<!--								    </NavigationMenuSub>-->
 								    <NavigationMenuLink v-else asChild :active="route.path.startsWith(child.path)">
 									    <NuxtLink :to="child.websiteURL || child.path">
 										    <div class="text-sm leading-none font-medium">
