@@ -223,7 +223,7 @@ router.beforeEach((from, to) => {
                                 <li v-if="link.children?.find(c => c.path === link.path)" class="md:col-span-2">
                                     <NavigationMenuLink asChild :active="route.path === link.path">
                                         <NuxtLink :to="link.path" class="font-bold">
-                                            {{ link.children.find(c => c.path === link.path)?.title }} Home
+                                            {{ link.children.find(c => c.path === link.path)?.title }}
                                         </NuxtLink>
                                     </NavigationMenuLink>
                                 </li>
@@ -249,9 +249,9 @@ router.beforeEach((from, to) => {
 										    <div class="text-sm leading-none font-medium">
 											    {{ child.title }}
 										    </div>
-										    <p v-if="child.description" class="text-muted-foreground line-clamp-2 text-sm leading-snug">
+										    <!-- <p v-if="child.description" class="text-muted-foreground line-clamp-2 text-sm leading-snug">
 											    {{ child.description }}
-										    </p>
+										    </p> -->
 									    </NuxtLink>
 								    </NavigationMenuLink>
 							    </li>
@@ -270,7 +270,7 @@ router.beforeEach((from, to) => {
 		    </NavigationMenuList>
 	    </NavigationMenu>
         <div class="flex flex-row justify-end items-center gap-2">
-            <SearchCommand />
+            <!-- <SearchCommand /> -->
 	        <Button variant="ghost" size="icon" @click="!colorMode.unknown ? colorMode.value === 'dark' ? colorMode.preference = 'light' : colorMode.preference = 'dark' : undefined">
 		        <SunMoon v-show="colorMode.unknown" />
 		        <Sun v-show="colorMode.value === 'dark'" class="w-4 h-4" />
