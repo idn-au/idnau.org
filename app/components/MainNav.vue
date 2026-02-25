@@ -2,21 +2,109 @@
 import { ChevronDown, ChevronUp, Sun, Moon, SunMoon, Menu, ExternalLink, ChevronRight } from "lucide-vue-next";
 import { NavigationMenuSub } from "reka-ui";
 import {navigationMenuTriggerStyle} from "~/components/ui/navigation-menu";
+import type {ContentNavigationItem} from "@nuxt/content";
 
 const router = useRouter();
 const route = useRoute();
 const colorMode = useColorMode();
 
+const props = defineProps<{
+	navigation: ContentNavigationItem[];
+}>();
+
 const externalLinks: {title: string; url: string}[] = [
-	{
-		title: "IDN",
-		url: "https://mspgh.unimelb.edu.au/centres-institutes/onemda/research-group/indigenous-studies-unit/indigenous-data-network",
-	}
-];
+// 	{
+// 		title: "IDN",
+// 		url: "https://mspgh.unimelb.edu.au/centres-institutes/onemda/research-group/indigenous-studies-unit/indigenous-data-network",
+// 	}
+    {
+        title: "The National Indigenous Data Catalogue",
+        url: "https://data.idnau.org/"
+    }
+ ];
+
+ const externalLinksResourcesTools: {title: string; path: string, stem: string, children?: any[]}[] = [
+ 	{
+        "title": "Resources",
+        "path": "/resources",
+        "stem": "3.resources/1.index",
+        "children": [
+            {
+                "title": "IDN Catalogue Profile",
+                "path": "/resources/idn-catalogue-profile",
+                "stem": "3.resources/2.idn-catalogue-profile",
+                "description": "",
+                "websiteURL": "https://idn-au.github.io/idn-catalogue-profile/profile.html"
+            },
+            {
+                "title": "IDN Metadata Profile",
+                "path": "/resources/idn-metadata-profile",
+                "stem": "3.resources/3.idn-metadata-profile",
+                "description": "",
+                "websiteURL": "https://idn-au.github.io/idn-catalogue-profile/resources/guidance.html"
+            }
+        ]
+    },
+    {
+        "title": "Tools",
+        "path": "/tools",
+        "stem": "4.tools/1.index",
+        "children": [
+            {
+                "title": "Map Search",
+                "path": "/tools/map-search",
+                "stem": "4.tools/2.map-search",
+                "description": "",
+                "websiteURL": null
+            },
+            {
+                "title": "Agent Database",
+                "path": "/tools/agent-database",
+                "stem": "4.tools/3.agent-database",
+                "description": "",
+                "websiteURL": "https://agentsdb.idnau.org"
+            },
+            {
+                "title": "Metadata Entry Tools",
+                "path": "/tools/metadata-entry-tool",
+                "stem": "4.tools/4.metadata-entry-tool",
+                "description": "",
+                "websiteURL": "https://metadata.idnau.org/"
+            }
+        ]
+    }
+ ];
+
+function mergeExternalLinks(nav: any[], external: any[]) {
+  const map = new Map(nav.map(i => [i.path, i]));
+
+  for (const ext of external) {
+    const parent = map.get(ext.path);
+
+    if (!parent) {
+      nav.push(ext);
+      continue;
+    }
+
+    const existing = new Set(parent.children?.map((c: any) => c.path));
+
+    parent.children = [
+      ...(parent.children ?? []),
+      ...(ext.children ?? []).filter((c: any) => !existing.has(c.path))
+    ].sort((a, b) => a.stem.localeCompare(b.stem, undefined, { numeric: true }));
+  }
+
+  return nav.sort((a, b) =>
+    a.stem.localeCompare(b.stem, undefined, { numeric: true })
+  );
+}
+
+const navigation = mergeExternalLinks(
+  [...props.navigation], 
+  externalLinksResourcesTools
+);
 
 const showSidenav = ref(false);
-
-const { data: navigation } = await useAsyncData("navigation", () => queryCollectionNavigation("content", ["description"]));
 
 router.beforeEach((from, to) => {
     showSidenav.value = false;
@@ -41,9 +129,9 @@ router.beforeEach((from, to) => {
                     </SheetClose>
                     <NuxtLink to="/">
                         <div class="flex flex-row gap-2 items-center justify-center">
-                            <NuxtImg v-show="colorMode.unknown || colorMode.value === 'light'" src="/apple-touch-icon.png" alt="IDN Logo" class="h-[40px]" />
-                            <NuxtImg v-show="!colorMode.unknown && colorMode.value === 'dark'" src="/apple-touch-icon.png" alt="IDN Logo" class="h-[40px]" />
-                            <span class="text-xl">IDN</span>
+                            <NuxtImg v-show="colorMode.unknown || colorMode.value === 'light'" src="/apple-touch-icon.png" alt="The Indigenous Data Commons Logo" class="h-[40px]" />
+                            <NuxtImg v-show="!colorMode.unknown && colorMode.value === 'dark'" src="/apple-touch-icon.png" alt="The Indigenous Data Commons Logo" class="h-[40px]" />
+                            <span class="text-xl">The Indigenous Data Commons</span>
                         </div>
                     </NuxtLink>
                     <div></div>
@@ -53,7 +141,7 @@ router.beforeEach((from, to) => {
                         <Collapsible v-if="link.children && link.children.length > 1" :defaultOpen="route.path.startsWith(link.path)" v-slot="{open}">
                             <CollapsibleTrigger :class="`rounded-none border-l-2 border-l-transparent ${route.path.startsWith(link.path) ? 'border-l-isu-red' : ''}`" asChild>
                                 <Button variant="ghost" class="w-full">
-                                    {{ link.children.find(c => c.path === link.path)?.title || link.title }}
+                                    {{ link.children.find(c => c.path === link.path)?.title || link.title }} 
                                     <ChevronUp v-if="open" class="size-4" />
                                     <ChevronDown v-else class="size-4" />
                                 </Button>
@@ -68,7 +156,7 @@ router.beforeEach((from, to) => {
                                     <Separator />
                                 </template>
                                 <Button v-for="child in link.children" variant="ghost" :class="`rounded-none border-l-2 border-l-transparent ${route.path.startsWith(child.path) ? 'border-l-isu-red' : ''}`" asChild>
-                                    <NuxtLink v-if="child.path !== link.path" :to="child.path">{{ child.title }}</NuxtLink>
+                                    <NuxtLink v-if="child.path !== link.path" :to="child.path">{{ child.title }} </NuxtLink>
                                 </Button>
                             </CollapsibleContent>
                         </Collapsible>
@@ -84,10 +172,10 @@ router.beforeEach((from, to) => {
         </Sheet>
         <NuxtLink to="/">
             <div class="flex flex-row gap-2 items-center justify-center">
-                <NuxtImg v-show="colorMode.unknown || colorMode.value === 'light'" src="/apple-touch-icon.png" alt="IDN Logo" class="h-[40px] md:h-[54px]" />
-                <NuxtImg v-show="!colorMode.unknown && colorMode.value === 'dark'" src="/apple-touch-icon.png" alt="IDN Logo" class="h-[40px] md:h-[54px]" />
-                <span class="hidden md:inline text-xl">The Indigenous Data Commons</span>
-                <span class="md:hidden text-xl">IDN</span>
+                <NuxtImg v-show="colorMode.unknown || colorMode.value === 'light'" src="/apple-touch-icon.png" alt="The Indigenous Data Commons Logo" class="h-[40px] md:h-[54px]" />
+                <NuxtImg v-show="!colorMode.unknown && colorMode.value === 'dark'" src="/apple-touch-icon.png" alt="The Indigenous Data Commons Logo" class="h-[40px] md:h-[54px]" />
+                <!-- <span class="hidden md:inline text-xl">The Indigenous Data Commons</span> -->
+                <!-- <span class="md:hidden text-xl">IDN</span> -->
             </div>
         </NuxtLink>
         <!-- desktop nav -->
@@ -132,24 +220,15 @@ router.beforeEach((from, to) => {
 					    <NavigationMenuTrigger :class="route.path.startsWith(link.path) ? 'bg-accent/50 text-accent-foreground' : ''">{{link.title}}</NavigationMenuTrigger>
 					    <NavigationMenuContent>
 						    <ul class="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-							    <li v-for="child in link.children" >
-<!--								    <HoverCard v-if="!!child.children && child.children.length > 1" :openDelay="300">-->
-<!--									    <HoverCardTrigger asChild tabindex="0">-->
-<!--										    <NavigationMenuLink class="flex flex-row items-center justify-between cursor-default">{{child.title}} <ChevronRight class="size-4" /></NavigationMenuLink>-->
-<!--									    </HoverCardTrigger>-->
-<!--									    <HoverCardContent side="right" align="start">-->
-<!--										    <NavigationMenuLink v-for="grandchild in child.children" asChild>-->
-<!--											    <NuxtLink :to="grandchild.path">-->
-<!--												    <div class="text-sm leading-none font-medium">-->
-<!--													    {{ grandchild.title }}-->
-<!--												    </div>-->
-<!--												    <p v-if="child.description" class="text-muted-foreground line-clamp-2 text-sm leading-snug">-->
-<!--													    {{ grandchild.description }}-->
-<!--												    </p>-->
-<!--											    </NuxtLink>-->
-<!--										    </NavigationMenuLink>-->
-<!--									    </HoverCardContent>-->
-<!--								    </HoverCard>-->
+                                <li v-if="link.children?.find(c => c.path === link.path)" class="md:col-span-2">
+                                    <NavigationMenuLink asChild :active="route.path === link.path">
+                                        <NuxtLink :to="link.path" class="font-bold">
+                                            {{ link.children.find(c => c.path === link.path)?.title }}
+                                        </NuxtLink>
+                                    </NavigationMenuLink>
+                                </li>
+                                <li v-if="link.children?.find(c => c.path === link.path)" class="md:col-span-2 border-t my-1"> </li>
+							    <li v-for="child in link.children.filter(c => c.path !== link.path)" >
 								    <div v-if="!!child.children && child.children.length > 1">
 									    <div class="text-sm">{{child.title}}</div>
 									    <div class="ml-4">
@@ -165,33 +244,14 @@ router.beforeEach((from, to) => {
 										    </NavigationMenuLink>
 									    </div>
 								    </div>
-<!--								    <NavigationMenuSub v-if="!!child.children && child.children.length > 1">-->
-<!--									    <NavigationMenuList>-->
-<!--										    <NavigationMenuItem>-->
-<!--											    <NavigationMenuTrigger>{{child.title}}</NavigationMenuTrigger>-->
-<!--											    <NavigationMenuContent>-->
-<!--												    <NavigationMenuLink v-for="grandchild in child.children" asChild>-->
-<!--													    <NuxtLink :to="grandchild.path">-->
-<!--	                                                        <div class="text-sm leading-none font-medium">-->
-<!--	                                                            {{ grandchild.title }}-->
-<!--	                                                        </div>-->
-<!--	                                                        <p v-if="child.description" class="text-muted-foreground line-clamp-2 text-sm leading-snug">-->
-<!--	                                                            {{ grandchild.description }}-->
-<!--	                                                        </p>-->
-<!--	                                                    </NuxtLink>-->
-<!--												    </NavigationMenuLink>-->
-<!--											    </NavigationMenuContent>-->
-<!--										    </NavigationMenuItem>-->
-<!--									    </NavigationMenuList>-->
-<!--								    </NavigationMenuSub>-->
 								    <NavigationMenuLink v-else asChild :active="route.path.startsWith(child.path)">
-									    <NuxtLink :to="child.path">
+									    <NuxtLink :to="child.websiteURL || child.path">
 										    <div class="text-sm leading-none font-medium">
 											    {{ child.title }}
 										    </div>
-										    <p v-if="child.description" class="text-muted-foreground line-clamp-2 text-sm leading-snug">
+										    <!-- <p v-if="child.description" class="text-muted-foreground line-clamp-2 text-sm leading-snug">
 											    {{ child.description }}
-										    </p>
+										    </p> -->
 									    </NuxtLink>
 								    </NavigationMenuLink>
 							    </li>
@@ -210,7 +270,7 @@ router.beforeEach((from, to) => {
 		    </NavigationMenuList>
 	    </NavigationMenu>
         <div class="flex flex-row justify-end items-center gap-2">
-            <SearchCommand />
+            <!-- <SearchCommand /> -->
 	        <Button variant="ghost" size="icon" @click="!colorMode.unknown ? colorMode.value === 'dark' ? colorMode.preference = 'light' : colorMode.preference = 'dark' : undefined">
 		        <SunMoon v-show="colorMode.unknown" />
 		        <Sun v-show="colorMode.value === 'dark'" class="w-4 h-4" />

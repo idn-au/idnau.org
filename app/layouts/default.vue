@@ -1,12 +1,19 @@
 <script setup lang="ts">
+import type {ContentNavigationItem} from "@nuxt/content";
+
 const route = useRoute();
+
+const { data: navigation } = await useAsyncData("navigation", () => queryCollectionNavigation("content", ["description", "websiteURL"]), {
+	default: () => [] as ContentNavigationItem[],
+});
 </script>
 
 <template>
 	<div class="flex flex-col min-h-dvh">
-		<MainNav />
+		<MainNav :navigation="navigation" />
 		<main :class="`grow ${route.path === '/resources/map' ? '' : 'mb-12'}`">
 			<div class="mx-auto max-w-[1200px] px-5 prose dark:prose-invert">
+				<Breadcrumbs :navigation="navigation" />
 				<slot />
 			</div>
 			<SearchPage v-if="route.path === '/resources/map'" />
@@ -38,3 +45,4 @@ const route = useRoute();
 		</footer>
 	</div>
 </template>
+``
