@@ -25,6 +25,11 @@ const externalLinks: {title: string; url: string}[] = [
 
  const externalLinksResourcesTools: {title: string; path: string, stem: string, children?: any[]}[] = [
     {
+        "title": "Home",
+        "path": "/",
+        "stem": "1.home/1.index"
+    },
+    {
         "title": "About",
         "path": "/about",
         "stem": "2.about/1.index",
