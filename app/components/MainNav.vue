@@ -24,6 +24,20 @@ const externalLinks: {title: string; url: string}[] = [
  ];
 
  const externalLinksResourcesTools: {title: string; path: string, stem: string, children?: any[]}[] = [
+    {
+        "title": "About",
+        "path": "/about",
+        "stem": "2.about/1.index",
+        "children": [
+            {
+                "title": "IDN",
+                "path": "/about/idn",
+                "stem": "2.about/7.idn",
+                "description": "",
+                "websiteURL": "https://mspgh.unimelb.edu.au/centres-institutes/onemda/research-group/indigenous-studies-unit/indigenous-data-network"
+            }
+        ]
+    },
  	{
         "title": "Resources",
         "path": "/resources",
@@ -70,6 +84,13 @@ const externalLinks: {title: string; url: string}[] = [
                 "stem": "4.tools/4.metadata-entry-tool",
                 "description": "",
                 "websiteURL": "https://metadata.idnau.org/"
+            },
+            {
+                "title": "Vocabularies",
+                "path": "/tools/vocabularies",
+                "stem": "4.tools/5.vocabularies",
+                "description": "",
+                "websiteURL": "https://data.idnau.org/catalogs/pid:vocabs/collections"
             }
         ]
     }
