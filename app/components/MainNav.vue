@@ -157,7 +157,7 @@ router.beforeEach((from, to) => {
                         <div class="flex flex-row gap-2 items-center justify-center">
                             <NuxtImg v-show="colorMode.unknown || colorMode.value === 'light'" src="/apple-touch-icon.png" alt="The Indigenous Data Commons Logo" class="h-[40px]" />
                             <NuxtImg v-show="!colorMode.unknown && colorMode.value === 'dark'" src="/apple-touch-icon.png" alt="The Indigenous Data Commons Logo" class="h-[40px]" />
-                            <span class="text-xl">The Indigenous Data Commons</span>
+                            <!-- <span class="text-xl">The Indigenous Data Commons</span> -->
                         </div>
                     </NuxtLink>
                     <div></div>
@@ -176,7 +176,7 @@ router.beforeEach((from, to) => {
                                 <template v-if="link.children.find(c => c.path === link.path)">
                                     <Button variant="ghost" :class="`rounded-none border-l-2 border-l-transparent ${route.path === link.path ? 'border-l-isu-red' : ''}`" asChild>
                                         <NuxtLink :to="link.path" class="!font-bold">
-                                            {{ link.children.find(c => c.path === link.path)?.title }} Home
+                                            {{ link.children.find(c => c.path === link.path)?.title }} 
                                         </NuxtLink>
                                     </Button>
                                     <Separator />
