@@ -15,28 +15,15 @@ const { data: navigation } = await useAsyncData(
 <template>
 	<div class="flex flex-col min-h-dvh">
 		<MainNav :navigation="navigation" class="relative z-10" />
-			<template v-if="route.path === '/'">
-				<Hero img="/img/Milky_Way_IDN_Logo_75percent-fpng.webp" class="-mt-17 relative z-0 bg-cover bg-center min-h-[400px]">
-					<h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-						The Indigenous Data Commons
-					</h1>
-					<p class="text-lg sm:text-xl">
-						A national initiative to improve Indigenous research capabilities
-						through better access to data, tools and training.
-					</p>
-				</Hero>
-			</template>
+			<main :class="`grow ${(route.path === '/resources/map') || (route.path === '/') ? '' : 'mb-12'}`">
+  
+				<div :class="route.path === '/' ? '' : 'mx-auto max-w-[1200px] px-5 prose dark:prose-invert'">
+					<Breadcrumbs v-if="route.path !== '/'" :navigation="navigation" />
+					<slot />
+				</div>
 
-			<template v-else>
-				<main :class="`grow ${route.path === '/resources/map' ? '' : 'mb-12'}`">
-					<div class="mx-auto max-w-[1200px] px-5 prose dark:prose-invert">
-						<Breadcrumbs :navigation="navigation" />
-						<slot />
-						</div>
-
-						<SearchPage v-if="route.path === '/resources/map'" />
-				</main>
-			</template>
+				<SearchPage v-if="route.path === '/resources/map'" />
+			</main>
 
 		<footer class="bg-secondary">
 			<div class="mx-auto max-w-[1200px] py-12 px-5 text-center flex flex-col items-center gap-6">
