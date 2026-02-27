@@ -12,7 +12,7 @@ const backgroundImage = computed(() => {
 </script>
 
 <template>
-    <div class="hero flex bg-cover bg-center h-screen w-full" :style="{ backgroundImage }">
+    <div class="hero flex bg-cover bg-center h-[800px] w-full" :style="{ backgroundImage }">
         <div class="m-auto w-full sm:w-2/3 px-6 py-4 bg-secondary/60 backdrop-blur-sm rounded-lg text-foreground text-center text-sm sm:text-base prose dark:prose-invert">
             <slot />
         </div>
