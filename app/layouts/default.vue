@@ -15,7 +15,7 @@ const { data: navigation } = await useAsyncData(
 <template>
 	<div class="flex flex-col min-h-dvh">
 		<MainNav :navigation="navigation" class="relative z-10" />
-			<main :class="`grow ${(route.path === '/resources/map') || (route.path === '/') ? '' : 'mb-12'}`">
+			<main :class="`${(route.path === '/resources/map') || (route.path === '/') ? '' : 'grow mb-12'}`">
   
 				<div :class="route.path === '/' ? '' : 'mx-auto max-w-[1200px] px-5 prose dark:prose-invert'">
 					<Breadcrumbs v-if="route.path !== '/'" :navigation="navigation" />
