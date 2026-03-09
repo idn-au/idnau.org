@@ -137,7 +137,7 @@ router.beforeEach((from, to) => {
                     <Menu class="size-8" />
                 </Button>
             </SheetTrigger>
-            <SheetContent side="left" class="p-2" hideClose>
+            <SheetContent side="left" class="p-2  w-84" hideClose>
                 <SheetHeader class="grid grid-cols-3 gap-2 mb-4">
                     <SheetClose asChild>
                         <Button variant="ghost" size="icon">
@@ -148,7 +148,7 @@ router.beforeEach((from, to) => {
                         <div class="flex flex-col gap-3 items-center justify-center">                            
                             <NuxtImg v-show="colorMode.unknown || colorMode.value === 'light'" src="/apple-touch-icon.png" alt="The Indigenous Data Commons Logo" class="h-[40px]" />
                             <NuxtImg v-show="!colorMode.unknown && colorMode.value === 'dark'" src="/apple-touch-icon.png" alt="The Indigenous Data Commons Logo" class="h-[40px]" />
-                            <span class="text-xs whitespace-nowrap">The Indigenous Data Commons</span>
+                            <!-- <span class="text-xs whitespace-nowrap">The Indigenous Data Commons</span> -->
                         </div>
                     </NuxtLink>
                 </SheetHeader>
