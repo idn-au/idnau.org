@@ -12,81 +12,51 @@ const props = defineProps<{
 	navigation: ContentNavigationItem[];
 }>();
 
-const externalLinks: {title: string; url: string}[] = [
-    {
-        title: "The National Indigenous Data Catalogue",
-        url: "https://data.idnau.org/"
-    }
- ];
+// const externalLinks: {title: string; url: string}[] = [
+//     {
+//         title: "The National Indigenous Data Catalogue",
+//         url: "https://data.idnau.org/"
+//     }
+//  ];
 
- const externalLinksResourcesTools: {title: string; path: string, stem: string, children?: any[]}[] = [
+ const externalLinks: {title: string; path: string, stem: string, children?: any[]}[] = [  
     {
-        "title": "About",
-        "path": "/about",
-        "stem": "2.about/1.index",
-        "children": [
-            {
-                "title": "IDN",
-                "path": "/about/idn",
-                "stem": "2.about/7.idn",
-                "description": "",
-                "websiteURL": "https://mspgh.unimelb.edu.au/centres-institutes/onemda/research-group/indigenous-studies-unit/indigenous-data-network"
-            }
-        ]
-    },
- 	{
-        "title": "Resources",
-        "path": "/resources",
-        "stem": "3.resources/1.index",
-        "children": [
-            {
-                "title": "IDN Catalogue Profile",
-                "path": "/resources/idn-catalogue-profile",
-                "stem": "3.resources/2.idn-catalogue-profile",
-                "description": "",
-                "websiteURL": "https://idn-au.github.io/idn-catalogue-profile/profile.html"
-            },
-            {
-                "title": "IDN Metadata Profile",
-                "path": "/resources/idn-metadata-profile",
-                "stem": "3.resources/3.idn-metadata-profile",
-                "description": "",
-                "websiteURL": "https://idn-au.github.io/idn-catalogue-profile/resources/guidance.html"
-            }
-        ]
+        "title": "The National Indigenous Data Catalogue",
+        "path": "https://data.idnau.org/",
+        "stem": "2.national-indigenous-data-catalogue"
     },
     {
         "title": "Tools",
         "path": "/tools",
-        "stem": "4.tools/1.index",
+        "stem": "5.tools/1.index",
         "children": [
             {
-                "title": "Map Search",
-                "path": "/tools/map-search",
-                "stem": "4.tools/2.map-search",
+                "title": "IDN Catalogue Profile",
+                "path": "/resources/idn-catalogue-profile",
+                "stem": "5.tools/2.idn-catalogue-profile",
                 "description": "",
-                "websiteURL": null
+                "websiteURL": "https://idn-au.github.io/idn-catalogue-profile/profile.html"
             },
             {
                 "title": "Agent Database",
                 "path": "/tools/agent-database",
-                "stem": "4.tools/3.agent-database",
+                "stem": "5.tools/3.agent-database",
                 "description": "",
                 "websiteURL": "https://agentsdb.idnau.org"
             },
             {
                 "title": "Metadata Entry Tools",
                 "path": "/tools/metadata-entry-tool",
-                "stem": "4.tools/4.metadata-entry-tool",
+                "stem": "5.tools/4.metadata-entry-tool",
                 "description": "",
                 "websiteURL": "https://metadata.idnau.org/"
             },
             {
-                "title": "Vocabularies",
-                "path": "/tools/vocabularies",
-                "stem": "4.tools/5.vocabularies",
+                "title": "Search portal",
+                "path": "/tools/search-portal",
+                "stem": "5.tools/5.search-portal",
                 "description": "",
-                "websiteURL": "https://data.idnau.org/catalogs/pid:vocabs/collections"
+                "websiteURL": "https://data.idnau.org/search"
             }
         ]
     }
@@ -118,7 +88,7 @@ function mergeExternalLinks(nav: any[], external: any[]) {
 
 const navigation = mergeExternalLinks(
   [...props.navigation], 
-  externalLinksResourcesTools
+  externalLinks
 );
 
 const showSidenav = ref(false);
@@ -180,9 +150,9 @@ router.beforeEach((from, to) => {
                             <NuxtLink :to="link.websiteURL || link.path">{{ link.title }}</NuxtLink>
                         </Button>
                     </template>
-                    <Button v-for="extLink in externalLinks" variant="ghost" asChild>
+                    <!-- <Button v-for="extLink in externalLinks" variant="ghost" asChild>
                         <a :href="extLink.url" target="_blank" rel="noopener noreferrer">{{ extLink.title }} <ExternalLink class="size-4" /></a>
-                    </Button>
+                    </Button> -->
                 </nav>
             </SheetContent>
         </Sheet>
