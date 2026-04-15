@@ -83,6 +83,8 @@ const showSidenav = ref(false);
 router.beforeEach((from, to) => {
     showSidenav.value = false;
 });
+
+const openSection = ref<string | null>(null);
 </script>
 
 <template>
@@ -94,7 +96,7 @@ router.beforeEach((from, to) => {
                     <Menu class="size-8" />
                 </Button>
             </SheetTrigger>
-            <SheetContent side="left" class="p-2  w-84" hideClose>
+            <SheetContent side="left" class="p-2 overflow-y-auto w-84" hideClose>
                 <SheetHeader class="grid grid-cols-3 gap-2 mb-4">
                     <SheetClose asChild>
                         <Button variant="ghost" size="icon">
@@ -111,8 +113,8 @@ router.beforeEach((from, to) => {
                 </SheetHeader>
                 <nav class="nav-sidebar flex flex-col gap-2">
                     <template v-for="link of navigation">
-                        <Collapsible v-if="link.children && link.children.length > 1" :defaultOpen="route.path.startsWith(link.path)" v-slot="{open}">
-                            <CollapsibleTrigger :class="`rounded-none border-l-2 border-l-transparent ${route.path.startsWith(link.path) ? 'border-l-isu-red' : ''}`" asChild>
+                        <Collapsible v-if="link.children && link.children.length > 1" :open="openSection === link.path" @update:open="(val) => openSection = val ? link.path : null" v-slot="{ open }">
+                            <CollapsibleTrigger :class="`rounded-none border-l-2 border-l-transparent ${(link.path === '/' && route.path === '/') || (link.path !== '/' && route.path.startsWith(link.path)) ? 'border-l-isu-red' : ''}`" asChild>
                                 <Button variant="ghost" class="w-full">
                                     {{ link.children.find(c => c.path === link.path)?.title || link.title }} 
                                     <ChevronUp v-if="open" class="size-4" />
@@ -121,7 +123,7 @@ router.beforeEach((from, to) => {
                             </CollapsibleTrigger>
                             <CollapsibleContent class="flex flex-col gap-2 bg-secondary/50 rounded">
                                 <template v-if="link.children.find(c => c.path === link.path)">
-                                    <Button variant="ghost" :class="`rounded-none border-l-2 border-l-transparent ${route.path === link.path ? 'border-l-isu-red' : ''}`" asChild>
+                                    <Button variant="ghost" :class="`rounded-none border-l-2 border-l-transparent ${(link.path === '/' && route.path === '/') || (link.path !== '/' && route.path.startsWith(link.path)) ? 'border-l-isu-red' : ''}`" asChild>
                                         <!-- <NuxtLink :to="link.path" class="!font-bold">
                                             {{ link.children.find(c => c.path === link.path)?.title }} 
                                         </NuxtLink> -->
@@ -133,7 +135,7 @@ router.beforeEach((from, to) => {
                                 </Button>
                             </CollapsibleContent>
                         </Collapsible>
-                        <Button v-else variant="ghost" :class="`rounded-none border-l-2 border-l-transparent ${route.path.startsWith(link.path) ? 'border-l-isu-red' : ''}`" asChild>
+                        <Button v-else variant="ghost" :class="`rounded-none border-l-2 border-l-transparent ${(link.path === '/' && route.path === '/') || (link.path !== '/' && route.path.startsWith(link.path)) ? 'border-l-isu-red' : ''}`" asChild>
                             <NuxtLink :to="link.path">{{ link.title }}</NuxtLink>
                         </Button>
                     </template>
