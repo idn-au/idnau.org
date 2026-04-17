@@ -15,3 +15,12 @@ export function formatDate(date: string): string {
 
     return new Date(date).toLocaleDateString("en-AU", options);
 }
+
+export function filterPartialPaths(items: ContentNavigationItem[]): ContentNavigationItem[] {
+    return items.filter(i => !i.path.split("/").some(s => s.startsWith("_"))).map(i => {
+        return {
+            ...i,
+            children: i.children ? filterPartialPaths(i.children) : undefined,
+        }
+    });
+}

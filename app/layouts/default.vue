@@ -4,23 +4,24 @@ import type { ContentNavigationItem } from "@nuxt/content";
 const route = useRoute();
 
 const { data: navigation } = await useAsyncData(
-  "navigation",
-  () => queryCollectionNavigation("content", ["description", "websiteURL"]),
-  {
-    default: () => [] as ContentNavigationItem[],
-  }
+	"navigation",
+	() => queryCollectionNavigation("content", ["description"]),
+	{
+		default: () => [] as ContentNavigationItem[],
+		transform: filterPartialPaths
+	}
 );
 </script>
 
 <template>
 	<div class="flex flex-col min-h-dvh">
 		<MainNav :navigation="navigation" class="relative z-10" />
-			<main :class="`${route.path === '/' ? '' : 'grow mb-12'}`">
-				<div :class="route.path === '/' ? '' : 'mx-auto max-w-[1200px] px-5 prose dark:prose-invert'">
-					<Breadcrumbs v-if="route.path !== '/'" :navigation="navigation" />
-					<slot />
-				</div>
-			</main>
+		<main :class="`${route.path === '/' ? '' : 'grow mb-12'}`">
+			<div :class="route.path === '/' ? '' : 'mx-auto max-w-[1200px] px-5 prose dark:prose-invert'">
+				<Breadcrumbs v-if="route.path !== '/'" :navigation="navigation" />
+				<slot />
+			</div>
+		</main>
 
 		<footer class="bg-secondary">
 			<div class="mx-auto max-w-[1200px] py-12 px-5 text-center flex flex-col items-center gap-6">

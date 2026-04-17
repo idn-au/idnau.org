@@ -9,6 +9,7 @@ const props = defineProps<HoverCardTriggerProps>()
   <HoverCardTrigger
     data-slot="hover-card-trigger"
     v-bind="props"
+    :openDelay="2000"
   >
     <slot />
   </HoverCardTrigger>
