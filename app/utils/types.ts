@@ -45,3 +45,12 @@ export type EventItem = {
     url?: string;
     img?: string;
 };
+
+export type ScoreType = "fair" | "care";
+
+export type ScoreDef = {
+    key: string;
+    title?: string;
+    description: string;
+    scores?: ScoreDef[];
+};
