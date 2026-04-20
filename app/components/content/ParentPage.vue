@@ -6,9 +6,10 @@ const route = useRoute();
 
 const { data: navigation } = await useAsyncData(
 	"navigation",
-	() => queryCollectionNavigation("content", ["description", "websiteURL"]),
+	() => queryCollectionNavigation("content", ["description"]),
 	{
 		default: () => [] as ContentNavigationItem[],
+		transform: filterPartialPaths
 	}
 );
 

@@ -1,0 +1,4 @@
+---
+title: Indigenous Data Governance (IDG)
+---
+Refers to the principles, practices, and systems by which Indigenous communities exercise control over the collection, ownership, management, and use of data that is considered relevant to them. It recognises the unique rights, interests, and needs of Indigenous peoples regarding their data and aims to ensure that data is collected, stored, and utilised in a manner that respects their self-determination, cultural values, and sovereignty. Indigenous data governance sets the foundations for data democracy at the community level, supporting Indigenous access, generation, and use of data.

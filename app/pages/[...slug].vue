@@ -1,11 +1,14 @@
 <script lang="ts" setup>
-// import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-// import { faFacebookF, faLinkedinIn, faYoutube, faXTwitter } from "@fortawesome/free-brands-svg-icons";
-
 const route = useRoute();
 
 const { data: page } = await useAsyncData(route.path, () => {
-	return queryCollection("content").path(route.path).first();
+	if (route.path.split("/").some(s => s.startsWith("_"))) {
+		return undefined;
+	} else {
+		return queryCollection("content")
+			.path(route.path)
+			.first();
+	}
 });
 
 useHead({
