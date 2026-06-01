@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {Calendar, ChevronLeft, ChevronRight, MapPin} from "lucide-vue-next";
+import {Calendar, ChevronLeft, ChevronRight, MapPin} from "@lucide/vue";
 
 const props = defineProps<{
 	events: EventItem[];

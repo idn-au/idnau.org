@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { findPageBreadcrumb } from '@nuxt/content/utils'
+import { Home } from "@lucide/vue";
+import { findPageBreadcrumb } from "@nuxt/content/utils";
 import type {ContentNavigationItem} from "@nuxt/content";
+import {getNavigation} from "~/utils/helpers";
 
 const route = useRoute();
 
-const props = defineProps<{
-	navigation: ContentNavigationItem[];
-}>();
+const { data: navigation } = await useAsyncData("navigation", () => getNavigation(), {
+	default: () => [] as ContentNavigationItem[],
+});
 
-const breadcrumbs = computed(() => findPageBreadcrumb(props.navigation, route.path, {indexAsChild: true}));
+const breadcrumbs = computed(() => findPageBreadcrumb(navigation.value, route.path, {indexAsChild: true}));
 
 const currentPage = computed(() => breadcrumbs.value[breadcrumbs.value.length - 1]?.children?.find(c => c.path === route.path));
 </script>
@@ -16,10 +18,13 @@ const currentPage = computed(() => breadcrumbs.value[breadcrumbs.value.length - 
 <template>
     <Breadcrumb v-if="route.path !== '/' && breadcrumbs.length > 0">
         <BreadcrumbList class="p-0 list-none">
-            <template v-if="route.path !== props.navigation?.[0].path">
+            <template v-if="route.path !== navigation?.[0].path">
                 <BreadcrumbItem>
                     <BreadcrumbLink as-child>
-                        <NuxtLink :to="props.navigation?.[0].path">{{ props.navigation?.[0].title }}</NuxtLink>
+                        <NuxtLink :to="navigation?.[0].path">
+	                        <Home v-if="navigation?.[0].path === '/'" class="size-4" />
+	                        <template v-else>{{ navigation?.[0].title }}</template>
+                        </NuxtLink>
                     </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />

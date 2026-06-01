@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {Search, X, AlertCircle} from "lucide-vue-next";
+import {Search, X, AlertCircle} from "@lucide/vue";
 
 const conceptQuery = `PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 SELECT ?iri ?label ?description (GROUP_CONCAT(?_altLabel; SEPARATOR=", ") AS ?altLabel)

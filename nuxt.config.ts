@@ -6,9 +6,8 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
     modules: [
         "@nuxt/content",
-        "@nuxtjs/color-mode",
+        // "@nuxtjs/color-mode",
         "@nuxt/image",
-        // "nuxt-studio",
         "shadcn-nuxt",
         "@nuxt/scripts",
     ],
@@ -42,15 +41,4 @@ export default defineNuxtConfig({
     image: {
         provider: "none",
     },
-    // studio: {
-    //     repository: {
-    //         provider: "github",
-    //         owner: "idn-au",
-    //         repo: "idnau.org",
-    //         branch: "dev",
-    //         private: false,
-    //     },
-    //     route: "/admin",
-    //     // dev: false, // for testing GitHub auth flow locally
-    // },
 });
