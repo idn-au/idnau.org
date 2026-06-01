@@ -1,4 +1,46 @@
 import type {ScoreType} from "~/utils/types";
+import type {ContentNavigationItem} from "@nuxt/content";
+
+export const externalLinks: ContentNavigationItem[] = [
+    {
+        // "title": "The National Indigenous Data Catalogue",
+        "title": "NIDC",
+        "path": "https://data.idnau.org",
+        "stem": "2.nidc",
+        "description": ""
+    },
+    {
+        "title": "Tools",
+        "path": "/tools",
+        "stem": "5.tools/1.index",
+        "children": [
+            {
+                "title": "IDN Catalogue Profile",
+                "path": "https://data.idnau.org/pid/cp",
+                "stem": "5.tools/2.idn-catalogue-profile",
+                "description": ""
+            },
+            {
+                "title": "Agent Database",
+                "path": "https://agentsdb.idnau.org",
+                "stem": "5.tools/3.agent-database",
+                "description": ""
+            },
+            {
+                "title": "Metadata Entry Tool",
+                "path": "https://metadata.idnau.org/",
+                "stem": "5.tools/4.metadata-entry-tool",
+                "description": ""
+            },
+            {
+                "title": "Search portal",
+                "path": "https://data.idnau.org/search",
+                "stem": "5.tools/5.search-portal",
+                "description": ""
+            }
+        ]
+    }
+];
 
 export const scoreDefs: Record<ScoreType, ScoreDef[]> = {
     fair: [

@@ -1,3 +1,6 @@
+import type {ContentNavigationItem} from "@nuxt/content";
+import {externalLinks} from "~/utils/consts";
+
 export function formatDate(date: string): string {
     let options: Intl.DateTimeFormatOptions = {
         day: "numeric",
@@ -23,4 +26,31 @@ export function filterPartialPaths(items: ContentNavigationItem[]): ContentNavig
             children: i.children ? filterPartialPaths(i.children) : undefined,
         }
     });
+}
+
+function mergeExternalLinks(nav: ContentNavigationItem[], external: ContentNavigationItem[]): ContentNavigationItem[] {
+    const links = nav.filter(n => n.path !== "/");
+
+    external.forEach(e => {
+        const parent = links.find(l => l.path === e.path);
+        if (!parent) {
+            links.push(e);
+        } else {
+            const newChildren = e.children?.filter(c1 => !parent.children?.map(c2 => c2.path).includes(c1.path));
+            parent.children = [...(parent.children || []), ...(newChildren || [])].sort((a, b) => a.stem.localeCompare(b.stem));
+        }
+    });
+
+    return links.sort((a, b) => a.stem.localeCompare(b.stem));
+}
+
+export async function getNavigation(includeExternal: boolean = false): Promise<ContentNavigationItem[]> {
+    const nav = await queryCollectionNavigation("content", ["description"]);
+    const navigation = filterPartialPaths(nav);
+
+    if (includeExternal) {
+        return mergeExternalLinks(navigation, externalLinks);
+    } else {
+        return navigation;
+    }
 }

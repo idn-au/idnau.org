@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Clock, MapPin } from "lucide-vue-next";
+import { Clock, MapPin } from "@lucide/vue";
 import Card from "~/components/content/Card.vue";
 import EventCalendar from "~/components/content/EventCalendar.vue";
 

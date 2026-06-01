@@ -6,20 +6,23 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-    --isu-red: hsl(5 78% 54%);
+    --isu-red: hsl(4.55 58.23% 48.82%);
     --isu-red-foreground: hsl(210 40% 98%);
-    --isu-yellow: hsl(40 88% 54%);
+    --isu-yellow: hsl(44.46 79.42% 47.65%);
     --isu-yellow-foreground: hsl(210 40% 98%);
-    --isu-green: hsl(162 98% 24%);
+    --isu-green: hsl(152.11 42.51% 32.75%);
     --isu-green-foreground: hsl(210 40% 98%);
-    --isu-blue: hsl(215 74% 32%);
+    --isu-blue: hsl(219.23 100% 30.59%);
     --isu-blue-foreground: hsl(210 40% 98%);
 
-    --background: oklch(1 0 0);
+    /*--body-background: hsl(38.57 43.75% 93.73%);*/
+    --body-background: hsl(0 0% 94.9%);
+
+    --background: var(--body-background);
     --foreground: oklch(0.129 0.042 264.695);
-    --card: oklch(1 0 0);
+    --card: var(--body-background);
     --card-foreground: oklch(0.129 0.042 264.695);
-    --popover: oklch(1 0 0);
+    --popover: var(--body-background);
     --popover-foreground: oklch(0.129 0.042 264.695);
     --primary: var(--isu-blue);
     --primary-foreground: var(--isu-blue-foreground);
