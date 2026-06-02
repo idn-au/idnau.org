@@ -57,14 +57,13 @@ function scrollToTop() {
 		<MainNav :allowToggleNav="route.path === '/' && targetIsVisible" />
 
 		<main class="grow mb-12">
-			<div v-if="route.path === '/'" class="bg-[grey] h-dvh -mt-[128px] flex items-center justify-center" ref="target">
-				video
-			</div>
+			<LandingPageVideo v-if="route.path === '/'" ref="target" />
 			<slot />
 		</main>
 
 		<div class="bg-isu-yellow/10 py-12 relative overflow-hidden isolate">
-			<NuxtImg src="/img/symbol/UoM_Indig.Data.Com_Brand_Art_RGB_Symbol_Red.svg" class="absolute h-[1000%] -z-1 opacity-20 -right-[37%] top-[45%] rotate-3 -translate-y-1/2" />
+<!--			<NuxtImg src="/img/symbol/UoM_Indig.Data.Com_Brand_Art_RGB_Symbol_Red.svg" class="absolute h-[1000%] -z-1 opacity-20 -left-[37%] top-[45%] rotate-3 -translate-y-1/2" />-->
+			<IDCLogo class="h-[700px] w-auto absolute opacity-20 fill-isu-red rotate-3 -translate-y-1/2 -left-[240px] -z-1" />
 			<div class="mx-auto max-w-[1200px] text-center">
 				The Indigenous Data Network acknowledges the Aboriginal and Torres Strait Islander Traditional Custodians of the lands on which we work and live. We pay respect to their Elders, past and present, and the place of Indigenous Knowledge in the academy and beyond. We acknowledge and respect that Aboriginal and Torres Strait Islander people have always used resources from the land and waters for nourishment, medicine and healing.
 			</div>
@@ -105,17 +104,17 @@ function scrollToTop() {
 						<NuxtLink to="/">
 							<NuxtImg src="/img/UoM_Indig.Data.Com_Brand_Art_RGB_Logo_White.png" class="h-32" />
 						</NuxtLink>
-						<Button class="bg-isu-red !text-isu-red-foreground" asChild>
+						<IDCButton variant="red" asChild>
 							<NuxtLink to="/news/newsletter">
 								Subscribe to our newsletter
 							</NuxtLink>
-						</Button>
+						</IDCButton>
 						<div class="flex flex-row items-center justify-around">
-							<Button v-for="social in socials" size="icon" class="bg-isu-green !text-isu-green-foreground" :title="social.title" asChild>
+							<IDCButton v-for="social in socials" size="icon" variant="green" :title="social.title" asChild>
 								<a :href="social.url">
 									<FontAwesomeIcon :icon="social.icon" />
 								</a>
-							</Button>
+							</IDCButton>
 						</div>
 						<a href="https://mspgh.unimelb.edu.au/centres-institutes/onemda/research-group/indigenous-studies-unit/indigenous-data-network">
 							<NuxtImg src="/img/UoM_Indig_Studies_Unit_Brand_ART - (ICON LOCK UP) IDN - WHITE.png" class="h-32" />
@@ -125,8 +124,8 @@ function scrollToTop() {
 				<div class="text-center">&copy; Indigenous Data Network 2026</div>
 			</div>
 		</footer>
-		<Button v-show="!arrivedState.top" size="icon-lg" class="rounded-full bg-isu-green !text-isu-green-foreground fixed bottom-4 right-4 z-50" title="Scroll to top" @click="scrollToTop">
+		<IDCButton v-show="!arrivedState.top" size="icon-lg" variant="green" class="rounded-full fixed bottom-4 right-4 z-50" title="Scroll to top" @click="scrollToTop">
 			<ArrowUp class="size-5" />
-		</Button>
+		</IDCButton>
   	</div>
 </template>

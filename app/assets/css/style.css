@@ -28,6 +28,11 @@ main a:not(nav a):hover, footer a:hover {
 
 h2, h3, h4 {
     color: var(--color-primary);
+    font-weight: bold;
+}
+
+.prose img {
+    margin: 0;
 }
 
 /*h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {*/

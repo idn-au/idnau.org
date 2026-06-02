@@ -1,3 +1,5 @@
+import type {ButtonVariants} from "~/components/ui/button";
+
 export type SPARQLResultsJSON = {
     head: {
         vars?: string[];
@@ -54,3 +56,7 @@ export type ScoreDef = {
     description: string;
     scores?: ScoreDef[];
 };
+
+export type CustomIDCButtonVariants = "red" | "yellow" | "green" | "blue" | "black" | "dark-ghost";
+
+export type IDCButtonVariants = ButtonVariants["variant"] | CustomIDCButtonVariants;

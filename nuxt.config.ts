@@ -41,4 +41,9 @@ export default defineNuxtConfig({
     image: {
         provider: "none",
     },
+    content: {
+        renderer: {
+            anchorLinks: false,
+        },
+    },
 });

@@ -15,8 +15,9 @@
     --isu-blue: hsl(219.23 100% 30.59%);
     --isu-blue-foreground: hsl(210 40% 98%);
 
-    /*--body-background: hsl(38.57 43.75% 93.73%);*/
-    --body-background: hsl(0 0% 94.9%);
+    /*--body-background: oklch(1 0 0); !* white *!*/
+    /*--body-background: hsl(38.57 43.75% 93.73%); !* sepia *!*/
+    --body-background: hsl(0 0% 94.9%); /* light grey */
 
     --background: var(--body-background);
     --foreground: oklch(0.129 0.042 264.695);
@@ -52,7 +53,10 @@
     --sidebar-border: oklch(0.929 0.013 255.508);
     --sidebar-ring: var(--primary);
 
-    --link: var(--isu-blue);
+    /*--link: var(--isu-blue);*/
+    /*--link: hsl(212.81 100% 27.25%);  !* unimelb link colour *!*/
+    /*--link: hsl(240 100% 50%); !* blue *!*/
+    --link: hsl(221.09 100% 53.33%); /* light blue */
     --link-foreground: var(--primary-foreground);
 }
 

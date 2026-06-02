@@ -20,8 +20,8 @@ const { data: navigation } = await useAsyncData("navigation-merged", () => getNa
 const linkClasses = "bg-transparent hover:bg-black/10 transition-colors";
 
 const showSidenav = ref(false);
-const expandNav = ref(route.path !== "/");
-// const expandNav = ref(true);
+// const expandNav = ref(route.path !== "/");
+const expandNav = ref(true);
 
 router.beforeEach((from, to) => {
     showSidenav.value = false;
@@ -42,7 +42,7 @@ router.beforeEach((from, to) => {
 						    <NavigationMenuTrigger :class="cn(linkClasses, 'data-[state=open]:hover:bg-black/20', route.path.startsWith(link.path) ? '!text-isu-red' : '')">{{link.title}}</NavigationMenuTrigger>
 						    <NavigationMenuContent>
 							    <ul class="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-								    <li v-for="child in link.children">
+								    <li v-for="child in link.children.filter(c => c.path !== link.path)">
 									    <NavigationMenuLink :active="route.path === child.path" class="data-active:!text-isu-red" asChild>
 										    <NuxtLink :to="child.websiteURL || child.path">
 											    <div class="text-sm leading-none font-medium">
