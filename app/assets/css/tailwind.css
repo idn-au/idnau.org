@@ -9,7 +9,7 @@
     --isu-red: hsl(4.55 58.23% 48.82%);
     --isu-red-foreground: hsl(210 40% 98%);
     --isu-yellow: hsl(44.46 79.42% 47.65%);
-    --isu-yellow-foreground: hsl(210 40% 98%);
+    --isu-yellow-foreground: oklch(0.129 0.042 264.695);
     --isu-green: hsl(152.11 42.51% 32.75%);
     --isu-green-foreground: hsl(210 40% 98%);
     --isu-blue: hsl(219.23 100% 30.59%);

@@ -7,16 +7,20 @@ const props = defineProps<{
 }>();
 
 const images = [
-	"https://picsum.photos/1200",
-	"https://picsum.photos/1200/800",
-	"https://picsum.photos/2000",
-	"https://picsum.photos/800",
+	"/img/unsplash/dylan-shaw-4LJh9TAcImw-unsplash.jpg",
+	"/img/unsplash/caleb-V18GNaBeZqM-unsplash.jpg",
+	"/img/unsplash/christian-bass-gB_RcoohBko-unsplash.jpg",
+	"/img/unsplash/connor-home-dtmz4CDRXqw-unsplash.jpg",
+	"/img/unsplash/rene-riegal-0VFr6ub7HlA-unsplash.jpg",
+	"/img/unsplash/iain-gkGle4k_fwM-unsplash.jpg",
 ];
+
+const seconds = 10;
 
 const { state, next, prev, go } = useCycleList(images);
 const { pause, resume, isActive } = useIntervalFn(() => {
 	next();
-}, 10000);
+}, 1000 * seconds);
 </script>
 
 <template>
@@ -43,4 +47,4 @@ const { pause, resume, isActive } = useIntervalFn(() => {
 .v-leave-to {
 	opacity: 0;
 }
-</style>
+</style>",

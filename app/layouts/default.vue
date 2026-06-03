@@ -139,3 +139,14 @@ function scrollToTop() {
 		</IDCButton>
   	</div>
 </template>
+
+<style scoped>
+footer {
+	background-image: url("/img/unsplash/conny-schneider-xuTJZ7uD7PI-unsplash.jpg");
+	background-repeat: no-repeat;
+	background-position-x: right;
+	background-position-y: top;
+	background-blend-mode: lighten;
+	//background-blend-mode: luminosity;
+}
+</style>

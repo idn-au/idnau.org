@@ -65,10 +65,10 @@ router.beforeEach((from, to) => {
 		    </NavigationMenu>
 	    </div>
         <div class="flex flex-row justify-end items-center gap-2">
-	        <Button v-if="props.allowToggleNav" size="icon" variant="ghost" @click="expandNav = !expandNav">
+	        <Button v-if="props.allowToggleNav" size="icon" variant="ghost" :class="linkClasses" title="Toggle navbar" @click="expandNav = !expandNav">
 		        <ListIndentDecrease :class="`size-4 transition-transform ${expandNav ? 'rotate-y-180' : ''}`" />
 	        </Button>
-	        <SearchCommand icon />
+	        <SearchCommand icon :class="linkClasses" />
 <!--	        <Button variant="ghost" size="icon" @click="!colorMode.unknown ? colorMode.value === 'dark' ? colorMode.preference = 'light' : colorMode.preference = 'dark' : undefined">-->
 <!--		        <SunMoon v-show="colorMode.unknown" />-->
 <!--		        <Sun v-show="colorMode.value === 'dark'" class="size-4" />-->
