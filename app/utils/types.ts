@@ -28,7 +28,9 @@ export type PublicationItem = {
     date: string;
     author?: string[];
     img?: string;
-    url: string;
+    url?: string;
+    publisher?: string;
+    idn?: boolean;
 };
 
 export type NewsItem = {

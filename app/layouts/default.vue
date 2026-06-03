@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type {ContentNavigationItem} from "@nuxt/content";
-import { ArrowUp } from "@lucide/vue";
+import { ArrowUp, Newspaper } from "@lucide/vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
-import {faFacebookF, faInstagram, faLinkedinIn, faYoutube, type IconDefinition} from "@fortawesome/free-brands-svg-icons";
+import {faFacebookF, faInstagram, faLinkedinIn, faYoutube, type IconDefinition, faXTwitter} from "@fortawesome/free-brands-svg-icons";
 import {getNavigation} from "~/utils/helpers";
 import {useIntersectionObserver, useWindowScroll} from "@vueuse/core";
 
@@ -24,22 +24,27 @@ const socials: {
 	{
 		title: "Facebook",
 		icon: faFacebookF,
-		url: "",
+		url: "https://www.facebook.com/ISU.UniMelb",
 	},
 	{
 		title: "Instagram",
 		icon: faInstagram,
-		url: "",
+		url: "https://www.instagram.com/isu.unimelb/",
 	},
 	{
 		title: "LinkedIn",
 		icon: faLinkedinIn,
-		url: "",
+		url: "https://www.linkedin.com/company/indigenous-data-network/posts/?feedView=all",
 	},
 	{
 		title: "YouTube",
 		icon: faYoutube,
-		url: "",
+		url: "https://www.youtube.com/@IndigenousStudiesUnit",
+	},
+	{
+		title: "X",
+		icon: faXTwitter,
+		url: "https://x.com/indigenousUoM",
 	},
 ];
 
@@ -100,25 +105,30 @@ function scrollToTop() {
 							</div>
 						</div>
 					</div>
-					<div class="">
-						<NuxtLink to="/">
-							<NuxtImg src="/img/UoM_Indig.Data.Com_Brand_Art_RGB_Logo_White.png" class="h-32" />
-						</NuxtLink>
-						<IDCButton variant="red" asChild>
-							<NuxtLink to="/news/newsletter">
-								Subscribe to our newsletter
+					<div class="flex flex-col gap-8">
+						<div class="grid grid-cols-[3fr_min-content_2fr] items-center gap-8">
+							<NuxtLink to="/" class="">
+								<NuxtImg src="/img/UoM_Indig.Data.Com_Brand_Art_RGB_Logo_White.png" />
 							</NuxtLink>
-						</IDCButton>
-						<div class="flex flex-row items-center justify-around">
-							<IDCButton v-for="social in socials" size="icon" variant="green" :title="social.title" asChild>
-								<a :href="social.url">
-									<FontAwesomeIcon :icon="social.icon" />
-								</a>
+							<Separator orientation="vertical" class="!h-3/4 bg-muted-foreground" />
+							<a href="https://mspgh.unimelb.edu.au/centres-institutes/onemda/research-group/indigenous-studies-unit/indigenous-data-network" class="">
+								<NuxtImg src="/img/UoM_Indig_Studies_Unit_Brand_ART - (ICON LOCK UP) IDN - WHITE.png" />
+							</a>
+						</div>
+						<div class="flex flex-row items-center gap-2 justify-between">
+							<div class="flex flex-row items-center justify-around gap-2 grow">
+								<IDCButton v-for="social in socials" size="icon" variant="green" :title="social.title" asChild>
+									<a :href="social.url">
+										<FontAwesomeIcon :icon="social.icon" />
+									</a>
+								</IDCButton>
+							</div>
+							<IDCButton variant="red" asChild>
+								<NuxtLink to="/news/newsletter">
+									<Newspaper class="size-4" /> Subscribe to our newsletter
+								</NuxtLink>
 							</IDCButton>
 						</div>
-						<a href="https://mspgh.unimelb.edu.au/centres-institutes/onemda/research-group/indigenous-studies-unit/indigenous-data-network">
-							<NuxtImg src="/img/UoM_Indig_Studies_Unit_Brand_ART - (ICON LOCK UP) IDN - WHITE.png" class="h-32" />
-						</a>
 					</div>
 				</div>
 				<div class="text-center">&copy; Indigenous Data Network 2026</div>

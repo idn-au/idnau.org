@@ -2,17 +2,14 @@
 import { Clock, MapPin } from "@lucide/vue";
 import Card from "~/components/content/Card.vue";
 import EventCalendar from "~/components/content/EventCalendar.vue";
-
-const props = defineProps<{
-	events: EventItem[];
-}>();
+import { events } from "~/utils/events";
 
 const upcomingEvents = computed(() => {
-	return props.events.filter(e => e.start > new Date().toISOString()).sort((a, b) => a.start.localeCompare(b.start));
+	return events.filter(e => e.start > new Date().toISOString()).sort((a, b) => a.start.localeCompare(b.start));
 });
 
 const pastEvents = computed(() => {
-	return props.events.filter(e => e.start < new Date().toISOString()).sort((a, b) => b.start.localeCompare(a.start));
+	return events.filter(e => e.start < new Date().toISOString()).sort((a, b) => b.start.localeCompare(a.start));
 });
 </script>
 
@@ -36,7 +33,7 @@ const pastEvents = computed(() => {
 				<p v-if="event.description" class="line-clamp-3 text-ellipsis">{{event.description}}</p>
 			</Card>
 		</div>
-		<h2>Previous</h2>
+		<h2>Past Events</h2>
 		<div class="flex flex-col gap-4">
 			<Card v-for="event in pastEvents" imgPosition="left">
 				<template v-if="event.img" #img>
@@ -54,7 +51,5 @@ const pastEvents = computed(() => {
 				<p v-if="event.description" class="line-clamp-3 text-ellipsis">{{event.description}}</p>
 			</Card>
 		</div>
-		<h2>Calendar</h2>
-		<EventCalendar :events="props.events" />
 	</div>
 </template>

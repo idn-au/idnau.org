@@ -34,7 +34,7 @@ jobs:
     runs-on: self-hosted
     environment:
       name: development
-      url: https://dev.idnau.org
+      url: https://dev.indigenousdatacommons.org
 #    env:
 #      STUDIO_GITHUB_CLIENT_ID: ${{ secrets.STUDIO_GITHUB_CLIENT_ID }}
 #      STUDIO_GITHUB_CLIENT_SECRET: ${{ secrets.STUDIO_GITHUB_CLIENT_SECRET }}
