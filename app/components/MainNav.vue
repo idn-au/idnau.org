@@ -20,8 +20,8 @@ const { data: navigation } = await useAsyncData("navigation-merged", () => getNa
 const linkClasses = "bg-transparent hover:bg-black/10 transition-colors";
 
 const showSidenav = ref(false);
-// const expandNav = ref(route.path !== "/");
-const expandNav = ref(true);
+const expandNav = ref(route.path !== "/");
+// const expandNav = ref(true);
 
 router.beforeEach((from, to) => {
     showSidenav.value = false;

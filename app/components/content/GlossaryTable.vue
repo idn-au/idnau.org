@@ -79,8 +79,8 @@ const filteredTerms = computed(() => q.value !== "" ? concepts.value.filter(c =>
 			<template v-else>
 				<TableRow v-for="term in filteredTerms" class="odd:bg-muted/40 dark:odd:bg-muted/20">
 					<TableCell class="w-80 whitespace-normal align-top">
-						<a :id="encodeURIComponent(term.iri)" class="block relative -top-16" />
-						<NuxtLink :to="`#${encodeURIComponent(term.iri)}`" class="!text-[var(--tw-prose-body)] hover:no-underline!">
+						<a :id="encodeURIComponent(term.iri)" class="block relative -top-[128px]" />
+						<NuxtLink :to="`#${encodeURIComponent(term.iri)}`" class="!text-[var(--tw-prose-body)] hover:no-underline!" external>
 							<span class="font-semibold">{{term.label}}</span> <span v-if="term.altLabel" class="text-muted-foreground">({{term.altLabel}})</span>
 						</NuxtLink>
 					</TableCell>

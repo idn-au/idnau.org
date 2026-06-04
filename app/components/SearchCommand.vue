@@ -1,9 +1,11 @@
 <script lang="ts" setup>
 import type { HTMLAttributes } from "vue";
 import MiniSearch from "minisearch";
-import { Search } from "@lucide/vue";
+import { Search, FileSearch } from "@lucide/vue";
 import { useActiveElement, useMagicKeys } from "@vueuse/core";
 import { cn } from "~/lib/utils";
+import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle} from "~/components/ui/dialog";
+import Command from "./ui/command/Command.vue";
 
 const props = defineProps<{
 	icon?: boolean;
@@ -89,18 +91,43 @@ onMounted(() => {
             {{ modifierKeySymbol }} K
         </kbd>
     </Button>
-    <CommandDialog v-model:open="open">
-        <CommandInput v-model="query" placeholder="Search..." />
-        <CommandList>
-            <CommandEmpty>No results found.</CommandEmpty>
-            <CommandGroup heading="Suggestions">
-                <CommandItem v-for="link of result" :key="link.id" :value="link.id" class="cursor-pointer gap-1 py-2" as-child @select="open = false">
-                    <NuxtLink :to="link.id" class="flex flex-col items-start">
-                        <div>{{ link.title }}</div>
-                        <p class="text-muted-foreground/80 text-xs line-clamp-1">{{ link.content }}</p>
-                    </NuxtLink>
-                </CommandItem>
-            </CommandGroup>
-        </CommandList>
-    </CommandDialog>
+	<Dialog v-model:open="open">
+		<DialogContent class="overflow-hidden p-0 sm:max-w-xl top-1/5 translate-y-[unset]" :showCloseButton="false">
+			<DialogHeader class="sr-only">
+				<DialogTitle>Search</DialogTitle>
+				<DialogDescription>Search content throughout this website</DialogDescription>
+			</DialogHeader>
+			<Command>
+				<CommandInput v-model="query" placeholder="Search..." class="" />
+				<CommandList>
+					<CommandEmpty v-if="result.length == 0">
+						<Empty class="md:p-4">
+							<EmptyHeader>
+								<EmptyMedia variant="icon">
+									<FileSearch />
+								</EmptyMedia>
+								<EmptyTitle>No results found</EmptyTitle>
+								<EmptyDescription>desc</EmptyDescription>
+							</EmptyHeader>
+						</Empty>
+					</CommandEmpty>
+					<CommandGroup v-else heading="Results">
+						<CommandItem v-for="link of result" :key="link.id" :value="link.id" class="cursor-pointer gap-1 py-2" as-child @select="open = false">
+							<NuxtLink :to="link.id" class="flex flex-col items-start">
+								<div>{{ link.title }}</div>
+								<p class="text-muted-foreground/80 text-xs line-clamp-1">{{ link.content }}</p>
+							</NuxtLink>
+						</CommandItem>
+					</CommandGroup>
+				</CommandList>
+			</Command>
+		</DialogContent>
+	</Dialog>
 </template>
+
+<style scoped>
+:deep(div[data-slot="command-input-wrapper"]) > svg {
+	width: calc(var(--spacing) * 5);
+	height: calc(var(--spacing) * 5);
+}
+</style>

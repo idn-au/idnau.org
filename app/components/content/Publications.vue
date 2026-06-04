@@ -19,8 +19,9 @@ const filteredPublications = computed(() => {
 </script>
 
 <template>
-	<div class="flex flex-col items-center gap-4">
-		<div class="max-w-sm w-full">
+	<div class="grid grid-cols-[1fr_2fr]">
+		<div>
+			<h3>Search Publications</h3>
 			<InputGroup>
 				<InputGroupInput type="search" autofocus name="q" v-model="q" placeholder="Search publications..." />
 				<InputGroupAddon>
@@ -33,30 +34,33 @@ const filteredPublications = computed(() => {
 				</InputGroupAddon>
 			</InputGroup>
 		</div>
-		<div class="max-w-xl w-full flex flex-col gap-2">
-			<Item v-for="publication in filteredPublications" variant="outline" class="hover:bg-accent" asChild>
-				<a :href="publication.url" class="hover:!no-underline !text-foreground">
-					<ItemMedia :variant="publication.img ? 'image' : 'icon'">
-						<NuxtImg v-if="publication.img" :src="publication.img" />
-						<FileText v-else class="size-4" />
-					</ItemMedia>
-					<ItemContent>
-						<ItemTitle class="text-base">
-							{{publication.title}}
-							<Badge v-if="publication.idn">IDN</Badge>
-						</ItemTitle>
-						<ItemDescription v-if="publication.author" class="!m-0">
-							<User class="size-3.5 inline" />
-							{{publication.author.join(", ")}}
-						</ItemDescription>
-						<ItemDescription v-if="publication.publisher" class="!m-0">{{publication.publisher}}</ItemDescription>
-						<ItemDescription v-if="publication.date" class="!m-0 text-xs">
-							<Clock class="size-3 inline" /> {{publication.date}}
-						</ItemDescription>
-						<ItemDescription v-if="publication.description" class="line-clamp-1 text-ellipsis italic !m-0 text-xs">{{publication.description}}</ItemDescription>
-					</ItemContent>
-				</a>
-			</Item>
+		<div class="flex flex-col items-center gap-4">
+			<h3>Results</h3>
+			<div class="max-w-xl w-full flex flex-col gap-2">
+				<Item v-for="publication in filteredPublications" variant="outline" class="hover:bg-accent" asChild>
+					<a :href="publication.url" class="hover:!no-underline !text-foreground">
+						<ItemMedia :variant="publication.img ? 'image' : 'icon'">
+							<NuxtImg v-if="publication.img" :src="publication.img" />
+							<FileText v-else class="size-4" />
+						</ItemMedia>
+						<ItemContent>
+							<ItemTitle class="text-base">
+								{{publication.title}}
+								<Badge v-if="publication.idn">IDN</Badge>
+							</ItemTitle>
+							<ItemDescription v-if="publication.author" class="!m-0">
+								<User class="size-3.5 inline" />
+								{{publication.author.join(", ")}}
+							</ItemDescription>
+							<ItemDescription v-if="publication.publisher" class="!m-0">{{publication.publisher}}</ItemDescription>
+							<ItemDescription v-if="publication.date" class="!m-0 text-xs">
+								<Clock class="size-3 inline" /> {{publication.date}}
+							</ItemDescription>
+							<ItemDescription v-if="publication.description" class="line-clamp-1 text-ellipsis italic !m-0 text-xs">{{publication.description}}</ItemDescription>
+						</ItemContent>
+					</a>
+				</Item>
+			</div>
 		</div>
 	</div>
 </template>

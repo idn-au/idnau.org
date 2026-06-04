@@ -37,7 +37,9 @@ const pastEvents = computed(() => {
 		<div class="flex flex-col gap-4">
 			<Card v-for="event in pastEvents" imgPosition="left">
 				<template v-if="event.img" #img>
-					<img :src="event.img" />
+					<div class="max-w-40 aspect-square">
+						<img :src="event.img" class="object-cover h-full" />
+					</div>
 				</template>
 				<template #title>{{event.title}}</template>
 				<template #description>
