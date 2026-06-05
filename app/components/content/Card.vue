@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { HTMLAttributes } from "vue";
+import { ShadCard } from "~/components/ui/card";
 import { cn } from "~/lib/utils";
 
 const props = withDefaults(defineProps<{

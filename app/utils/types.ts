@@ -62,3 +62,10 @@ export type ScoreDef = {
 export type CustomIDCButtonVariants = "red" | "yellow" | "green" | "blue" | "black" | "dark-ghost";
 
 export type IDCButtonVariants = ButtonVariants["variant"] | CustomIDCButtonVariants;
+
+export interface VideoItem {
+    title: string;
+    date?: string;
+    description?: string;
+    url: string;
+};
