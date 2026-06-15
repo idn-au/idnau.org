@@ -1,136 +1,107 @@
 <script lang="ts" setup>
-import { ChevronDown, ChevronUp, Sun, Moon, SunMoon, Menu , ExternalLink } from "lucide-vue-next";
+import { ChevronDown, Menu, ListIndentDecrease } from "@lucide/vue";
+import type { ContentNavigationItem } from "@nuxt/content";
+import { navigationMenuTriggerStyle } from "~/components/ui/navigation-menu";
+import { cn } from "~/lib/utils";
+import {getNavigation} from "~/utils/helpers";
 
 const router = useRouter();
 const route = useRoute();
-const colorMode = useColorMode();
 
-const externalLinks: {title: string; url: string}[] = [];
+const props = defineProps<{
+	allowToggleNav?: boolean;
+}>();
+
+const { data: navigation } = await useAsyncData("navigation-merged", () => getNavigation(true), {
+	default: () => [] as ContentNavigationItem[],
+});
+
+const linkClasses = "bg-transparent hover:bg-black/10 transition-colors";
 
 const showSidenav = ref(false);
-
-const { data: navigation } = await useAsyncData("navigation", () => queryCollectionNavigation("content"));
+const expandNav = ref(route.path !== "/");
 
 router.beforeEach((from, to) => {
     showSidenav.value = false;
+	expandNav.value = false;
 });
 </script>
 
 <template>
-    <div class="top-nav sticky top-0 z-50 backdrop-blur-sm">
-        <div class="w-full bg-yellow-300 text-black text-center py-1 px-4 text-sm font-medium">
-             We are pleased to inform you that this site is under construction and will be updated as soon as possible
-        </div>
-        <header class="bg-background/60 grid grid-cols-3 md:flex md:flex-row md:justify-between items-center p-2 gap-2">
-    
-            <!-- mobile nav -->
-            <Sheet v-model:open="showSidenav">
-                <SheetTrigger as-child>
-                    <Button variant="ghost" size="icon" class="md:hidden">
-                        <Menu class="size-4" />
-                    </Button>
-                </SheetTrigger>
-                <SheetContent side="left" class="p-2" hideClose>
-                    <SheetHeader class="grid grid-cols-3 gap-2 mb-4">
-                        <SheetClose as-child>
-                            <Button variant="ghost" size="icon">
-                                <Menu class="size-4" />
-                            </Button>
-                        </SheetClose>
-                        <NuxtLink to="/">
-                            <div class="flex flex-row gap-2 items-center justify-center">
-                                <NuxtImg v-show="colorMode.unknown || colorMode.value === 'light'" src="/img/idn-logo-250.png" alt="IDN Logo" class="h-[40px]" />
-                                <NuxtImg v-show="!colorMode.unknown && colorMode.value === 'dark'" src="/img/idn-logo-250.png" alt="IDN Logo" class="h-[40px]" />
-                                <span class="text-xl">IDN</span>
-                            </div>
-                        </NuxtLink>
-                        <div></div>
-                    </SheetHeader>
-                    <nav class="nav-sidebar flex flex-col gap-2">
-                        <template v-for="link of navigation">
-                            <Collapsible v-if="link.children && link.children.length > 1" :defaultOpen="route.path.startsWith(link.path)" v-slot="{open}">
-                                <CollapsibleTrigger :class="`rounded-none border-l-2 border-l-transparent ${route.path.startsWith(link.path) ? 'border-l-isu-red' : ''}`" as-child>
-                                    <Button variant="ghost" class="w-full">
-                                        {{ link.children.find(c => c.path === link.path)?.title || link.title }}
-                                        <ChevronUp v-if="open" class="size-4" />
-                                        <ChevronDown v-else class="size-4" />
-                                    </Button>
-                                </CollapsibleTrigger>
-                                <CollapsibleContent class="flex flex-col gap-2 bg-secondary/50 rounded">
-                                    <template v-if="link.children.find(c => c.path === link.path)">
-                                        <Button variant="ghost" :class="`rounded-none border-l-2 border-l-transparent ${route.path === link.path ? 'border-l-isu-red' : ''}`" as-child>
-                                            <NuxtLink :to="link.path" class="!font-bold">
-                                                {{ link.children.find(c => c.path === link.path)?.title }} Home
-                                            </NuxtLink>
-                                        </Button>
-                                        <Separator />
-                                    </template>
-                                    <Button v-for="child in link.children" variant="ghost" :class="`rounded-none border-l-2 border-l-transparent ${route.path.startsWith(child.path) ? 'border-l-isu-red' : ''}`" as-child>
-                                        <NuxtLink v-if="child.path !== link.path" :to="child.path">{{ child.title }}</NuxtLink>
-                                    </Button>
-                                </CollapsibleContent>
-                            </Collapsible>
-                            <Button v-else variant="ghost" :class="`rounded-none border-l-2 border-l-transparent ${route.path.startsWith(link.path) ? 'border-l-isu-red' : ''}`" as-child>
-                                <NuxtLink :to="link.path">{{ link.title }}</NuxtLink>
-                            </Button>
-                        </template>
-                        <Button v-for="extLink in externalLinks" variant="ghost" as-child>
-                            <a :href="extLink.url" target="_blank" rel="noopener noreferrer">{{ extLink.title }} <ExternalLink class="size-4" /></a>
-                        </Button>
-                    </nav>
-                </SheetContent>
-            </Sheet>
-            <NuxtLink to="/">
-                <div class="flex flex-row gap-2 items-center justify-center">
-                    <NuxtImg v-show="colorMode.unknown || colorMode.value === 'light'" src="/img/idn-logo-250.png" alt="IDN Logo" class="h-[40px] md:h-[54px]" />
-                    <NuxtImg v-show="!colorMode.unknown && colorMode.value === 'dark'" src="/img/idn-logo-250.png" alt="IDN Logo" class="h-[40px] md:h-[54px]" />
-                    <span class="hidden md:inline text-xl">The Indigenous Data Network</span>
-                    <span class="md:hidden text-xl">IDN</span>
-                </div>
-            </NuxtLink>
-            <!-- desktop nav -->
-            <nav class="ml-auto md:flex md:flex-row hidden">
-                <template v-for="link of navigation">
-                    <DropdownMenu v-if="link.children && link.children.length > 1" v-slot="{open}">
-                        <DropdownMenuTrigger as-child>
-                            <Button variant="ghost" :class="`rounded-none p-2 border-b-2 border-b-transparent ${route.path.startsWith(link.path) ? 'border-b-isu-red' : ''}`">
-                                {{ link.children.find(c => c.path === link.path)?.title || link.title }}
-                                <ChevronUp v-if="open" class="size-4" />
-                                <ChevronDown v-else class="size-4" />
-                            </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent class="w-56 nav-dropdown">
-                            <template v-if="link.children.find(c => c.path === link.path)">
-                                <DropdownMenuItem :class="`rounded-none border-l-2 border-l-transparent ${route.path === link.path ? 'border-l-isu-red' : ''}`" as-child>
-                                    <NuxtLink :to="link.path" class="font-bold cursor-pointer">
-                                        {{ link.children.find(c => c.path === link.path)?.title }} Home
-                                    </NuxtLink>
-                                </DropdownMenuItem>
-                                <DropdownMenuSeparator />
-                            </template>
-                            <DropdownMenuGroup>
-                                <DropdownMenuItem v-for="child in link.children" :class="`rounded-none border-l-2 border-l-transparent ${route.path.startsWith(child.path) ? 'border-l-isu-red' : ''}`" as-child>
-                                    <NuxtLink v-if="child.path !== link.path" :to="child.path" class="cursor-pointer">{{ child.title }}</NuxtLink>
-                                </DropdownMenuItem>
-                            </DropdownMenuGroup>
-                        </DropdownMenuContent>
-                    </DropdownMenu>
-                    <Button v-else variant="ghost" :class="`rounded-none p-2 border-b-2 border-b-transparent ${route.path.startsWith(link.path) ? 'border-b-isu-red' : ''}`" as-child>
-                        <NuxtLink :to="link.path">{{ link.title }}</NuxtLink>
-                    </Button>
-                </template>
-                <Button v-for="extLink in externalLinks" variant="ghost" as-child>
-                    <a :href="extLink.url" target="_blank" rel="noopener noreferrer">{{ extLink.title }} <ExternalLink class="size-4" /></a>
-                </Button>
-            </nav>
-            <div class="flex flex-row justify-end items-center gap-2">
-                <SearchCommand />
-                <Button variant="ghost" size="icon" @click="!colorMode.unknown ? colorMode.value === 'dark' ? colorMode.preference = 'light' : colorMode.preference = 'dark' : undefined">
-                    <SunMoon v-show="colorMode.unknown" />
-                    <Sun v-show="colorMode.value === 'dark'" class="w-4 h-4" />
-                    <Moon v-show="colorMode.value === 'light'" class="w-4 h-4" />
-                </Button>
-            </div>
-        </header>
-    </div>
+	<!--		    mobile nav-->
+	<Sheet v-model:open="showSidenav">
+		<SheetTrigger asChild>
+			<Button variant="ghost" size="icon" class="md:hidden bg-transparent hover:bg-black/10 transition-colors"><Menu /></Button>
+		</SheetTrigger>
+		<SheetContent size="right" class="p-3">
+			<NuxtLink to="/" class="mr-auto">
+				<NuxtImg src="/img/idc-logo.png" class="w-48 h-auto" />
+			</NuxtLink>
+			<div class="flex flex-col gap-2 overflow-y-auto">
+				<div v-for="link of navigation">
+					<Collapsible v-if="!!link.children && link.children.length > 1" :defaultOpen="route.path.startsWith(link.path)">
+						<CollapsibleTrigger asChild>
+							<Button variant="ghost" :class="`text-sm font-medium bg-transparent hover:bg-black/10 transition-colors w-full data-active:!text-isu-red justify-between ${route.path.startsWith(link.path) ? '!text-isu-red' : ''}`">
+								{{link.title}}
+								<ChevronDown :class="`size-4`" />
+							</Button>
+						</CollapsibleTrigger>
+						<CollapsibleContent>
+							<div class="dark bg-secondary text-secondary-foreground p-2 gap-2 flex flex-col rounded-lg">
+								<Button variant="ghost" v-for="child in link.children.filter(c => c.path !== link.path)" :data-active="route.path === child.path || undefined" class="nav-link hover:!bg-background/30 transition-colors data-active:bg-background/50 hover:data-active:bg-background/50 justify-start text-ellipsis overflow-hidden" asChild>
+									<NuxtLink :to="child.path">
+										<div class="leading-none font-medium text-sm">
+											{{ child.title }}
+										</div>
+									</NuxtLink>
+								</Button>
+							</div>
+						</CollapsibleContent>
+					</Collapsible>
+					<Button variant="ghost" v-else :active="route.path === link.path" :class="cn('bg-transparent hover:bg-black/10 transition-colors data-active:!text-isu-red w-full justify-start')" asChild>
+						<NuxtLink :to="link.path">{{link.title}}</NuxtLink>
+					</Button>
+				</div>
+			</div>
+		</SheetContent>
+	</Sheet>
+	<div :class="props.allowToggleNav ? `transition-opacity ${expandNav ? '' : 'opacity-0'}` : ''">
+		<!--		    desktop nav-->
+		<NavigationMenu v-show="!props.allowToggleNav || expandNav" class="max-md:hidden **:data-[slot=navigation-menu-viewport]:bg-secondary **:data-[slot=navigation-menu-viewport]:border-none">
+			<NavigationMenuList>
+				<NavigationMenuItem v-for="link of navigation">
+					<template v-if="!!link.children && link.children.length > 1">
+						<NavigationMenuTrigger :class="cn(linkClasses, 'data-[state=open]:hover:bg-black/20', route.path.startsWith(link.path) ? '!text-isu-red' : '')">{{link.title}}</NavigationMenuTrigger>
+						<NavigationMenuContent class="dark bg-secondary text-secondary-foreground p-4 gap-4 grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 !w-[calc(100dvw-35px)] rounded-lg">
+							<NavigationMenuLink v-for="child in link.children.filter(c => c.path !== link.path)" :active="route.path === child.path" class="nav-link hover:not-data-active:bg-background/30 transition-colors p-4 rounded-md data-active:bg-background/50 hover:data-active:bg-background/50" asChild>
+								<NuxtLink :to="child.websiteURL || child.path">
+									<div class="leading-none font-medium text-base">
+										{{ child.title }}
+									</div>
+									<p v-if="child.description" class="text-sm line-clamp-3 leading-snug text-muted-foreground">
+										{{ child.description }}
+									</p>
+								</NuxtLink>
+							</NavigationMenuLink>
+						</NavigationMenuContent>
+					</template>
+					<NavigationMenuLink v-else :active="route.path === link.path" :class="cn(navigationMenuTriggerStyle(), 'bg-transparent hover:bg-black/10 transition-colors data-active:!text-isu-red')" asChild>
+						<NuxtLink :to="link.path">{{link.title}}</NuxtLink>
+					</NavigationMenuLink>
+				</NavigationMenuItem>
+			</NavigationMenuList>
+		</NavigationMenu>
+	</div>
+	<Button v-if="props.allowToggleNav" size="icon" variant="ghost" :class="`max-md:hidden ${linkClasses}`" title="Toggle navbar" @click="expandNav = !expandNav">
+		<ListIndentDecrease :class="`size-4 transition-transform ${expandNav ? 'rotate-y-180' : ''}`" />
+	</Button>
 </template>
+
+<style scoped>
+.nav-link {
+	--active-color: hsl(4.55 65% 55%);
+	&[data-active] {
+		color: var(--active-color);
+	}
+}
+</style>

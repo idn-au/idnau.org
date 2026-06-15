@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { HTMLAttributes } from "vue";
+import { ShadCard } from "~/components/ui/card";
 import { cn } from "~/lib/utils";
 
 const props = withDefaults(defineProps<{
@@ -21,7 +22,7 @@ const props = withDefaults(defineProps<{
                     <CardDescription v-if="$slots.description"><slot name="description" mdc-unwrap="p" /></CardDescription>
                 </slot>
             </CardHeader>
-            <CardContent :class="`card-body grow ${$slots.title || $slots.header ? '' : 'pt-6'}`">
+            <CardContent :class="`card-body grow ${$slots.title || $slots.header ? 'pt-6' : ''}`">
                 <slot />
             </CardContent>
             <CardFooter v-if="$slots.footer" class="pt-2">

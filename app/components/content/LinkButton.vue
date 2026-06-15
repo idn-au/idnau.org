@@ -3,20 +3,17 @@ import type { HTMLAttributes } from "vue";
 import type { ButtonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
 
-const props = withDefaults(defineProps<{
-    to?: string;
+const props = defineProps<{
+	to?: string;
 	newTab?: boolean;
-    variant?: ButtonVariants["variant"];
-    size?: ButtonVariants["size"];
-    class?: HTMLAttributes["class"];
-}>(), {
-    variant: "default",
-    size: "default",
-});
+	variant?: ButtonVariants["variant"] | "red" | "yellow" | "green" | "blue" | "black";
+	size?: ButtonVariants["size"];
+	class?: HTMLAttributes["class"];
+}>();
 </script>
 
 <template>
-    <Button :variant="props.variant" :size="props.size" :class="cn('btn', props.class)" :as-child="!!props.to">
+    <IDCButton :variant="props.variant" :size="props.size" :class="cn('btn', props.class)" :as-child="!!props.to">
         <template v-if="props.to">
             <NuxtLink v-if="props.to.startsWith('/')" :to="props.to" :target="props.newTab ? '_blank' : undefined">
                 <slot mdc-unwrap="p" />
@@ -26,5 +23,5 @@ const props = withDefaults(defineProps<{
             </a>
         </template>
         <slot v-else mdc-unwrap="p" />
-    </Button>
+    </IDCButton>
 </template>
