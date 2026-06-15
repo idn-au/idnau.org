@@ -48,8 +48,8 @@ const placeholders = [
 </script>
 
 <template>
-	<div :class="`flex ${props.reverse ? 'flex-row-reverse' : 'flex-row'} my-12`">
-		<div class="flex-1 aspect-square grid grid-cols-2 grid-rows-2 gap-4 my-auto" ref="containerRef">
+	<div :class="`flex flex-col ${props.reverse ? 'md:flex-row-reverse' : 'md:flex-row'} my-12`">
+		<div class="flex-1 aspect-square grid grid-cols-2 grid-rows-2 gap-4 my-auto max-md:max-w-[600px] max-md:px-2 mx-auto" ref="containerRef">
 <!--			<slot name="img" mdc-unwrap="p" />-->
 			<div v-for="image in props.images" class="">
 				<NuxtImg :src="image" class="object-cover h-full" />

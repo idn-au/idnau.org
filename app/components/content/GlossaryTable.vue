@@ -40,7 +40,7 @@ const filteredTerms = computed(() => q.value !== "" ? concepts.value.filter(c =>
 </script>
 
 <template>
-	<InputGroup class="max-w-sm">
+	<InputGroup class="max-w-sm mx-auto mb-2">
 		<InputGroupInput autofocus v-model="q" placeholder="Search glossary" />
 		<InputGroupAddon>
 			<Search />
@@ -51,44 +51,17 @@ const filteredTerms = computed(() => q.value !== "" ? concepts.value.filter(c =>
 			</InputGroupButton>
 		</InputGroupAddon>
 	</InputGroup>
-	<Table>
-		<TableHeader>
-			<TableRow>
-				<TableHead>Term</TableHead>
-				<TableHead>Description</TableHead>
-			</TableRow>
-		</TableHeader>
-		<TableBody>
-			<Alert v-if="error" variant="destructive" class="border-destructive">
-				<AlertCircle class="size-4" />
-				<AlertTitle>Error</AlertTitle>
-				<AlertDescription>{{error}}</AlertDescription>
-			</Alert>
-			<template v-else-if="status === 'pending'">
-				<TableRow v-for="i in 10" class="odd:bg-muted/40 dark:odd:bg-muted/20">
-					<TableCell class="w-80 whitespace-normal align-top">
-						<Skeleton class="w-60 h-6" />
-					</TableCell>
-					<TableCell class="prose dark:prose-invert text-sm [&_p]:m-0 whitespace-normal">
-						<div class="flex flex-col gap-1">
-							<Skeleton v-for="i in 3" :class="`h-5 ${i < 3 ? 'w-full' : 'w-3/4'}`" />
-						</div>
-					</TableCell>
-				</TableRow>
-			</template>
-			<template v-else>
-				<TableRow v-for="term in filteredTerms" class="odd:bg-muted/40 dark:odd:bg-muted/20">
-					<TableCell class="w-80 whitespace-normal align-top">
-						<a :id="encodeURIComponent(term.iri)" class="block relative -top-[128px]" />
-						<NuxtLink :to="`#${encodeURIComponent(term.iri)}`" class="!text-[var(--tw-prose-body)] hover:no-underline!" external>
-							<span class="font-semibold">{{term.label}}</span> <span v-if="term.altLabel" class="text-muted-foreground">({{term.altLabel}})</span>
-						</NuxtLink>
-					</TableCell>
-					<TableCell class="prose dark:prose-invert text-sm [&_p]:m-0 whitespace-normal">
-						{{term.description}}
-					</TableCell>
-				</TableRow>
-			</template>
-		</TableBody>
-	</Table>
+	<div class="grid md:grid-cols-[320px_1fr] text-sm bg-background">
+		<template v-for="term in filteredTerms">
+			<div class="border-t p-2 nth-[4n]:bg-muted-foreground/5 nth-[4n-1]:bg-muted-foreground/5">
+				<a :id="encodeURIComponent(term.iri)" class="block relative -top-[128px]" />
+				<NuxtLink :to="`#${encodeURIComponent(term.iri)}`" class="!text-[var(--tw-prose-body)] hover:no-underline!" external>
+					<span class="font-semibold">{{term.label}}</span> <span v-if="term.altLabel" class="text-muted-foreground">({{term.altLabel}})</span>
+				</NuxtLink>
+			</div>
+			<div class="md:border-t px-2 pb-2 md:pt-2 nth-[4n]:bg-muted-foreground/5 nth-[4n-1]:bg-muted-foreground/5">
+				<p class="!m-0">{{term.description}}</p>
+			</div>
+		</template>
+	</div>
 </template>

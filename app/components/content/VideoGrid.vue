@@ -28,7 +28,7 @@ const filteredVideos = computed(() => {
 				</InputGroupAddon>
 			</InputGroup>
 		</div>
-		<HoverGrid class="grid-cols-4">
+		<HoverGrid class="md:grid-cols-2 lg:grid-cols-4">
 			<VideoCard v-for="video in filteredVideos" v-bind="video" />
 		</HoverGrid>
 	</div>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ChevronDown, ChevronUp, Sun, Moon, SunMoon, Menu, ListIndentDecrease } from "@lucide/vue";
+import { ChevronDown, Menu, ListIndentDecrease } from "@lucide/vue";
 import type { ContentNavigationItem } from "@nuxt/content";
 import { navigationMenuTriggerStyle } from "~/components/ui/navigation-menu";
 import { cn } from "~/lib/utils";
@@ -7,7 +7,6 @@ import {getNavigation} from "~/utils/helpers";
 
 const router = useRouter();
 const route = useRoute();
-// const colorMode = useColorMode();
 
 const props = defineProps<{
 	allowToggleNav?: boolean;
@@ -21,7 +20,6 @@ const linkClasses = "bg-transparent hover:bg-black/10 transition-colors";
 
 const showSidenav = ref(false);
 const expandNav = ref(route.path !== "/");
-// const expandNav = ref(true);
 
 router.beforeEach((from, to) => {
     showSidenav.value = false;
@@ -30,50 +28,80 @@ router.beforeEach((from, to) => {
 </script>
 
 <template>
-    <header :class="`top-nav sticky top-0 flex flex-row items-center p-4 gap-4 z-50 transition-colors ${props.allowToggleNav ? 'bg-transparent' : 'bg-background'}`">
-	    <NuxtLink to="/" class="mr-auto">
-			<NuxtImg src="/img/idc-logo.png" class="h-24" />
-	    </NuxtLink>
-	    <div :class="props.allowToggleNav ? `transition-opacity ${expandNav ? '' : 'opacity-0'}` : ''">
-		    <NavigationMenu>
-			    <NavigationMenuList>
-				    <NavigationMenuItem v-for="link of navigation">
-					    <template v-if="!!link.children && link.children.length > 1">
-						    <NavigationMenuTrigger :class="cn(linkClasses, 'data-[state=open]:hover:bg-black/20', route.path.startsWith(link.path) ? '!text-isu-red' : '')">{{link.title}}</NavigationMenuTrigger>
-						    <NavigationMenuContent>
-							    <ul class="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-								    <li v-for="child in link.children.filter(c => c.path !== link.path)">
-									    <NavigationMenuLink :active="route.path === child.path" class="data-active:!text-isu-red" asChild>
-										    <NuxtLink :to="child.websiteURL || child.path">
-											    <div class="text-sm leading-none font-medium">
-												    {{ child.title }}
-											    </div>
-											    <p v-if="child.description" class="text-muted-foreground line-clamp-2 text-sm leading-snug">
-												    {{ child.description }}
-											    </p>
-										    </NuxtLink>
-									    </NavigationMenuLink>
-								    </li>
-							    </ul>
-						    </NavigationMenuContent>
-					    </template>
-					    <NavigationMenuLink v-else :active="route.path === link.path" :class="cn(navigationMenuTriggerStyle(), 'bg-transparent hover:bg-black/10 transition-colors data-active:!text-isu-red')" asChild>
-						    <NuxtLink :to="link.path">{{link.title}}</NuxtLink>
-					    </NavigationMenuLink>
-				    </NavigationMenuItem>
-			    </NavigationMenuList>
-		    </NavigationMenu>
-	    </div>
-        <div class="flex flex-row justify-end items-center gap-2">
-	        <Button v-if="props.allowToggleNav" size="icon" variant="ghost" :class="linkClasses" title="Toggle navbar" @click="expandNav = !expandNav">
-		        <ListIndentDecrease :class="`size-4 transition-transform ${expandNav ? 'rotate-y-180' : ''}`" />
-	        </Button>
-	        <SearchCommand icon :class="linkClasses" />
-<!--	        <Button variant="ghost" size="icon" @click="!colorMode.unknown ? colorMode.value === 'dark' ? colorMode.preference = 'light' : colorMode.preference = 'dark' : undefined">-->
-<!--		        <SunMoon v-show="colorMode.unknown" />-->
-<!--		        <Sun v-show="colorMode.value === 'dark'" class="size-4" />-->
-<!--		        <Moon v-show="colorMode.value === 'light'" class="size-4" />-->
-<!--	        </Button>-->
-        </div>
-    </header>
+	<!--		    mobile nav-->
+	<Sheet v-model:open="showSidenav">
+		<SheetTrigger asChild>
+			<Button variant="ghost" size="icon" class="md:hidden bg-transparent hover:bg-black/10 transition-colors"><Menu /></Button>
+		</SheetTrigger>
+		<SheetContent size="right" class="p-3">
+			<NuxtLink to="/" class="mr-auto">
+				<NuxtImg src="/img/idc-logo.png" class="w-48 h-auto" />
+			</NuxtLink>
+			<div class="flex flex-col gap-2 overflow-y-auto">
+				<div v-for="link of navigation">
+					<Collapsible v-if="!!link.children && link.children.length > 1" :defaultOpen="route.path.startsWith(link.path)">
+						<CollapsibleTrigger asChild>
+							<Button variant="ghost" :class="`text-sm font-medium bg-transparent hover:bg-black/10 transition-colors w-full data-active:!text-isu-red justify-between ${route.path.startsWith(link.path) ? '!text-isu-red' : ''}`">
+								{{link.title}}
+								<ChevronDown :class="`size-4`" />
+							</Button>
+						</CollapsibleTrigger>
+						<CollapsibleContent>
+							<div class="dark bg-secondary text-secondary-foreground p-2 gap-2 flex flex-col rounded-lg">
+								<Button variant="ghost" v-for="child in link.children.filter(c => c.path !== link.path)" :data-active="route.path === child.path || undefined" class="nav-link hover:!bg-background/30 transition-colors data-active:bg-background/50 hover:data-active:bg-background/50 justify-start text-ellipsis overflow-hidden" asChild>
+									<NuxtLink :to="child.path">
+										<div class="leading-none font-medium text-sm">
+											{{ child.title }}
+										</div>
+									</NuxtLink>
+								</Button>
+							</div>
+						</CollapsibleContent>
+					</Collapsible>
+					<Button variant="ghost" v-else :active="route.path === link.path" :class="cn('bg-transparent hover:bg-black/10 transition-colors data-active:!text-isu-red w-full justify-start')" asChild>
+						<NuxtLink :to="link.path">{{link.title}}</NuxtLink>
+					</Button>
+				</div>
+			</div>
+		</SheetContent>
+	</Sheet>
+	<div :class="props.allowToggleNav ? `transition-opacity ${expandNav ? '' : 'opacity-0'}` : ''">
+		<!--		    desktop nav-->
+		<NavigationMenu v-show="!props.allowToggleNav || expandNav" class="max-md:hidden **:data-[slot=navigation-menu-viewport]:bg-secondary **:data-[slot=navigation-menu-viewport]:border-none">
+			<NavigationMenuList>
+				<NavigationMenuItem v-for="link of navigation">
+					<template v-if="!!link.children && link.children.length > 1">
+						<NavigationMenuTrigger :class="cn(linkClasses, 'data-[state=open]:hover:bg-black/20', route.path.startsWith(link.path) ? '!text-isu-red' : '')">{{link.title}}</NavigationMenuTrigger>
+						<NavigationMenuContent class="dark bg-secondary text-secondary-foreground p-4 gap-4 grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 !w-[calc(100dvw-35px)] rounded-lg">
+							<NavigationMenuLink v-for="child in link.children.filter(c => c.path !== link.path)" :active="route.path === child.path" class="nav-link hover:not-data-active:bg-background/30 transition-colors p-4 rounded-md data-active:bg-background/50 hover:data-active:bg-background/50" asChild>
+								<NuxtLink :to="child.websiteURL || child.path">
+									<div class="leading-none font-medium text-base">
+										{{ child.title }}
+									</div>
+									<p v-if="child.description" class="text-sm line-clamp-3 leading-snug text-muted-foreground">
+										{{ child.description }}
+									</p>
+								</NuxtLink>
+							</NavigationMenuLink>
+						</NavigationMenuContent>
+					</template>
+					<NavigationMenuLink v-else :active="route.path === link.path" :class="cn(navigationMenuTriggerStyle(), 'bg-transparent hover:bg-black/10 transition-colors data-active:!text-isu-red')" asChild>
+						<NuxtLink :to="link.path">{{link.title}}</NuxtLink>
+					</NavigationMenuLink>
+				</NavigationMenuItem>
+			</NavigationMenuList>
+		</NavigationMenu>
+	</div>
+	<Button v-if="props.allowToggleNav" size="icon" variant="ghost" :class="`max-md:hidden ${linkClasses}`" title="Toggle navbar" @click="expandNav = !expandNav">
+		<ListIndentDecrease :class="`size-4 transition-transform ${expandNav ? 'rotate-y-180' : ''}`" />
+	</Button>
 </template>
+
+<style scoped>
+.nav-link {
+	--active-color: hsl(4.55 65% 55%);
+	&[data-active] {
+		color: var(--active-color);
+	}
+}
+</style>

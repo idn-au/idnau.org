@@ -19,23 +19,19 @@ const filteredPublications = computed(() => {
 </script>
 
 <template>
-	<div class="grid grid-cols-[1fr_2fr]">
-		<div>
-			<h3>Search Publications</h3>
-			<InputGroup>
-				<InputGroupInput type="search" autofocus name="q" v-model="q" placeholder="Search publications..." />
-				<InputGroupAddon>
-					<Search />
-				</InputGroupAddon>
-				<InputGroupAddon align="inline-end">
-					<InputGroupButton size="icon-sm" variant="link" class="text-muted-foreground hover:text-foreground" @click="q = ''">
-						<X class="size-4" />
-					</InputGroupButton>
-				</InputGroupAddon>
-			</InputGroup>
-		</div>
+	<div class="">
+		<InputGroup class="max-w-sm mx-auto mb-10">
+			<InputGroupInput type="search" autofocus name="q" v-model="q" placeholder="Search publications..." />
+			<InputGroupAddon>
+				<Search />
+			</InputGroupAddon>
+			<InputGroupAddon align="inline-end">
+				<InputGroupButton size="icon-sm" variant="link" class="text-muted-foreground hover:text-foreground" @click="q = ''">
+					<X class="size-4" />
+				</InputGroupButton>
+			</InputGroupAddon>
+		</InputGroup>
 		<div class="flex flex-col items-center gap-4">
-			<h3>Results</h3>
 			<div class="max-w-xl w-full flex flex-col gap-2">
 				<Item v-for="publication in filteredPublications" variant="outline" class="hover:bg-accent" asChild>
 					<a :href="publication.url" class="hover:!no-underline !text-foreground">

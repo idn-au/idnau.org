@@ -7,7 +7,7 @@ const props = defineProps<{
 <template>
 	<AccordionItem :value="props.value">
 		<AccordionTrigger class="text-base"><slot name="title" mdc-unwrap="p" /></AccordionTrigger>
-		<AccordionContent><slot /></AccordionContent>
+		<AccordionContent class="text-base"><slot /></AccordionContent>
 	</AccordionItem>
 </template>
 

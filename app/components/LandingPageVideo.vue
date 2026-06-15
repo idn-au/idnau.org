@@ -24,13 +24,13 @@ const { pause, resume, isActive } = useIntervalFn(() => {
 </script>
 
 <template>
-	<div class="h-dvh -mt-[128px] flex items-end relative overflow-hidden">
+	<div class="h-dvh -mt-[108px] md:-mt-[126px] flex items-end relative overflow-hidden">
 		<Transition>
 			<NuxtImg :src="state" :key="state" class="w-full h-full object-cover absolute -z-2" />
 		</Transition>
 		<IDCLogo class="absolute fill-white opacity-20 -z-1 -right-[30%] -bottom-[20%]" />
-		<div class="text-white ml-20 mb-60 w-1/2">
-			<h1 class="text-7xl leading-snug">
+		<div class="text-white ml-20 mb-60 lg:w-1/2">
+			<h1 class="text-5xl md:text-6xl lg:text-7xl leading-snug">
 				The Indigenous Data Commons
 			</h1>
 		</div>

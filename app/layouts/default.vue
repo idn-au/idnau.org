@@ -59,7 +59,7 @@ function scrollToTop() {
 
 <template>
 	<div class="flex flex-col min-h-dvh">
-		<MainNav :allowToggleNav="route.path === '/' && targetIsVisible" />
+		<IDCHeader :allowToggleNav="route.path === '/' && targetIsVisible" />
 
 		<main class="grow mb-12">
 			<LandingPageVideo v-if="route.path === '/'" ref="target" />
@@ -91,9 +91,9 @@ function scrollToTop() {
 		</div>
 
 		<footer class="dark bg-secondary text-secondary-foreground py-12">
-			<div class="mx-auto max-w-[1200px] flex flex-col gap-12">
-				<div class="grid grid-cols-2 gap-12">
-					<div class="grid grid-cols-2 gap-6">
+			<div class="mx-auto max-w-[1200px] flex flex-col gap-12 px-2">
+				<div class="grid lg:grid-cols-2 gap-12">
+					<div class="grid sm:grid-cols-2 gap-6">
 						<div v-for="link in navigation">
 							<NuxtLink v-if="link.path.startsWith('/')" :to="link.path" class="text-isu-yellow! font-bold">{{link.title}}</NuxtLink>
 							<a v-else :href="link.path" class="text-isu-yellow! font-bold">{{link.title === "NIDC" ? "The National Indigenous Data Catalogue" : link.title}}</a>
@@ -115,7 +115,7 @@ function scrollToTop() {
 								<NuxtImg src="/img/UoM_Indig_Studies_Unit_Brand_ART - (ICON LOCK UP) IDN - WHITE.png" />
 							</a>
 						</div>
-						<div class="flex flex-row items-center gap-2 justify-between">
+						<div class="flex flex-row items-center gap-2 justify-between flex-wrap">
 							<div class="flex flex-row items-center justify-around gap-2 grow">
 								<IDCButton v-for="social in socials" size="icon" variant="green" :title="social.title" asChild>
 									<a :href="social.url">
