@@ -74,7 +74,7 @@ router.beforeEach((from, to) => {
 						<NavigationMenuTrigger :class="cn(linkClasses, 'data-[state=open]:hover:bg-black/20', route.path.startsWith(link.path) ? '!text-isu-red' : '')">{{link.title}}</NavigationMenuTrigger>
 						<NavigationMenuContent class="dark bg-secondary text-secondary-foreground p-4 gap-4 grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 !w-[calc(100dvw-35px)] rounded-lg">
 							<NavigationMenuLink v-for="child in link.children.filter(c => c.path !== link.path)" :active="route.path === child.path" class="nav-link hover:not-data-active:bg-background/30 transition-colors p-4 rounded-md data-active:bg-background/50 hover:data-active:bg-background/50" asChild>
-								<NuxtLink :to="child.websiteURL || child.path">
+								<NuxtLink :to="child.path">
 									<div class="leading-none font-medium text-base">
 										{{ child.title }}
 									</div>
