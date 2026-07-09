@@ -15,12 +15,6 @@ export const externalLinks: ContentNavigationItem[] = [
         "stem": "5.tools/1.index",
         "children": [
             {
-                "title": "IDN Catalogue Profile",
-                "path": "https://data.idnau.org/pid/cp",
-                "stem": "5.tools/2.idn-catalogue-profile",
-                "description": "Learn about the structure and standards underpinning the IDN Catalogue Profile, including how records are organised, described, and made discoverable within the Indigenous Data Network."
-            },
-            {
                 "title": "Agent Database",
                 "path": "https://agentsdb.idnau.org",
                 "stem": "5.tools/3.agent-database",
