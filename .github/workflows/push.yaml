@@ -32,9 +32,7 @@ jobs:
   deploy:
     needs: publish
     runs-on: self-hosted
-    environment:
-      name: production
-      url: https://indigenousdatacommons.org
+    environment: production
     steps:
     - uses: actions/checkout@v4
     - name: Stop current website if exists
