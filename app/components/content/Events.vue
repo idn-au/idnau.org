@@ -1,57 +1,76 @@
 <script setup lang="ts">
-import { Clock, MapPin } from "@lucide/vue";
-import Card from "~/components/content/Card.vue";
-import EventCalendar from "~/components/content/EventCalendar.vue";
+import { Search, X, Calendar, CalendarOff } from "@lucide/vue";
 import { events } from "~/utils/events";
 
+const q = ref("");
+
+const filteredEvents = computed(() => {
+	return (events as EventItem[]).filter(e =>
+		e.title.toLowerCase().includes(q.value.toLowerCase())
+	).sort((a, b) => a.title.localeCompare(b.title));
+});
+
 const upcomingEvents = computed(() => {
-	return events.filter(e => e.start > new Date().toISOString()).sort((a, b) => a.start.localeCompare(b.start));
+	return filteredEvents.value.filter(e => e.start > new Date().toISOString()).sort((a, b) => a.start.localeCompare(b.start));
 });
 
 const pastEvents = computed(() => {
-	return events.filter(e => e.start < new Date().toISOString()).sort((a, b) => b.start.localeCompare(a.start));
+	return filteredEvents.value.filter(e => e.start < new Date().toISOString()).sort((a, b) => b.start.localeCompare(a.start));
 });
 </script>
 
 <template>
 	<div>
-		<h2>Upcoming Events</h2>
-		<div class="flex flex-col gap-4">
-			<Card v-for="event in upcomingEvents" imgPosition="left">
-				<template v-if="event.img" #img>
-					<img :src="event.img" />
-				</template>
-				<template #title>{{event.title}}</template>
-				<template #description>
-					<div class="flex flex-row items-center gap-1">
-						<Clock class="size-4" /> {{formatDate(event.start)}} <template v-if="event.end"> - {{formatDate(event.end)}}</template>
-					</div>
-					<div v-if="event.location" class="flex flex-row items-center gap-1">
-						<MapPin class="size-4" /> {{event.location}}
-					</div>
-				</template>
-				<p v-if="event.description" class="line-clamp-3 text-ellipsis">{{event.description}}</p>
-			</Card>
-		</div>
-		<h2>Past Events</h2>
-		<div class="flex flex-col gap-4">
-			<Card v-for="event in pastEvents" imgPosition="left">
-				<template v-if="event.img" #img>
-					<div class="max-w-40 aspect-square">
-						<img :src="event.img" class="object-cover h-full" />
-					</div>
-				</template>
-				<template #title>{{event.title}}</template>
-				<template #description>
-					<div class="flex flex-row items-center gap-1">
-						<Clock class="size-4" /> {{formatDate(event.start)}} <template v-if="event.end"> - {{formatDate(event.end)}}</template>
-					</div>
-					<div v-if="event.location" class="flex flex-row items-center gap-1">
-						<MapPin class="size-4" /> {{event.location}}
-					</div>
-				</template>
-				<p v-if="event.description" class="line-clamp-3 text-ellipsis">{{event.description}}</p>
-			</Card>
-		</div>
+		<InputGroup class="max-w-sm mx-auto mb-10">
+			<InputGroupInput type="search" autofocus name="q" v-model="q" placeholder="Search events..." />
+			<InputGroupAddon>
+				<Search />
+			</InputGroupAddon>
+			<InputGroupAddon align="inline-end">
+				<InputGroupButton size="icon-sm" variant="link" class="text-muted-foreground hover:text-foreground" @click="q = ''">
+					<X class="size-4" />
+				</InputGroupButton>
+			</InputGroupAddon>
+		</InputGroup>
+		<Tabs defaultValue="upcoming">
+			<TabsList class="mx-auto grid grid-cols-2 max-w-lg w-full bg-muted-foreground/5">
+				<TabsTrigger value="upcoming">Upcoming</TabsTrigger>
+				<TabsTrigger value="past">Past</TabsTrigger>
+			</TabsList>
+			<TabsContent value="upcoming">
+				<Empty v-if="q === '' && upcomingEvents.length === 0">
+					<EmptyHeader>
+						<EmptyMedia variant="icon"><Calendar /></EmptyMedia>
+						<EmptyTitle>No Upcoming Events</EmptyTitle>
+						<EmptyDescription>Check back soon!</EmptyDescription>
+					</EmptyHeader>
+				</Empty>
+				<Empty v-else-if="upcomingEvents.length === 0">
+					<EmptyHeader>
+						<EmptyMedia variant="icon"><CalendarOff /></EmptyMedia>
+						<EmptyTitle>No Upcoming Events Found</EmptyTitle>
+						<EmptyDescription>Try another search term</EmptyDescription>
+					</EmptyHeader>
+				</Empty>
+				<Timeline v-else :events="upcomingEvents" highlightFirst />
+			</TabsContent>
+			<TabsContent value="past">
+				<Empty v-if="q === '' && pastEvents.length === 0">
+					<EmptyHeader>
+						<EmptyMedia variant="icon"><Calendar /></EmptyMedia>
+						<EmptyTitle>No Past Events</EmptyTitle>
+						<EmptyDescription>Check back soon!</EmptyDescription>
+					</EmptyHeader>
+				</Empty>
+				<Empty v-else-if="pastEvents.length === 0">
+					<EmptyHeader>
+						<EmptyMedia variant="icon"><CalendarOff /></EmptyMedia>
+						<EmptyTitle>No Past Events Found</EmptyTitle>
+						<EmptyDescription>Try another search term</EmptyDescription>
+					</EmptyHeader>
+				</Empty>
+				<Timeline v-else :events="pastEvents" />
+			</TabsContent>
+		</Tabs>
 	</div>
 </template>
