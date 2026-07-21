@@ -58,7 +58,10 @@ router.beforeEach((from, to) => {
 							</div>
 						</CollapsibleContent>
 					</Collapsible>
-					<Button variant="ghost" v-else :active="route.path === link.path" :class="cn('bg-transparent hover:bg-black/10 transition-colors data-active:!text-isu-red w-full justify-start')" asChild>
+					<Button v-else-if="link.button" variant="outline" :active="route.path === link.path" :class="cn('bg-transparent hover:bg-black/10 transition-colors border-isu-red w-full justify-start')" asChild>
+						<NuxtLink :to="link.path">{{link.title}}</NuxtLink>
+					</Button>
+					<Button v-else variant="ghost" :active="route.path === link.path" :class="cn('bg-transparent hover:bg-black/10 transition-colors data-active:!text-isu-red w-full justify-start')" asChild>
 						<NuxtLink :to="link.path">{{link.title}}</NuxtLink>
 					</Button>
 				</div>
@@ -85,6 +88,9 @@ router.beforeEach((from, to) => {
 							</NavigationMenuLink>
 						</NavigationMenuContent>
 					</template>
+					<Button v-else-if="link.button" variant="outline" :class="`bg-transparent hover:bg-black/10 transition-colors border border-isu-red`" asChild>
+						<NuxtLink :to="link.path">{{link.title}}</NuxtLink>
+					</Button>
 					<NavigationMenuLink v-else :active="route.path === link.path" :class="cn(navigationMenuTriggerStyle(), 'bg-transparent hover:bg-black/10 transition-colors data-active:!text-isu-red')" asChild>
 						<NuxtLink :to="link.path">{{link.title}}</NuxtLink>
 					</NavigationMenuLink>

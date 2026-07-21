@@ -11,10 +11,10 @@ export default defineNuxtConfig({
         "shadcn-nuxt",
         "@nuxt/scripts",
     ],
-    colorMode: {
-        classPrefix: "",
-        classSuffix: "",
-    },
+    // colorMode: {
+    //     classPrefix: "",
+    //     classSuffix: "",
+    // },
     css: ["~/assets/css/tailwind.css", "~/assets/css/style.css"],
     vite: {
         plugins: [tailwindcss()],
