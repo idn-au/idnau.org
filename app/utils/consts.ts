@@ -3,10 +3,9 @@ import type {ContentNavigationItem} from "@nuxt/content";
 
 export const externalLinks: ContentNavigationItem[] = [
     {
-        // "title": "The National Indigenous Data Catalogue",
-        "title": "NIDC",
+        "title": "Catalogue",
         "path": "https://data.idnau.org",
-        "stem": "2.nidc",
+        "stem": "2.catalogue",
         "description": "",
         "button": true,
     },
