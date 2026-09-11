@@ -4,17 +4,11 @@ import { ArrowUp, Newspaper } from "@lucide/vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {faFacebookF, faInstagram, faLinkedinIn, faYoutube, type IconDefinition, faXTwitter} from "@fortawesome/free-brands-svg-icons";
 import {getNavigation} from "~/utils/helpers";
-import {useIntersectionObserver, useWindowScroll} from "@vueuse/core";
+import {useWindowScroll} from "@vueuse/core";
 
 const route = useRoute();
 
 const { arrivedState } = useWindowScroll();
-const target = useTemplateRef('target')
-const targetIsVisible = ref(false)
-
-const { stop } = useIntersectionObserver(target, ([entry], observerElement) => {
-	targetIsVisible.value = entry?.isIntersecting || false;
-});
 
 const socials: {
 	title: string;
@@ -59,10 +53,10 @@ function scrollToTop() {
 
 <template>
 	<div class="flex flex-col min-h-dvh">
-		<IDCHeader :allowToggleNav="route.path === '/' && targetIsVisible" />
+		<IDCHeader />
 
 		<main class="grow mb-12">
-			<LandingPageVideo v-if="route.path === '/'" ref="target" />
+			<LandingPageVideo v-if="route.path === '/'" />
 			<slot />
 		</main>
 
@@ -85,7 +79,7 @@ function scrollToTop() {
 				</div>
 
 				<div class="text-sm"> 
-					Improving Indigenous Research Capabilities is a co-investment partnership with the Australian Research Data Commons (ARDC) through the HASS and Indigenous Research Data Commons (DOI: <a href="https://doi.org/10.3565/pr3g-s109" target="_blank"> 10.3565/pr3g-s109 </a>). The ARDC is enabled by the Australian Government’s National Collaborative Research Infrastructure Strategy (NCRIS).
+					Improving Indigenous Research Capabilities is a co-investment partnership with the Australian Research Data Commons (ARDC) through the HASS and Indigenous Research Data Commons (DOI: <a href="https://doi.org/10.3565/pr3g-s109" target="_blank">10.3565/pr3g-s109</a>). The ARDC is enabled by the Australian Government’s National Collaborative Research Infrastructure Strategy (NCRIS).
 				</div>
 			</div>
 		</div>
@@ -96,7 +90,7 @@ function scrollToTop() {
 					<div class="grid sm:grid-cols-2 gap-6">
 						<div v-for="link in navigation">
 							<NuxtLink v-if="link.path.startsWith('/')" :to="link.path" class="text-isu-yellow! font-bold">{{link.title}}</NuxtLink>
-							<a v-else :href="link.path" class="text-isu-yellow! font-bold">{{link.title === "NIDC" ? "The National Indigenous Data Catalogue" : link.title}}</a>
+							<a v-else :href="link.path" class="text-isu-yellow! font-bold">{{link.title === "Catalogue" ? "Catalogue" : link.title}}</a>
 							<div class="flex flex-col">
 								<template v-for="child in link.children?.filter(c => c.path !== link.path)">
 									<NuxtLink v-if="child.path.startsWith('/')" :to="child.path" class="text-foreground!">{{child.title}}</NuxtLink>
@@ -147,6 +141,6 @@ footer {
 	background-position-x: right;
 	background-position-y: top;
 	background-blend-mode: lighten;
-	//background-blend-mode: luminosity;
+	/* background-blend-mode: luminosity; */
 }
 </style>

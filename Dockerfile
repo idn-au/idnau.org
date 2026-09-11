@@ -1,4 +1,4 @@
-FROM node:24.9.0-alpine AS base
+FROM node:26.5.0-alpine AS base
 ARG PORT=3000
 WORKDIR /src
 
@@ -6,10 +6,10 @@ FROM base AS build
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-# RUN corepack enable
+RUN npm install -g corepack
+RUN corepack enable
 RUN apk add --no-cache python3 py3-pip make build-base
-RUN npm install -g pnpm@10
-COPY --link package.json pnpm-lock.yaml ./
+COPY --link package.json pnpm-workspace.yaml pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
 COPY --link . .
 RUN pnpm build

@@ -1,9 +1,13 @@
 # Indigenous Data Commons Website
-The website for the Indigenous Data Commons. Available at [dev.indigenousdatacommons.org](https://dev.indigenousdatacommons.org).
+The website for the Indigenous Data Commons. Available at:
 
-Written in [Nuxt](https://nuxt.com/docs/3.x), [Nuxt Content](https://content.nuxt.com/), [Shadcn-vue](https://www.shadcn-vue.com/) and [Tailwind](https://tailwindcss.com/).
+- Development site - [dev.indigenousdatacommons.org](https://dev.indigenousdatacommons.org)
+- Production site - [indigenousdatacommons.org](https://indigenousdatacommons.org)
+
+Written in [Nuxt](https://nuxt.com/docs), [Nuxt Content](https://content.nuxt.com/), [Shadcn-vue](https://www.shadcn-vue.com/) and [Tailwind](https://tailwindcss.com/).
 
 ## Contents
+- [Branching & Approval](#branching--approval)
 - [Making Changes on GitHub](#making-changes-on-github)
 - [Feedback & Bug Reports](#feedback--bug-reports)
 - [Markdown Content](#markdown-content)
@@ -14,6 +18,50 @@ Written in [Nuxt](https://nuxt.com/docs/3.x), [Nuxt Content](https://content.nux
 - [Styling & Tailwind](#styling--tailwind)
 - [Install & Run](#install--run)
 - [Contacts](#contacts)
+
+## Branching & Approval
+There are two environments for the website - development & production.
+
+New features are made on branches branching from the reserved `dev` branch and PRs are made to the `dev` branch. Once approved by a developer, a pipeline will deploy changes to `dev` to the development environment for review & testing.
+
+Once changes on the development environment are ready, a PR is made from `dev` to `main`, and the appropriate person (Kristen/Marcia) will manually approve a deployment to the production environment.
+
+See below for the branching structure & approval process.
+
+```mermaid
+---
+title: Branch Structure
+config:
+    gitGraph:
+        showCommitLabel: false
+        parallelCommits: true
+---
+gitGraph
+  commit
+  branch dev
+  checkout dev
+  branch name/feature
+  checkout name/feature
+  commit
+  commit
+  checkout dev
+  merge name/feature
+  checkout main
+  merge dev
+```
+
+```mermaid
+---
+title: Approval Process
+---
+flowchart TD
+    feature[Feature Branch] --> PR1{PR}
+    PR1 --Developer approval--> devBranch[dev Branch]
+  devBranch --deploy--> devSite[development website]@{ shape: cloud }
+  devBranch --> PR2{PR}
+    PR2 --Kristen/Marcia approval--> main[main Branch]
+    main --deploy--> prodSite[production website]@{ shape: cloud }
+```
 
 ## Making Changes on GitHub
 For simple changes like updating Markdown files or uploading images, you can do so on GitHub in the browser. Make sure you make a _pull request_, which will be reviewed by Jamie for merging.
@@ -189,35 +237,6 @@ img|An image that can be positioned with the `imgPosition` prop
 
 ##### Hero
 The hero component for the home page.
-
-##### Person
-For listing staff, including their position, bio and profile picture.
-
-![Person component example](/docs/person.png)
-
-Usage:
-
-```
-::Person
-The person's bio
-
-#name
-### Name
-
-#position
-_Position_
-
-#img
-![Person's profile picture](/img/person-placeholder.png){width="220"}
-::
-```
-
-Slot|Description
--|-
-default|The person's bio
-name|The person's name
-position|The person's position
-img|The profile picture
 
 ### Images
 See the [NuxtImage docs](https://image.nuxt.com/usage/nuxt-img) for how to include images in Markdown files. The syntax is the same as regular Markdown, but you can provide extra props to be passed to the underlying `<NuxtImg />` component, such as placeholder info, provider, quality, densities, etc.

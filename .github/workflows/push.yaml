@@ -17,24 +17,26 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           push: true
           tags: ghcr.io/idn-au/idnau:latest
   deploy:
     needs: publish
     runs-on: self-hosted
-    environment: production
+    environment:
+      name: production
+      url: https://indigenousdatacommons.org
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - name: Stop current website if exists
       run: |
         if [ -d "/home/ubuntu/website/" ]; then

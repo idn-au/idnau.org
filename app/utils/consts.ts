@@ -3,11 +3,25 @@ import type {ContentNavigationItem} from "@nuxt/content";
 
 export const externalLinks: ContentNavigationItem[] = [
     {
-        // "title": "The National Indigenous Data Catalogue",
-        "title": "NIDC",
+        "title": "Catalogue",
         "path": "https://data.idnau.org",
-        "stem": "2.nidc",
-        "description": ""
+        "stem": "2.catalogue",
+        "description": "",
+        "button": true,
+    },
+    {
+        "title": "About",
+        "path": "/about",
+        "stem": "3.about/1.index",
+        "description": "",
+        "children": [
+            {
+                "title": "The Indigenous Data Network",
+                "path": "https://mspgh.unimelb.edu.au/centres-institutes/onemda/research-group/indigenous-studies-unit/indigenous-data-network",
+                "stem": "3.about/3.idn",
+                "description": "A national initiative that supports Aboriginal and Torres Strait Islander communities in leading the design, governance, and use of data that reflects their cultural values, priorities, and knowledge systems."
+            },
+        ],
     },
     {
         "title": "Tools",
