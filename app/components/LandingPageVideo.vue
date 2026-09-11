@@ -31,8 +31,11 @@ const { pause, resume, isActive } = useIntervalFn(() => {
 		<IDCLogo class="absolute fill-white opacity-20 -z-1 -right-[30%] -bottom-[20%]" />
 		<div class="text-white ml-20 mb-60 lg:w-1/2">
 			<h1 class="text-5xl md:text-6xl lg:text-7xl leading-snug">
-				The Indigenous Data Commons
+				Welcome to the Indigenous Data Commons
 			</h1>
+			<p class="text-1xl md:text-2xl lg:text-3xl leading-snug">
+				A national shared space that establishes the ethical approach to governing Indigenous data in Australia  
+			</p>
 		</div>
 	</div>
 </template>
