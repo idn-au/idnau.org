@@ -1,5 +1,6 @@
 body {
     font-family: "Open Sans", sans-serif;
+    background: linear-gradient(var(--background), transparent), url("/img/graphics/IDC_Pattern_White_ART-2.svg"), var(--background);
 }
 
 .prose :where(h1):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
@@ -26,9 +27,13 @@ a:not(header a):hover, footer a:hover {
     text-decoration: underline;
 }
 
+h1, h2, h3, h4 {
+    font-family: Neuzon, "Open Sans", sans-serif;
+}
+
 h2, h3, h4 {
     color: var(--color-primary);
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 .prose img {

@@ -14,10 +14,13 @@
     --isu-green-foreground: hsl(210 40% 98%);
     --isu-blue: hsl(219.23 100% 30.59%);
     --isu-blue-foreground: hsl(210 40% 98%);
+    --tan-100: hsl(39.31 46.03% 75.29%);
+    --tan-75: hsl(39.55 46.81% 81.57%);
+    --tan-50: hsl(39.31 46.03% 87.65%);
+    --tan-25: hsl(40 48.39% 93.92%);
+    --isu-black: hsl(156 7.25% 13.53%);
 
-    /*--body-background: oklch(1 0 0); !* white *!*/
-    /*--body-background: hsl(38.57 43.75% 93.73%); !* sepia *!*/
-    --body-background: hsl(0 0% 94.9%); /* light grey */
+    --body-background: var(--tan-25);
 
     --background: var(--body-background);
     --foreground: oklch(0.129 0.042 264.695);
@@ -69,7 +72,8 @@
     --popover-foreground: oklch(0.984 0.003 247.858);
     /* --primary: var(--isu-blue); */
     /* --primary-foreground: oklch(0.208 0.042 265.755); */
-    --secondary: oklch(0.279 0.041 260.031);
+    /*--secondary: oklch(0.279 0.041 260.031);*/
+    --secondary: var(--isu-black);
     --secondary-foreground: oklch(0.984 0.003 247.858);
     --muted: oklch(0.279 0.041 260.031);
     --muted-foreground: oklch(0.704 0.04 256.788);
@@ -141,6 +145,11 @@
     --color-isu-green-foreground: var(--isu-green-foreground);
     --color-isu-blue: var(--isu-blue);
     --color-isu-blue-foreground: var(--isu-blue-foreground);
+    --color-tan-100: var(--tan-100);
+    --color-tan-75: var(--tan-75);
+    --color-tan-50: var(--tan-50);
+    --color-tan-25: var(--tan-25);
+    --color-isu-black: var(--isu-black);
 
     --color-link: var(--link);
     --color-link-foreground: var(--link-foreground);

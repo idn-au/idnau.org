@@ -18,12 +18,12 @@ const internal = computed(() => props.to.startsWith("/"));
 			:is="internal ? NuxtLink : 'a'"
 			:to="internal ? props.to : undefined"
 			:href="internal ? undefined : props.to"
-			:class="cn('aspect-square flex items-center justify-center border rounded-4xl p-4 relative dark bg-secondary hover:no-underline! hover:scale-110 transition-transform h-full', props.class)"
+			:class="cn('aspect-square flex items-center justify-center border rounded-4xl p-4 dark bg-secondary hover:no-underline! hover:scale-110 transition-transform h-full', props.class)"
+			:style="{background: `linear-gradient(transparent, var(--isu-black)), url('${props.img}'), var(--isu-black)`}"
 		>
-			<NuxtImg v-if="props.img" :src="props.img" class="absolute" />
-			<span class="text-white! z-1 text-center text-base md:text-2xl font-bold">
+			<div class="text-white! text-center text-base md:text-2xl font-bold">
 				<slot mdc-unwrap="p"/>
-			</span>
+			</div>
 		</component>
 	</div>
 </template>
